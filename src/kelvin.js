@@ -5,6 +5,7 @@ const kelvin = () => {
     <div>
       ko
       <p>Nifemi 1</p>
+      <p>Nifemi 2</p>
     </div>
   )
 }
