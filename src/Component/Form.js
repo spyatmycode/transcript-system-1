@@ -1,114 +1,41 @@
-// import React from 'react'
-// import 'bootstrap/dist/css/bootstrap.min.css'
-// import {BsChevronLeft} from "react-icons/bs"
-// import Header from './Header'
-// const Form = () => {
-//   return (
-//     <div>
-//          <div className="navigate  container my-4 py-3">
-//                 <button  className='btn btn-dark '>
-//                 <BsChevronLeft className='' size={30}/> back
-//                 </button>
-                          
-                
-          
-//         </div>
-//         <Header/>
-       
-
-
-
-
-//        <form className=''>
-
-//                 <div className="d-flex flex-column   container align-items-center justify-content-center">
-                        
-
-//                         <div className="tilte h1 text-danger fw-semibold my-5">
-//                         <h1>STUDENT FORM</h1> 
-//                         </div>
-
-
-//                     <div className='gird  gap-2'>
-                     
-//                     <div class="mb-3 g-col-6 g-col-md-4">
-//                             <label class="form-label">Name (Nom)</label>
-//                             <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="e.g Adewale Philips"/>
-//                     </div>
-//                     <div class="mb-3 g-col-6 g-col-md-4">
-//                             <label class="form-label">Matric No (No Matricule): </label>
-//                             <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="e.g TUMST/**/*****/***/*****"/>
-//                     </div>
-                        
-//                     <div class="mb-3 g-col-6 g-col-md-4">
-//                             <label  class="form-label">College</label>
-//                             <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="e.g SOCIAL & MANAGEMENT SCIENCE"/>
-//                     </div>
-
-//                     <div class="mb-3 g-col-6 g-col-md-4">
-//                             <label  class="form-label">Department (Departement)</label>
-//                             <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="e.g ECONOMICS"/>
-//                     </div>
-
-//                     <div class="mb-3 g-col-6 g-col-md-4">
-//                             <label  class="form-label">Gender</label>
-//                             <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="e.g FEMALE"/>
-//                     </div>
-
-                  
-                    
-//                     </div>
-//                     <div className=" w-100"  >
-//                     <button className='w-100 text-light btn btn-primary bg-opacity-75 fs-4 p-3'>Submit</button>
-//                    </div>
-                    
-//                 </div>
-
-
-//        </form>
-     
-//     </div>
-//   )
-// }
-
-// export default Form
-
-
 import React from 'react'
 import Header from './Header'
 
 const Form = () => {
   return (
-    <div>
+    <div className='w-[100vw]'>
       <Header/>
       <input type="text" />
       <div className='my-4 flex justify-center items-center'>
-         <form action="">
+         <form action="" className='w-[50vw]'>
                 <div>
-                <h1>STUDENT FORM</h1>
+                <h1 className='text-center text-[2.3em] font-bold font-sans '>STUDENT FORM</h1>
                 </div>
-                <div>
+                <div className=' flex gap-3 flex-col  '>
                      <div className='flex flex-col'>
-                        <label class="form-label">Name (Nom)</label>
-                        <input type="text"  className=' border border-[#7e7d7d] rounded-sm'  placeholder="e.g Adewale Philips"/>
+                      <label className="form-label">Name (Nom)</label>
+                      <input type="text"  className=' border border-[#7e7d7d] rounded-sm p-4 '  placeholder="e.g Adewale Philips"/>
                     </div>
                      <div className='flex flex-col'>
-                        <label class="form-label">Matric No (No Matricule): </label>
-                        <input type="text"  className=' border border-[#7e7d7d] rounded-sm'  placeholder="e.g Adewale Philips"/>
+                        <label className="form-label">Matric No (No Matricule): </label>
+                        <input type="text"  className=' border border-[#7e7d7d] rounded-sm p-4'  placeholder="e.g Adewale Philips"/>
                     </div>
                      <div className='flex flex-col'>
-                        <label class="form-label">Name (Nom)</label>
-                        <input type="text"  className=' border border-[#7e7d7d] rounded-sm'  placeholder="e.g Adewale Philips"/>
+                     <label  class="form-label">College</label>
+                     <input type="text" class="form-control  border border-[#7e7d7d] rounded-sm p-4" id="exampleFormControlInput1" placeholder="e.g SOCIAL & MANAGEMENT SCIENCE"/>
                     </div>
                      <div className='flex flex-col'>
-                        <label class="form-label">Name (Nom)</label>
-                        <input type="text"  className=' border border-[#7e7d7d] rounded-sm'  placeholder="e.g Adewale Philips"/>
+                     <label  class="form-label">Department (Departement)</label>
+                     <input type="text" class="form-control  border border-[#7e7d7d] rounded-sm p-4" id="exampleFormControlInput1" placeholder="e.g ECONOMICS"/>
                     </div>
                      <div className='flex flex-col'>
-                        <label class="form-label">Name (Nom)</label>
-                        <input type="text"  className=' border border-[#7e7d7d] rounded-sm'  placeholder="e.g Adewale Philips"/>
+                     <label  class="form-label">Gender</label>
+                     <input type="text" class="form-control  border border-[#7e7d7d] rounded-sm p-4" id="exampleFormControlInput1" placeholder="e.g FEMALE"/>
                     </div>
                   
+                </div>
+                <div className='flex justify-center my-6 '>
+                  <button className=' border border-[#7e7d7d] py-3  px-6 hover:bg-[#168b7e] bg-[#1b6b6b] text-white'>Submit</button>
                 </div>
                 
 
