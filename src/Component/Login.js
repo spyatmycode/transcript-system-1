@@ -69,7 +69,7 @@ const Login = () => {
                 </div>
             </form>
 
-            <p className='mt-4'><span className='text-red-600 cursor-pointer underline'>Click here</span> if you have forgotten password</p>
+            <p className='mt-4 text-center'><span className='text-red-600 cursor-pointer underline'>Click here</span> if you have forgotten password</p>
         </>
     )
 }
