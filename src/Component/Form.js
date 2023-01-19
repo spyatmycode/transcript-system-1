@@ -97,7 +97,7 @@ const Form = () => {
               <input type="text" className=' border border-[#7e7d7d] rounded-sm' placeholder="e.g Adewale Philips" />
             </div>
             <div className='flex flex-col'>
-              <label class="form-label">Name (Nom)</label>
+              <label className="form-label">Name (Nom)</label>
               <input type="text" className=' border border-[#7e7d7d] rounded-sm' placeholder="e.g Adewale Philips" />
             </div>
             <div className='flex flex-col'>
