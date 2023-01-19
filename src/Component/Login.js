@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaPhone, FaBars, FaLaptop } from 'react-icons/fa'
-import Logo from '../assets/logo.jpeg'
+import Logo from '../Assets/logo.jpeg'
 
 const Login = () => {
     return (

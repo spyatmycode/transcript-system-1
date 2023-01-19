@@ -1,8 +1,10 @@
 import './App.css';
-import Login from './components/Login';
+import Form from './Component/Form';
+import Login from './Component/Login';
 function App() {
   return (
     <div className="App">
+      <Form/>
       <Login />
     </div>
   );
