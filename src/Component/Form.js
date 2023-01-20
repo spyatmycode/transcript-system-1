@@ -23,16 +23,16 @@ const Form = () => {
               <input type="text" className=' border border-[#7e7d7d] rounded-sm p-4' placeholder="e.g Adewale Philips" />
             </div>
             <div className='flex flex-col'>
-              <label class="form-label">College</label>
-              <input type="text" class="form-control  border border-[#7e7d7d] rounded-sm p-4" id="exampleFormControlInput1" placeholder="e.g SOCIAL & MANAGEMENT SCIENCE" />
+              <label className="form-label">College</label>
+              <input type="text" className="form-control  border border-[#7e7d7d] rounded-sm p-4" id="exampleFormControlInput1" placeholder="e.g SOCIAL & MANAGEMENT SCIENCE" />
             </div>
             <div className='flex flex-col'>
-              <label class="form-label">Department (Departement)</label>
-              <input type="text" class="form-control  border border-[#7e7d7d] rounded-sm p-4" id="exampleFormControlInput1" placeholder="e.g ECONOMICS" />
+              <label className="form-label">Department (Departement)</label>
+              <input type="text" className="form-control  border border-[#7e7d7d] rounded-sm p-4" id="exampleFormControlInput1" placeholder="e.g ECONOMICS" />
             </div>
             <div className='flex flex-col'>
-              <label class="form-label">Gender</label>
-              <input type="text" class="form-control  border border-[#7e7d7d] rounded-sm p-4" id="exampleFormControlInput1" placeholder="e.g FEMALE" />
+              <label className="form-label">Gender</label>
+              <input type="text" className="form-control  border border-[#7e7d7d] rounded-sm p-4" id="exampleFormControlInput1" placeholder="e.g FEMALE" />
             </div>
 
           </div>
