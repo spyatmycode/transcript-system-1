@@ -16,8 +16,8 @@ function App() {
   return (
     <div className="App">
 
-      <Transcript />
       <Admin/>
+
       {/* <Form /> */}
 
     </div>
