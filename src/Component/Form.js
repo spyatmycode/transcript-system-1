@@ -3,6 +3,9 @@ import React from 'react'
 import Header from './Header'
 
 const Form = () => {
+ const hello=()=>{
+  window.confirm("Are you sure you want to deetre thid syser")
+ }
   return (
 
     <div className='w-[100vw]'>
@@ -37,7 +40,7 @@ const Form = () => {
 
           </div>
           <div className='flex justify-center my-6 '>
-            <button className=' border border-[#7e7d7d] py-3  px-6 hover:bg-[#168b7e] bg-[#1b6b6b] text-white'>Submit</button>
+            <button onClick={hello} className=' border border-[#7e7d7d] py-3  px-6 hover:bg-[#168b7e] bg-[#1b6b6b] text-white'>Submit</button>
           </div>
 
         </form>
