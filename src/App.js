@@ -8,6 +8,7 @@ import Transcript from './Component/Transcript';
 function App() {
 
 
+
   return (
     <div className="App">
       <Transcript/>
