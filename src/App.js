@@ -6,18 +6,7 @@ import { auth } from './firebase/firebaseConfig';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 function App() {
 
-  createUserWithEmailAndPassword(auth, "akejunifemi11@gmail.com", "123456")
-    .then((userCredential) => {
-      // Signed in 
-      const user = userCredential.user;
-      console.log(user);
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // ..
-    });
+
 
   return (
     <div className="App">
