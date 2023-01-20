@@ -7,6 +7,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 
 import Transcript from './Component/Transcript';
+import Admin from './Component/Admin';
 
 function App() {
 
@@ -15,7 +16,7 @@ function App() {
   return (
     <div className="App">
 
-      <Transcript />
+      <Admin />
       {/* <Form /> */}
 
     </div>
