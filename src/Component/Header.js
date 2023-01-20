@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <div>
       {/* HEADER  */}
-      <div className=' flex items-center  gap-6'>
+      <div className=' flex items-center flex-col text-center gap-6'>
         <div >
         <img src={logo} width="140" alt="" />
        </div>

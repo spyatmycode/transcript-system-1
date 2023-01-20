@@ -21,8 +21,9 @@ function App() {
 
   return (
     <div className="App">
+
       <Form />
-      <Login />
+
     </div>
   );
 }
