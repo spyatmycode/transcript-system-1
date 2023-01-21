@@ -1,8 +1,33 @@
 import React from 'react'
 import { FaPhone, FaBars, FaLaptop } from 'react-icons/fa'
 import Logo from '../Assets/logo.jpeg'
+import { useNavigate } from 'react-router-dom'
 
-const Login = () => {
+const Login = ({ setIsLogged }) => {
+
+
+
+    const navigate = useNavigate()
+
+    const handleSubmit = (e) => {
+
+        e.preventDefault()
+
+        localStorage.setItem("isLogged", true)
+
+
+
+
+
+
+
+        navigate('/dashboard')
+
+
+
+
+
+    }
     return (
         <>
             <nav className=' text-gray-200 bg-slate-900 w-full py-2 flex justify-between'>
@@ -31,7 +56,7 @@ const Login = () => {
 
             </div>
 
-            <form className='w-[350px] mx-auto mt-7'>
+            <form className='w-[350px] mx-auto mt-7' onSubmit={handleSubmit}>
                 <div>
                     <div className='bg-sky-600 py-2 text-white text-left flex items-center justify-between'>
                         <h2 className='ml-4'>Admin Login</h2>
