@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from './Header'
 import { FaEdit } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 const Admin = () => {
 
@@ -21,9 +22,13 @@ const Admin = () => {
         }
     ]
 
+
+
+
+
     return (
         <>
-            <Header />
+
 
             <div className='w-full mt-12'>
                 <div className='w-full text-center'>
@@ -82,11 +87,13 @@ const Admin = () => {
 
                             </div>
 
-                            <div className=''>
-                                <button className='px-3 py-2 bg-blue-700 text-white rounded-md ml-7'>
-                                    New transcript
-                                </button>
-                            </div>
+                            <Link to={'/fill-form'}>
+                                <div className=''>
+                                    <button className='px-3 py-2 bg-blue-700 text-white rounded-md ml-7'>
+                                        New transcript
+                                    </button>
+                                </div>
+                            </Link>
                         </div>
                         <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto flex justify-center">
                             <div className="inline-block  shadow rounded-lg overflow-hidden">
@@ -130,7 +137,7 @@ const Admin = () => {
                                             data.map((each) => {
                                                 const { level, studentName, status, matric } = each
                                                 return (
-                                                    <tr>
+                                                    <tr key={matric}>
                                                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                             <div className="flex items-center">
                                                                 <div className="flex-shrink-0 w-auto h-10">
