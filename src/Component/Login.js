@@ -1,35 +1,62 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { FaPhone, FaBars, FaLaptop } from 'react-icons/fa'
 import Logo from '../Assets/logo.jpeg'
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../firebase/firebaseConfig';
 import { useNavigate } from 'react-router-dom'
 
-const Login = ({ setIsLogged }) => {
 
-
+const Login = ({ setIsLogged, isLogged }) => {
 
     const navigate = useNavigate()
+    const init = { email: "", password: "" }
+
+
+    const [user, setUser] = useState(init)
+
+
 
     const handleSubmit = (e) => {
 
-        e.preventDefault()
+        e.preventDefault() //Prevent default action of refreshing
 
-        localStorage.setItem("isLogged", true)
+        signInWithEmailAndPassword(auth, user.email, user.password) //This is the function to sign user in
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                console.log(userCredential.user);
+                console.log(user);
+                setIsLogged(true)
+                localStorage.setItem("isLogged", true) //After successful sign in, isLogged key is made & set to true 
+                navigate("/dashboard") //After successful login the user is taken to the admin dashboard
 
+                alert("Sign In successful !")
 
-
-
-
-
-
-        navigate('/dashboard')
-
-
-
-
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                console.log(errorCode);
+                if (errorCode === "auth/user-not-found") {
+                    alert("Wrong Email... Please try again !")
+                }
+                else if (errorCode === "auth/wrong-password") {
+                    alert("Wrong Password...Please try again !")
+                }
+                const errorMessage = error.message;
+                console.log(errorMessage);
+            });
 
     }
+
+
+    const handleChange = (e) => {
+        const { name, value } = e.target
+
+        setUser({ ...user, [name]: value }) //This sets new user input just before the enter submit button is pressed
+    }
     return (
-        <>
+        <div>
             <nav className=' text-gray-200 bg-slate-900 w-full py-2 flex justify-between'>
                 <div className='ml-3 flex items-center'>
                     Login Page
@@ -40,9 +67,11 @@ const Login = ({ setIsLogged }) => {
                 </div>
 
                 <div className='flex justify-between items-center mr-4'>
-                    <p className='mr-3'>
-                        Contact Us
-                    </p>
+                    <a href='tel:+22961517976'>
+                        <p className='mr-3'>
+                            Contact Us
+                        </p>
+                    </a>
                     <FaPhone />
                 </div>
             </nav>
@@ -50,7 +79,7 @@ const Login = ({ setIsLogged }) => {
             <div className='mt-7 ml-7 flex items-center' id='logo'>
                 <img src={Logo} alt="" width={'140px'} />
 
-                <h2 className='text-3xl w-4 font-serif text-blue-700 font-semibold'>
+                <h2 className='text-3xl w-4 font-serif text-[#0d0d6c] font-semibold'>
                     Institut Universitaire Triumphant
                 </h2>
 
@@ -70,12 +99,19 @@ const Login = ({ setIsLogged }) => {
                         <div className='w-[320px] h-[275px] border border-stone-200'>
                             <div className='flex flex-col items-start ml-4 mt-5'>
                                 <label htmlFor="email">Email</label>
-                                <input type="email" className='border border-neutral-400 w-11/12 py-2 bg-sky-100 pl-3' />
+                                <input type="email" className='border border-neutral-400 w-11/12 py-2 bg-sky-100 pl-3'
+                                    name='email'
+                                    onChange={handleChange}
+
+                                />
                             </div>
 
                             <div className='flex flex-col items-start ml-4 mt-5'>
                                 <label htmlFor="email">Password</label>
-                                <input type="password" className='border border-neutral-400 w-11/12 py-2 bg-sky-100 pl-3' />
+                                <input type="password" className='border border-neutral-400 w-11/12 py-2 bg-sky-100 pl-3'
+                                    name='password'
+                                    onChange={handleChange}
+                                />
                             </div>
 
                             <div className='w-full flex justify-end mt-7'>
@@ -95,7 +131,7 @@ const Login = ({ setIsLogged }) => {
             </form>
 
             <p className='mt-4 text-center'><span className='text-red-600 cursor-pointer underline'>Click here</span> if you have forgotten password</p>
-        </>
+        </div>
     )
 }
 
