@@ -1,26 +1,69 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { db } from '../firebase/firebaseConfig'
 import Header from './Header'
-
+import { collection, deleteDoc, getDocs } from 'firebase/firestore'
+import { useParams } from 'react-router-dom'
 const Transcript = () => {
+    const [name,setName]=useState('')
+   const [matric,setMatric]=useState('')
+   const [college,setCollege]=useState('')
+   const [department,setDepartment]=useState('')
+   const [gender,setGender]=useState('')
+   const [session,setSession]=useState('')
+   const [Userinfo,setUserinfo]=useState([])
+   
+   
+
+   const transcriptHeaderCollectionRef=collection(db,"Transcript-header-info")
+useEffect(()=>{
+ const HeaderTranscriptInfo= async ()=>{
+
+  const UserData= await getDocs(transcriptHeaderCollectionRef)
+  console.log(UserData);
+  setUserinfo(UserData.docs.map((doc)=>(
+    {...doc.data(),id:doc.id}
+  )))
+  
+
+ }
+ HeaderTranscriptInfo()
+},[])
+{console.log(Userinfo.map((data)=>(data.name)))}
+{console.log(Userinfo.map((data)=>(data.name.id)))}
     return (
         <div className=' mx-[2em] mt-3 mb-8 md:mx-[3em] '>
-
+   
             <div className='flex flex-col md:flex-row gap-6 items-center justify-between'>
+          
                 <div>
+               
                     <ul>
-                        <li><span className=' font-bold '>Name (Nom):</span>MAKANJUOLA AMINAT OLOLADE</li>
-                        <li> <span className='font-bold'>College:</span>SOCIAL & MANAGEMENT SCIENCE</li>
-                        <li><span className='font-bold'>Matric No (No Matricule):</span>  TUMST/18/00005/ECN/COLSMAS</li>
+                        {Userinfo.map((info)=>{
+                            <>
+                        <li><span className=' font-bold '>Name (Nom):</span>{info.name}</li>
+                        <li> <span className='font-bold'>College:</span>{info.college}</li>
+                        <li><span className='font-bold'>Matric No (No Matricule):</span>{info.matric}</li>
+                             
+                            </>
+                                
+                              
+                            
+                            })}
+                        
                     </ul>
+               
                 </div>
                 <div>
+                {Userinfo.map((info)=>{
                     <ul>
-                        <li><span className='font-bold'>Department (Departement):</span>ECONOMICS</li>
-                        <li><span className='font-bold'>Gender:</span>FEMALE</li>
+                        <li><span className='font-bold'>Department (Departement):</span>{info.department}</li>
+                        <li><span className='font-bold'>Gender:</span>{info.gender}</li>
                     </ul>
+                    })}
                 </div>
+               
             </div>
-
+            
             <section className=' my-3'>
                 {/* TITLE  */}
                 <div className=' text-center my-11 '>

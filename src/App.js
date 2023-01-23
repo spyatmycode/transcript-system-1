@@ -14,7 +14,7 @@ import { useState } from 'react';
 
 function App() {
 
-
+  // localStorage.setItem("isLogged", true)
 
   const [isLogged, setIsLogged] = useState(localStorage.getItem("isLogged") ? JSON.parse(localStorage.getItem("isLogged")) : false)
 
@@ -36,11 +36,11 @@ function App() {
 
 
           <Route path="/" element={<Header />}>
-
+            
             <Route index element={<Admin />} />
             <Route element={<Protected isLogged={isLogged}><Form /></Protected>} path='/fill-form' />
             <Route element={<Protected isLogged={isLogged}><Admin /></Protected>} path='/dashboard' />
-            <Route element={<Protected isLogged={isLogged}><Transcript /></Protected>} path='/transcript' />
+            <Route element={<Protected isLogged={isLogged}><Transcript /></Protected>} path='/transcript/:id' />
 
 
 
