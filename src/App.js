@@ -7,13 +7,16 @@ import Admin from './Component/Admin';
 import Protected from './Component/Protected';
 import { Routes, BrowserRouter, Route } from 'react-router-dom';
 import { useState } from 'react';
+import { auth } from './firebase/firebaseConfig';
 
 
 function App() {
 
 
 
-  const [isLogged, setIsLogged] = useState(false)
+
+
+  const [isLogged, setIsLogged] = useState(localStorage.getItem("isLogged") ? JSON.parse(localStorage.getItem("isLogged")) : false)
 
   //Nifemi: On App open, we check for isLogged  key ... else we set isLogged to false
 
