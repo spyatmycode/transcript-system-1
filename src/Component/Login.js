@@ -28,7 +28,7 @@ const Login = ({ setIsLogged, isLogged }) => {
                 console.log(user);
                 setIsLogged(true)
                 localStorage.setItem("isLogged", true) //After successful sign in, isLogged key is made & set to true 
-                navigate("/dashboard") //After successful login the user is taken to the admin dashboard
+                navigate("/") //After successful login the user is taken to the admin dashboard
 
                 alert("Sign In successful !")
 
