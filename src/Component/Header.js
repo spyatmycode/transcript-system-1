@@ -3,23 +3,24 @@ import logo from "../Assets/logo.jpg"
 import { Outlet, useNavigate, redirect } from 'react-router-dom'
 import { auth } from '../firebase/firebaseConfig';
 import { signOut } from "firebase/auth";
+import AuthContext from './Auth/AuthContext'
+import { useContext } from 'react';
 
 
-const Header = ({ setIsLogged, isLogged }) => {
+const Header = () => {
+
+  const isLogged = useContext(AuthContext)
+
+  console.log(isLogged);
 
 
 
   const navigate = useNavigate()
   const logOut = () => {
 
-
     //Below is the signout function firebase auth
     signOut(auth).then(() => {
-
-      setIsLogged(false)
-      localStorage.setItem("isLogged", false)
       navigate("/login") // Here after log out we navigate to the log in page.
-      localStorage.removeItem("isLogged") //Here we remove the isLogged Item so that it cannot be toggled to sign in
     }).catch((error) => {
       console.log(error);
     });

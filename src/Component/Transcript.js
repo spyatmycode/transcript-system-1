@@ -1,25 +1,68 @@
-import React from 'react'
-import Header from './Header'
+import React, { useEffect, useState } from 'react'
+import { collection, getDocs } from "firebase/firestore";
+import { database } from '../firebase/firebaseConfig';
+import { useParams } from 'react-router-dom';
 
 const Transcript = () => {
+
+    const { id } = useParams()
+
+    console.log("This is ID:", id);
+
+    const [data, setData] = useState([])
+
+    const docRef = collection(database, "studentData")
+
+    useEffect(() => {
+        getDocs(docRef).then((res) => {
+            console.log(res);
+            setData(res.docs)
+        })
+    }, [])
+
+
+    console.log(data);
+
+    const student = data.find((student) => {
+        const { uniqueId } = student._document.data.value.mapValue.fields
+        return uniqueId.stringValue === id
+    })
+
+
+
+
+
+
+    const { matricNo, fullName, college, department, gender } = data || student._document.data.value.mapValue.fields
+
+
+
+
+
+
+
+
+
+
+
     return (
         <div className=' mx-[2em] mt-3 mb-8 md:mx-[3em] '>
 
-            <div className='flex flex-col md:flex-row gap-6 items-center justify-between'>
+            {<div className='flex flex-col md:flex-row gap-6 items-center justify-between'>
                 <div>
                     <ul>
-                        <li><span className=' font-bold '>Name (Nom):</span>MAKANJUOLA AMINAT OLOLADE</li>
-                        <li> <span className='font-bold'>College:</span>SOCIAL & MANAGEMENT SCIENCE</li>
-                        <li><span className='font-bold'>Matric No (No Matricule):</span>  TUMST/18/00005/ECN/COLSMAS</li>
+                        <li><span className=' font-bold '>Name (Nom):</span>{fullName?.stringValue}</li>
+                        <li> <span className='font-bold'>College:</span>{college?.stringValue}</li>
+                        <li><span className='font-bold'>Matric No (No Matricule):</span>{matricNo?.stringValue}</li>
                     </ul>
                 </div>
                 <div>
                     <ul>
-                        <li><span className='font-bold'>Department (Departement):</span>ECONOMICS</li>
-                        <li><span className='font-bold'>Gender:</span>FEMALE</li>
+                        <li><span className='font-bold'>Department (Departement):</span>{department?.stringValue}</li>
+                        <li><span className='font-bold'>Gender:</span>{gender?.stringValue}</li>
                     </ul>
                 </div>
-            </div>
+            </div>}
 
             <section className=' my-3'>
                 {/* TITLE  */}
