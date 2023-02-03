@@ -1,23 +1,24 @@
 import './App.css';
 import Form from './Component/Form';
 import Login from './Component/Login';
-import { auth } from './firebase/firebaseConfig';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
 import Header from './Component/Header';
 import Transcript from './Component/Transcript';
 import Admin from './Component/Admin';
 import Protected from './Component/Protected';
-import LoginProtect from './Component/LoginProtect';
-import { Routes, BrowserRouter, Route, useNavigate } from 'react-router-dom';
+import { Routes, BrowserRouter, Route } from 'react-router-dom';
 import { useState } from 'react';
+import { auth } from './firebase/firebaseConfig';
 
 
 function App() {
 
   // localStorage.setItem("isLogged", true)
 
+
+
   const [isLogged, setIsLogged] = useState(localStorage.getItem("isLogged") ? JSON.parse(localStorage.getItem("isLogged")) : false)
 
+  //Nifemi: On App open, we check for isLogged  key ... else we set isLogged to false
 
 
 
@@ -27,13 +28,19 @@ function App() {
   return (
     <div className="App">
 
-      
+
+
+
       <BrowserRouter>
         <Routes>
 
-          <Route element={<LoginProtect isLogged={isLogged}><Login setIsLogged={setIsLogged} /></LoginProtect>} path="/login" />
+          {/* All routes are shown below */}
 
 
+          <Route element={<Header setIsLogged={setIsLogged} isLogged={isLogged} />}>
+
+
+            <Route element={<Protected isLogged={!isLogged}><Login isLogged={!isLogged} setIsLogged={setIsLogged} /></Protected>} path='/login' />
 
           <Route path="/" element={<Header />}>
             
@@ -44,13 +51,20 @@ function App() {
 
 
 
+            <Route element={<Protected isLogged={isLogged}><Admin /></Protected>} path='/' index />
+
+
+
+
+            <Route path='*' element={<div className='font-bold text-6xl text-red-600 text-center mt-[50vh]'>404 Error: Page not found</div>} />
 
           </Route>
-
-          <Route path='*' element={<div className='font-bold text-6xl text-red-600 text-center mt-[50vh]'>404 Error: Page not found</div>} />
+          </Route>
 
         </Routes>
       </BrowserRouter>
+
+
 
     </div>
   );

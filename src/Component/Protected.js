@@ -1,19 +1,20 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import React from 'react';
+import { Navigate } from 'react-router-dom'
+import Login from './Login';
+
 
 const Protected = ({ isLogged, children }) => {
 
-    const navigate = useNavigate()
+    if (isLogged === false) {
 
+        return <Navigate to={'/login'} />//If user is NOT Logged then we navigate them to the Login page always
 
-    console.log(isLogged);
-    if (isLogged) {
-        return children
-    }
-    else {
-        navigate("/login")
 
     }
+
+
+    return children //We return children only if isLogged or user is Logged in
+
 
 }
 
