@@ -12,7 +12,7 @@ import { auth } from './firebase/firebaseConfig';
 
 function App() {
 
-
+  // localStorage.setItem("isLogged", true)
 
 
 
@@ -42,18 +42,23 @@ function App() {
 
             <Route element={<Protected isLogged={!isLogged}><Login isLogged={!isLogged} setIsLogged={setIsLogged} /></Protected>} path='/login' />
 
-
+          <Route path="/" element={<Header />}>
+            
+            <Route index element={<Admin />} />
             <Route element={<Protected isLogged={isLogged}><Form /></Protected>} path='/fill-form' />
+            <Route element={<Protected isLogged={isLogged}><Admin /></Protected>} path='/dashboard' />
+            <Route element={<Protected isLogged={isLogged}><Transcript /></Protected>} path='/transcript/:id' />
+
 
 
             <Route element={<Protected isLogged={isLogged}><Admin /></Protected>} path='/' index />
 
 
-            <Route element={<Protected isLogged={isLogged}><Transcript /></Protected>} path='/transcript' />
 
 
             <Route path='*' element={<div className='font-bold text-6xl text-red-600 text-center mt-[50vh]'>404 Error: Page not found</div>} />
 
+          </Route>
           </Route>
 
         </Routes>
