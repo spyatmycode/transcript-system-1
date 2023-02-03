@@ -5,6 +5,8 @@ import {addDoc,collection, getDocs, updateDoc} from "firebase/firestore"
 import Header from './Header'
 import { db } from '../firebase/firebaseConfig'
 import { useEffect } from 'react'
+// import {v4} from "uuid"
+import { uid } from 'uid'
 
 const Form = () => {
    const [name,setName]=useState('')
@@ -15,26 +17,28 @@ const Form = () => {
    const [session,setSession]=useState('')
    
   const navigate =useNavigate()
-  const {id}=useParams()
-   console.log(id);
 
+  const id=uid()
+   
+  const usedId=uid()
   const transcriptHeaderCollectionRef=collection(db,"Transcript-header-info")
     const handleSubmit = async (e) => {
       
       e.preventDefault()
      
        if(window.confirm("Are you sure of this User Information")){
-        await addDoc(transcriptHeaderCollectionRef,{
+       const docref= await  addDoc(transcriptHeaderCollectionRef,{
           name,
           matric,
           college,
           department,
           gender,
           session,
-  
+          id,
          })
+         console.log(docref.id);
 
-
+        console.log(transcriptHeaderCollectionRef.id);
         //  updateDoc()
          setName("")
          setMatric("")
@@ -42,12 +46,13 @@ const Form = () => {
          setDepartment("")
          setGender("")
          setSession("")
-        navigate("/transcript/:id")
+        navigate(`/transcript/${docref.id}`)
+      
        }
 
     }
-  
 
+ 
 
 
 
@@ -73,7 +78,7 @@ const Form = () => {
             </div>
             <div className='flex flex-col'>
               <label className="form-label">Matric No (No Matricule): </label>
-              <input type="text" value={matric} onChange={(e)=>setMatric(e.target.value)} className=' border border-[#7e7d7d] rounded-sm p-4' required placeholder="e.g TUMST/18/00015/ECN/COLSMAS" />
+              <input type="text" value={matric} onChange={(e)=>setMatric(e.target.value)} className=' border border-[#7e7d7d] rounded-sm p-4' required placeholder="e.g TUMST-18-00015-ECN-COLSMAS" />
             </div>
             <div className='flex flex-col'>
               <label className="form-label">College</label>

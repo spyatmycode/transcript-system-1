@@ -1,35 +1,71 @@
 import React, { useEffect, useState } from 'react'
 import { db } from '../firebase/firebaseConfig'
-import Header from './Header'
-import { collection, deleteDoc, getDocs } from 'firebase/firestore'
+import { collection, deleteDoc, doc, getDoc,getDocs } from 'firebase/firestore'
 import { useParams } from 'react-router-dom'
+import {uid} from "uid"
 const Transcript = () => {
+
+    
     const [name,setName]=useState('')
    const [matric,setMatric]=useState('')
    const [college,setCollege]=useState('')
    const [department,setDepartment]=useState('')
    const [gender,setGender]=useState('')
    const [session,setSession]=useState('')
+   const [data,setData]=useState([])
    const [Userinfo,setUserinfo]=useState([])
-   
-   
+   const [students,setStudents]=useState([])
 
+   const usedId=uid()
+   
+   
+    const {id} = useParams()
    const transcriptHeaderCollectionRef=collection(db,"Transcript-header-info")
+   console.log(transcriptHeaderCollectionRef );
+   
 useEffect(()=>{
  const HeaderTranscriptInfo= async ()=>{
 
+
   const UserData= await getDocs(transcriptHeaderCollectionRef)
+
   console.log(UserData);
-  setUserinfo(UserData.docs.map((doc)=>(
-    {...doc.data(),id:doc.id}
-  )))
+
+  setStudents(UserData)
   
 
+
+   getDocs(transcriptHeaderCollectionRef).then((res)=>{
+    setData(res.docs)
+   })
+
+
+   const docRef = doc(db, "Transcript-header-info",id);
+   console.log(docRef);
+
+   const docSnap = await getDoc(docRef);
+   
+   if (docSnap.exists()) {
+    //testing if document exist
+     console.log("Document data:", docSnap.data().college);
+
+     setName(docSnap.data().name)
+     setMatric(docSnap.data().matric)
+     setCollege(docSnap.data().college)
+     setDepartment(docSnap.data().department)
+     setGender(docSnap.data().gender)
+     setSession(docSnap.data().session)
+     setData(docSnap.data())
+   } else {
+     console.log("Document data:", docSnap.data());
+   }
+
  }
+ 
  HeaderTranscriptInfo()
-},[])
-{console.log(Userinfo.map((data)=>(data.name)))}
-{console.log(Userinfo.map((data)=>(data.name.id)))}
+},[id])
+
+
     return (
         <div className=' mx-[2em] mt-3 mb-8 md:mx-[3em] '>
    
@@ -38,28 +74,29 @@ useEffect(()=>{
                 <div>
                
                     <ul>
-                        {Userinfo.map((info)=>{
+                        
+                      
                             <>
-                        <li><span className=' font-bold '>Name (Nom):</span>{info.name}</li>
-                        <li> <span className='font-bold'>College:</span>{info.college}</li>
-                        <li><span className='font-bold'>Matric No (No Matricule):</span>{info.matric}</li>
+                        <li><span className=' font-bold '>Name (Nom):</span>{name}</li>
+                        <li> <span className='font-bold'>College:</span>{college}</li>
+                        <li><span className='font-bold'>Matric No (No Matricule):</span>{matric}</li>
                              
                             </>
                                 
                               
                             
-                            })}
+                        
                         
                     </ul>
                
                 </div>
                 <div>
-                {Userinfo.map((info)=>{
+               
                     <ul>
-                        <li><span className='font-bold'>Department (Departement):</span>{info.department}</li>
-                        <li><span className='font-bold'>Gender:</span>{info.gender}</li>
+                        <li><span className='font-bold'>Department (Departement):</span>{department}</li>
+                        <li><span className='font-bold'>Gender:</span>{gender}</li>
                     </ul>
-                    })}
+              
                 </div>
                
             </div>
