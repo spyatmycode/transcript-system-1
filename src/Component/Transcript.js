@@ -1,68 +1,114 @@
 import React, { useEffect, useState } from 'react'
-import { collection, getDocs } from "firebase/firestore";
-import { database } from '../firebase/firebaseConfig';
-import { useParams } from 'react-router-dom';
-
+import { db } from '../firebase/firebaseConfig'
+import { collection, deleteDoc, doc, getDoc, getDocs } from 'firebase/firestore'
+import { useParams } from 'react-router-dom'
+import { uid } from "uid"
 const Transcript = () => {
 
-    const { id } = useParams()
 
-    console.log("This is ID:", id);
-
+    const [name, setName] = useState('')
+    const [matric, setMatric] = useState('')
+    const [college, setCollege] = useState('')
+    const [department, setDepartment] = useState('')
+    const [gender, setGender] = useState('')
+    const [session, setSession] = useState('')
     const [data, setData] = useState([])
+    const [Userinfo, setUserinfo] = useState([])
+    const [students, setStudents] = useState([])
 
-    const docRef = collection(database, "studentData")
+    const usedId = uid()
+
+
+    const { id } = useParams()
+    const transcriptHeaderCollectionRef = collection(db, "Transcript-header-info")
+    console.log(transcriptHeaderCollectionRef);
 
     useEffect(() => {
-        getDocs(docRef).then((res) => {
-            console.log(res);
-            setData(res.docs)
-        })
-    }, [])
+        const HeaderTranscriptInfo = async () => {
 
 
-    console.log(data);
+            const UserData = await getDocs(transcriptHeaderCollectionRef)
 
-    const student = data.find((student) => {
-        const { uniqueId } = student._document.data.value.mapValue.fields
-        return uniqueId.stringValue === id
-    })
+            console.log(UserData);
+
+            setStudents(UserData)
 
 
 
+            getDocs(transcriptHeaderCollectionRef).then((res) => {
+                setData(res.docs)
+            })
 
 
+            const docRef = doc(db, "Transcript-header-info", id);
+            console.log(docRef);
 
-    const { matricNo, fullName, college, department, gender } = data || student._document.data.value.mapValue.fields
+            const docSnap = await getDoc(docRef);
 
+            if (docSnap.exists()) {
+                //testing if document exist
+                console.log("Document data:", docSnap.data().college);
 
+                setName(docSnap.data().name)
+                setMatric(docSnap.data().matric)
+                setCollege(docSnap.data().college)
+                setDepartment(docSnap.data().department)
+                setGender(docSnap.data().gender)
+                setSession(docSnap.data().session)
+                setData(docSnap.data())
+            } else {
+                console.log("Document data:", docSnap.data());
+            }
 
+        }
 
-
-
-
-
+        HeaderTranscriptInfo()
+    }, [id])
 
 
 
     return (
         <div className=' mx-[2em] mt-3 mb-8 md:mx-[3em] '>
 
-            {<div className='flex flex-col md:flex-row gap-6 items-center justify-between'>
+
+            <div className='flex flex-col md:flex-row gap-6 items-center justify-between'>
+
+
                 <div>
+
                     <ul>
-                        <li><span className=' font-bold '>Name (Nom):</span>{fullName?.stringValue}</li>
-                        <li> <span className='font-bold'>College:</span>{college?.stringValue}</li>
-                        <li><span className='font-bold'>Matric No (No Matricule):</span>{matricNo?.stringValue}</li>
+
+
+
+                        <>
+                            <li><span className=' font-bold '>Name (Nom):</span>{name}</li>
+                            <li> <span className='font-bold'>College:</span>{college}</li>
+                            <li><span className='font-bold'>Matric No (No Matricule):</span>{matric}</li>
+
+                        </>
+
+
+
+
+
+
                     </ul>
+
                 </div>
                 <div>
+
                     <ul>
-                        <li><span className='font-bold'>Department (Departement):</span>{department?.stringValue}</li>
-                        <li><span className='font-bold'>Gender:</span>{gender?.stringValue}</li>
+
+                        <li><span className='font-bold'>Department (Departement):</span>{department}</li>
+                        <li><span className='font-bold'>Gender:</span>{gender}</li>
+
                     </ul>
+
                 </div>
-            </div>}
+
+
+            </div>
+
 
             <section className=' my-3'>
                 {/* TITLE  */}

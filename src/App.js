@@ -14,7 +14,7 @@ import LoginProtect from './Component/LoginProtect'
 
 function App() {
 
-
+  // localStorage.setItem("isLogged", true)
 
 
 
@@ -50,7 +50,6 @@ function App() {
           </Routes>
         </BrowserRouter>
       </AuthProvider>
-
 
     </>
   );
