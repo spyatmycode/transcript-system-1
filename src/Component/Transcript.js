@@ -1,106 +1,115 @@
 import React, { useEffect, useState } from 'react'
 import { db } from '../firebase/firebaseConfig'
-import { collection, deleteDoc, doc, getDoc,getDocs } from 'firebase/firestore'
+import { collection, deleteDoc, doc, getDoc, getDocs } from 'firebase/firestore'
 import { useParams } from 'react-router-dom'
-import {uid} from "uid"
+import { uid } from "uid"
 const Transcript = () => {
 
-    
-    const [name,setName]=useState('')
-   const [matric,setMatric]=useState('')
-   const [college,setCollege]=useState('')
-   const [department,setDepartment]=useState('')
-   const [gender,setGender]=useState('')
-   const [session,setSession]=useState('')
-   const [data,setData]=useState([])
-   const [Userinfo,setUserinfo]=useState([])
-   const [students,setStudents]=useState([])
 
-   const usedId=uid()
-   
-   
-    const {id} = useParams()
-   const transcriptHeaderCollectionRef=collection(db,"Transcript-header-info")
-   console.log(transcriptHeaderCollectionRef );
-   
-useEffect(()=>{
- const HeaderTranscriptInfo= async ()=>{
+    const [name, setName] = useState('')
+    const [matric, setMatric] = useState('')
+    const [college, setCollege] = useState('')
+    const [department, setDepartment] = useState('')
+    const [gender, setGender] = useState('')
+    const [session, setSession] = useState('')
+    const [data, setData] = useState([])
+    const [Userinfo, setUserinfo] = useState([])
+    const [students, setStudents] = useState([])
+
+    const usedId = uid()
 
 
-  const UserData= await getDocs(transcriptHeaderCollectionRef)
+    const { id } = useParams()
+    const transcriptHeaderCollectionRef = collection(db, "Transcript-header-info")
+    console.log(transcriptHeaderCollectionRef);
 
-  console.log(UserData);
-
-  setStudents(UserData)
-  
-
-
-   getDocs(transcriptHeaderCollectionRef).then((res)=>{
-    setData(res.docs)
-   })
+    useEffect(() => {
+        const HeaderTranscriptInfo = async () => {
 
 
-   const docRef = doc(db, "Transcript-header-info",id);
-   console.log(docRef);
+            const UserData = await getDocs(transcriptHeaderCollectionRef)
 
-   const docSnap = await getDoc(docRef);
-   
-   if (docSnap.exists()) {
-    //testing if document exist
-     console.log("Document data:", docSnap.data().college);
+            console.log(UserData);
 
-     setName(docSnap.data().name)
-     setMatric(docSnap.data().matric)
-     setCollege(docSnap.data().college)
-     setDepartment(docSnap.data().department)
-     setGender(docSnap.data().gender)
-     setSession(docSnap.data().session)
-     setData(docSnap.data())
-   } else {
-     console.log("Document data:", docSnap.data());
-   }
+            setStudents(UserData)
 
- }
- 
- HeaderTranscriptInfo()
-},[id])
+
+
+            getDocs(transcriptHeaderCollectionRef).then((res) => {
+                setData(res.docs)
+            })
+
+
+            const docRef = doc(db, "Transcript-header-info", id);
+            console.log(docRef);
+
+            const docSnap = await getDoc(docRef);
+
+            if (docSnap.exists()) {
+                //testing if document exist
+                console.log("Document data:", docSnap.data().college);
+
+                setName(docSnap.data().name)
+                setMatric(docSnap.data().matric)
+                setCollege(docSnap.data().college)
+                setDepartment(docSnap.data().department)
+                setGender(docSnap.data().gender)
+                setSession(docSnap.data().session)
+                setData(docSnap.data())
+            } else {
+                console.log("Document data:", docSnap.data());
+            }
+
+        }
+
+        HeaderTranscriptInfo()
+    }, [id])
+
 
 
     return (
         <div className=' mx-[2em] mt-3 mb-8 md:mx-[3em] '>
-   
+
+
             <div className='flex flex-col md:flex-row gap-6 items-center justify-between'>
-          
+
+
                 <div>
-               
+
                     <ul>
-                        
-                      
-                            <>
-                        <li><span className=' font-bold '>Name (Nom):</span>{name}</li>
-                        <li> <span className='font-bold'>College:</span>{college}</li>
-                        <li><span className='font-bold'>Matric No (No Matricule):</span>{matric}</li>
-                             
-                            </>
-                                
-                              
-                            
-                        
-                        
+
+
+
+                        <>
+                            <li><span className=' font-bold '>Name (Nom):</span>{name}</li>
+                            <li> <span className='font-bold'>College:</span>{college}</li>
+                            <li><span className='font-bold'>Matric No (No Matricule):</span>{matric}</li>
+
+                        </>
+
+
+
+
+
+
                     </ul>
-               
+
                 </div>
                 <div>
-               
+
                     <ul>
+
                         <li><span className='font-bold'>Department (Departement):</span>{department}</li>
                         <li><span className='font-bold'>Gender:</span>{gender}</li>
+
                     </ul>
-              
+
                 </div>
-               
+
+
             </div>
-            
+
+
             <section className=' my-3'>
                 {/* TITLE  */}
                 <div className=' text-center my-11 '>

@@ -6,17 +6,20 @@ import AuthContext from './Auth/AuthContext';
 
 const Protected = ({ children }) => {
 
-    const navigate = useNavigate()
+
 
     const isLogged = useContext(AuthContext)
 
-    console.log(isLogged);
 
-    if (isLogged !== null) {
+    if (isLogged === null) {
         return children //We return children only if isLogged or user is Logged in
     }
 
-    return <Navigate replace to={"/login"} />
+    return <Navigate replace to={"/"} />
+
+
+
+
 }
 
 export default Protected

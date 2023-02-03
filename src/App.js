@@ -6,8 +6,10 @@ import Transcript from './Component/Transcript';
 import Admin from './Component/Admin';
 import Protected from './Component/Protected';
 import { Routes, BrowserRouter, Route } from 'react-router-dom';
-import { useState } from 'react';
-import { auth } from './firebase/firebaseConfig';
+import { AuthProvider } from './Component/Auth/AuthProvider';
+import LoginProtect from './Component/LoginProtect'
+
+
 
 
 function App() {
@@ -16,57 +18,40 @@ function App() {
 
 
 
-  const [isLogged, setIsLogged] = useState(localStorage.getItem("isLogged") ? JSON.parse(localStorage.getItem("isLogged")) : false)
-
-  //Nifemi: On App open, we check for isLogged  key ... else we set isLogged to false
-
-
-
-
-
-
   return (
-    <div className="App">
+    <>
+
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+
+            {/* All routes are shown below */}
+
+
+
+            <Route element={<LoginProtect><Login /></LoginProtect>} path='/login' />
+
+
+            <Route element={<Header />}>
 
 
 
 
-      <BrowserRouter>
-        <Routes>
+              <Route element={<Protected><Form /></Protected>} path='/fill-form' />
 
-          {/* All routes are shown below */}
+              <Route element={<Protected><Admin /></Protected>} path='/' index />
 
+              <Route element={<Protected><Transcript /></Protected>} path='/transcript/:id' />
 
-          <Route element={<Header setIsLogged={setIsLogged} isLogged={isLogged} />}>
+              <Route path='*' element={<div className='font-bold text-6xl text-red-600 text-center mt-[50vh]'>404 Error: Page not found</div>} />
 
+            </Route>
 
-            <Route element={<Protected isLogged={!isLogged}><Login isLogged={!isLogged} setIsLogged={setIsLogged} /></Protected>} path='/login' />
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
 
-          <Route path="/" element={<Header />}>
-            
-            <Route index element={<Admin />} />
-            <Route element={<Protected isLogged={isLogged}><Form /></Protected>} path='/fill-form' />
-            <Route element={<Protected isLogged={isLogged}><Admin /></Protected>} path='/dashboard' />
-            <Route element={<Protected isLogged={isLogged}><Transcript /></Protected>} path='/transcript/:id' />
-
-
-
-            <Route element={<Protected isLogged={isLogged}><Admin /></Protected>} path='/' index />
-
-
-
-
-            <Route path='*' element={<div className='font-bold text-6xl text-red-600 text-center mt-[50vh]'>404 Error: Page not found</div>} />
-
-          </Route>
-          </Route>
-
-        </Routes>
-      </BrowserRouter>
-
-
-
-    </div>
+    </>
   );
 }
 

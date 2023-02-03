@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { FaPhone, FaBars, FaLaptop } from 'react-icons/fa'
 import Logo from '../Assets/logo.jpeg'
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../firebase/firebaseConfig';
 import { useNavigate } from 'react-router-dom'
+import { useContext } from 'react';
+import AuthContext from './Auth/AuthContext';
 
 
-const Login = ({ setIsLogged, isLogged }) => {
+const Login = () => {
+
+
 
     const navigate = useNavigate()
     const init = { email: "", password: "" }
@@ -26,8 +30,6 @@ const Login = ({ setIsLogged, isLogged }) => {
                 const user = userCredential.user;
                 console.log(userCredential.user);
                 console.log(user);
-                setIsLogged(true)
-                localStorage.setItem("isLogged", true) //After successful sign in, isLogged key is made & set to true 
                 navigate("/") //After successful login the user is taken to the admin dashboard
 
                 alert("Sign In successful !")
