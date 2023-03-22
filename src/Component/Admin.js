@@ -2,7 +2,8 @@ import React from 'react'
 import Header from './Header'
 import { FaEdit } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-
+import { useContext } from 'react'
+import { AppContext, ContextProvider } from './ContextProvider/ContextProvider'
 const Admin = () => {
 
     const data = [
@@ -22,6 +23,7 @@ const Admin = () => {
         }
     ]
 
+    const {level,setLevel} =useContext(AppContext)
 
 
 
@@ -234,9 +236,10 @@ const Admin = () => {
                     </div>
                 </div>
             </div>
-
+               {level}    
         </>
     )
+   
 }
 
 export default Admin

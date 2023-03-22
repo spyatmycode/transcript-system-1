@@ -1,13 +1,14 @@
-import React from 'react'
-
+import React, { useContext } from 'react'
+import { AppContext, ContextProvider } from '../ContextProvider/ContextProvider'
 const TableSelect = ({
     setFaculty,
     faculty,
-    level,
-    setLevel,
     semester,
     SetSemester
 }) => {
+
+const {level,setLevel}=useContext(AppContext)
+
   return (
     <div>
        <label htmlFor="" className=' m-2 '>Select Level:</label>

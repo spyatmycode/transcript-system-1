@@ -27,7 +27,29 @@ const data = [
                   },
                 ]
             },
-            ]
+            ],
+            200:[
+              {
+              NAME: 'SECOND SEMESTER',
+                  COURSES: [
+                    {
+                      CODE: 'FRN 401',
+                      COURSETITLE: 'Advanced French III',
+                      UNIT: 1,
+                    },
+                    {
+                      CODE: 'MGT 403',
+                      COURSETITLE: 'Quality Management',
+                      UNIT: 1,
+                    },
+                    {
+                      CODE: 'MGT 5503',
+                      COURSETITLE: 'Quality Management',
+                      UNIT: 1,
+                    },
+                  ]
+              },
+              ]
         }
     ],
     // SEMESTER: [

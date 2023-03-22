@@ -8,8 +8,6 @@ import TableSelect from './TableSelect';
 const TableBody = ({
     department,
     setDepartment,
-    level,
-    setlevel,
     semester,
     tableData,
     scores,
@@ -17,6 +15,10 @@ const TableBody = ({
     calculateLetterGrade,
     handleChange,
 }) => {
+
+  const {level,setLevel}=useContext(AppContext)
+
+
   const [gp, setGp] = useState({scores});
   const {GPA,setGPA}=useContext(AppContext)
   const [gradePoint,setGradePoint]=useState([])
@@ -76,7 +78,7 @@ const filteredData = tableData.filter((row) => {
      <>
     
        {/* {row.LEVELS[0][100][0].COURSES.map((course,i)=>( */}
-       {row.LEVELS[0][100][0].COURSES.map((course,i)=>(
+       {row.LEVELS[0][level==undefined || level=="" ? 100: level ][0].COURSES.map((course,i)=>(
         
 <>
 <tr key={i}>

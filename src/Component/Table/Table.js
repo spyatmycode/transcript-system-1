@@ -1,11 +1,13 @@
 import React from 'react';
+import { useContext } from 'react';
 import { useState } from 'react';
+import { AppContext } from '../ContextProvider/ContextProvider';
 import data from '../Data/Data'; // assuming the data is stored in a file named data.js
 import TableBody from './TableBody';
 import TableHead from './TableHead';
 
-function Table({department,setDepartment,level,semester}) {
-
+function Table({department,setDepartment,semester}) {
+  const {level,setLevel}=useContext(AppContext)
   // console.log("ffffffff");
 
   // console.log(level);
@@ -115,7 +117,7 @@ function Table({department,setDepartment,level,semester}) {
         newNumbers[index] = Number(event.target.value);
         setGps(newNumbers);
         // console.log(scores);
-        console.log(111111);
+  
       
         calculateAndUpdateGPA();
       };
@@ -133,9 +135,9 @@ function Table({department,setDepartment,level,semester}) {
       <TableBody 
       department={department}
       setDepartment={setDepartment}
-      level={level}
+      
       semester={semester}
-      setLevel={level}
+   
       tableData={tableData}
       scores={scores}
       handleChange={handleChange}

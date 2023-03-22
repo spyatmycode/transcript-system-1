@@ -9,9 +9,16 @@ import Table1 from './Table1'
 import { data } from './Data/Data'
 import TableSelect from './Table/TableSelect'
 import Table from './Table/Table'
+import { useContext } from 'react'
+import { AppContext, ContextProvider } from './ContextProvider/ContextProvider'
+
 
 const Transcript = () => {
-    const [level, setLevel] = useState(900)
+    const {level,setLevel}=useContext(AppContext)
+    console.log(1111111111111);
+    console.log(level==undefined || level=="" ? 100: level );
+    console.log(111111111111);
+
 //  HEADER INFORMATION
     const [name, setName] = useState('')
     const [matric, setMatric] = useState('')
@@ -212,42 +219,22 @@ const navigate=useNavigate()
                   
                     <TableSelect
                     setFaculty={setFaculty}
-                    level={level}
-                    setLevel={setLevel}
                     faculty={faculty}
                     SetSemester={SetSemester}
                     semester={semester}
                     />
-                            {tableType === "Health Information Management 1" ? <Table level={level} tableType={tableType} /> :
+                            {/* {tableType === "Health Information Management 1" ? <Table level={level} tableType={tableType} /> :
                              tableType === "Health Information Management 2" ? <Table/> :
                              tableType === "Health Information Management 3" ? <Table/> :
                              
-                             null}
+                             null} */}
                            
                                  
                             <Table department={department} setDepartment={setDepartment} setLevel={setLevel} SetSemester={SetSemester} level={level} semester={semester}  />
 
                             <button onClick={createNewTable}>Create New Table</button>
                             {tables}
-                            {
-
-
-                                console.log(53663672772)
-                            }
-                            {
-                                 console.log(level)
-                            }
-                               {
-                                 console.log(semester)
-                               }
-                               {
-                                console.log(department)
-                               }
-                               
-                                {
-
-                                    console.log(53663672772)        
-                                }
+                            
 
                             
 

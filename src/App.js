@@ -8,9 +8,7 @@ import Protected from './Component/Protected';
 import { Routes, BrowserRouter, Route } from 'react-router-dom';
 import { AuthProvider } from './Component/Auth/AuthProvider';
 import LoginProtect from './Component/LoginProtect'
-import ContextProvider from './Component/ContextProvider/ContextProvider';
-
-
+import { ContextProvider } from './Component/ContextProvider/ContextProvider';
 
 
 function App() {
@@ -21,9 +19,9 @@ function App() {
 
   return (
     <>
-
+  <ContextProvider>
       <AuthProvider>
-        <ContextProvider>
+      
 
     
         <BrowserRouter>
@@ -53,9 +51,9 @@ function App() {
 
           </Routes>
         </BrowserRouter>
-        </ContextProvider>
+      
       </AuthProvider>
-
+  </ContextProvider>
     </>
   );
 }
