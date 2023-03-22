@@ -14,7 +14,7 @@ import { AppContext, ContextProvider } from './ContextProvider/ContextProvider'
 
 
 const Transcript = () => {
-    const {level,setLevel}=useContext(AppContext)
+    const {level,setLevel,semester,SetSemester}=useContext(AppContext)
     console.log(1111111111111);
     console.log(level==undefined || level=="" ? 100: level );
     console.log(111111111111);
@@ -28,7 +28,7 @@ const Transcript = () => {
     const [session, setSession] = useState('')
   
     const [data, setData] = useState([])
-    const [Userinfo, setUserinfo] = useState([])
+    // const [Userinfo, setUserinfo] = useState([])
     const [students, setStudents] = useState([])
   
 const navigate=useNavigate()
@@ -56,7 +56,7 @@ const navigate=useNavigate()
    const [faculty,setFaculty]=useState("")
 
    //semester state
-   const[semester,SetSemester]=useState("")
+ 
 
 
 
@@ -64,11 +64,11 @@ const navigate=useNavigate()
  console.log(faculty);
  console.log(semester);
 
-   if(department=="Health Information Management" && semester=="1 st Semester" && level=="100" ){
+   if(department==="Health Information Management" && semester==="1 st Semester" && level==="100" ){
 //    setTableType("Health Information Management 1.1")
    console.log("Health Information Management 1.1")
    }
-   if(department=="Health Information Management" && semester=="2 nd Semester" && level=="100" ){
+   if(department==="Health Information Management" && semester==="2 nd Semester" && level==="100" ){
 //    setTableType("Health Information Management 1.2")
    console.log("Health Information Management 1.2")
    }
@@ -137,23 +137,34 @@ const navigate=useNavigate()
     // data.map((e)=>(console.log(e[0].FACULTY)))
 
 
-    const [tableCount, setTableCount] = useState(1);
-
+    const [tableNo, setTableNo] = useState(1);
+    const [newtables, setNewTables] = useState([{ id: 1, name: "Table 1" }]);
+  
     const createNewTable = () => {
-      setTableCount(tableCount + 1);
+        SetSemester("")
+        setLevel("")
+        const newTable = {
+            id: tableId + 1,
+            name: `Table ${tableId + 1}`
+          };
+          setNewTables([...newtables, newTable]);
+          setTableNo(tableNo + 1);
+         
+          
     };
   
     const tables = [];
   
-    for (let i = 1; i <= tableCount; i++) {
+    for (let i = 1; i <= tableNo; i++) {
       tables.push(
-        <table className='my-[4em]'>
+        <table key={i} className='my-[4em]'>
 
 
-         <TableSelect/>
-          <Table/>
+         <TableSelect />
+          <Table />
         </table>
       );
+   
     }
 
 
@@ -230,9 +241,10 @@ const navigate=useNavigate()
                              null} */}
                            
                                  
-                            <Table department={department} setDepartment={setDepartment} setLevel={setLevel} SetSemester={SetSemester} level={level} semester={semester}  />
-
+                            <Table department={department} setDepartment={setDepartment} semester={semester}  />
+                      
                             <button onClick={createNewTable}>Create New Table</button>
+
                             {tables}
                             
 

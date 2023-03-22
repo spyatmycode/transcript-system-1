@@ -3,11 +3,9 @@ import { AppContext, ContextProvider } from '../ContextProvider/ContextProvider'
 const TableSelect = ({
     setFaculty,
     faculty,
-    semester,
-    SetSemester
 }) => {
 
-const {level,setLevel}=useContext(AppContext)
+const {level,setLevel,semester,SetSemester}=useContext(AppContext)
 
   return (
     <div>

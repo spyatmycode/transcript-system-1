@@ -2,21 +2,21 @@ import React from 'react'
 import { useContext } from 'react';
 import { useState } from 'react';
 import { AppContext } from '../ContextProvider/ContextProvider';
+import tableData from '../Data/Data';
 import Table from '../Table1';
 import TableHead from './TableHead';
 import TableSelect from './TableSelect';
 const TableBody = ({
     department,
     setDepartment,
-    semester,
-    tableData,
+    // tableData,
     scores,
     calculateGP,
     calculateLetterGrade,
     handleChange,
 }) => {
 
-  const {level,setLevel}=useContext(AppContext)
+  const {level,setLevel,semester,SetSemester}=useContext(AppContext)
 
 
   const [gp, setGp] = useState({scores});
@@ -55,19 +55,6 @@ const filteredData = tableData.filter((row) => {
 });
 
 
-// console.log("xxxxxxxxxxx");
-
-// console.log(level);
-// console.log(semester);
-// console.log(department);
-// console.log("xxxxxxxxxxx");
-
-
-// if(level==100 && semester== '2 nd Semester' && department=='Health Information Management'){
-//   const newTable=row.LEVELS[0][100][0]
-//   return newTable
-// }
-
 
   return (
     <tbody>
@@ -76,9 +63,10 @@ const filteredData = tableData.filter((row) => {
 
     {tableData.map((row, indexd) => (
      <>
-    
-       {/* {row.LEVELS[0][100][0].COURSES.map((course,i)=>( */}
-       {row.LEVELS[0][level==undefined || level=="" ? 100: level ][0].COURSES.map((course,i)=>(
+       {row[0].LEVELS[0][level===undefined || level==="" ? 100: level][0].SEMESTER[0][semester===undefined || semester===""? 1:
+        semester==='1 st Semester'?1:
+        semester==='2 nd Semester'?2:
+        1][0].COURSES.map((course,i)=>(
         
 <>
 <tr key={i}>
@@ -196,7 +184,10 @@ const filteredData = tableData.filter((row) => {
        ))}
 
      
-    <button>Cumilative GradePoint:  {calculateCGPA(scores, row.LEVELS[0][100][0].COURSES)}</button>
+    <button>Cumilative GradePoint:  {calculateCGPA(scores, row[0].LEVELS[0][level===undefined || level==="" ? 100: level][0].SEMESTER[0][semester===undefined || semester===""? 1:
+        semester==='1 st Semester'?1:
+        semester==='1 st Semester'?2:
+        1][0].COURSES)}</button>
       {/* <button> Cumilative GradePoint: {gradePoint}</button> */}
   
 
