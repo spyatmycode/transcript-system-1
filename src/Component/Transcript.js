@@ -158,9 +158,7 @@ const navigate=useNavigate()
     for (let i = 1; i <= tableNo; i++) {
       tables.push(
         <table key={i} className='my-[4em]'>
-
-
-         <TableSelect />
+         <TableSelect  />
           <Table />
         </table>
       );

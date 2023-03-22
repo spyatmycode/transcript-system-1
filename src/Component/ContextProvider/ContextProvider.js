@@ -7,7 +7,7 @@ const ContextProvider = (props) => { // pass 'props' as an argument
 
   const [GPA, setGPA] = useState([])
   const [level,setLevel]=useState(100)
-  const[semester,SetSemester]=useState("")
+  const[semester,SetSemester]=useState(1)
     
   return (
     <div>
