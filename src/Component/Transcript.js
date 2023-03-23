@@ -14,7 +14,20 @@ import { AppContext, ContextProvider } from './ContextProvider/ContextProvider'
 
 
 const Transcript = () => {
-    const {level,setLevel,semester,SetSemester}=useContext(AppContext)
+    // const {level,setLevel,semester,SetSemester}=useContext(AppContext)
+ 
+
+    // const { level, setLevel, semester, setSemester } = useContext(AppContext)
+    const [level,setLevel]=useState(100)
+    const[semester,SetSemester]=useState('')
+  const handleLevelChange = (e) => {
+    setLevel(Number(e.target.value))
+  }
+
+  const handleSemesterChange = (e) => {
+    SetSemester(e.target.value)
+  }
+
 
 
 //  HEADER INFORMATION
@@ -133,17 +146,17 @@ const navigate=useNavigate()
 
 
     // data.map((e)=>(console.log(e[0].FACULTY)))
-
+    const [newLevel, setNewLevel] = useState(100)
+    const [newSemester, setNewSemester] = useState('1st Semester')
+     
 
     const [tableNo, setTableNo] = useState(1);
     const [newtables, setNewTables] = useState([{ id: 1, name: "Table 1" }]);
     const [Tables,setTables]=useState([])
   
     const createNewTable = () => {
-           
-           setTables([...Tables,
+          setTables([...Tables,
             <>
-             <TableSelect/>
            <Table/>
             </>
           ])

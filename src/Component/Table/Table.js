@@ -5,9 +5,13 @@ import { AppContext } from '../ContextProvider/ContextProvider';
 import data from '../Data/Data'; // assuming the data is stored in a file named data.js
 import TableBody from './TableBody';
 import TableHead from './TableHead';
+import TableSelect from './TableSelect';
 
-function Table({key,department,setDepartment,semester}) {
-  const {level,setLevel}=useContext(AppContext)
+function Table({key,department,setDepartment}) {
+  // const {level,setLevel}=useContext(AppContext)
+  const [level, setLevel] = useState(100);
+  const [semester, setSemester] = useState('1 st Semester');
+
   // console.log("ffffffff");
 
   // console.log(level);
@@ -22,15 +26,15 @@ function Table({key,department,setDepartment,semester}) {
       const [gpa, setGpa] = useState(0);
 
       const [scores, setScores] = useState({
-        score1: '',
-        score2: '',
-        score3: '',
-        score4: '',
-        score5: '',
-        score6: '',
-        score7: '',
-        score8: '',
-        score9: '',
+        score1: 0,
+        score2: 0,
+        score3: 0,
+        score4: 0,
+        score5: 0,
+        score6: 0,
+        score7: 0,
+        score8: 0,
+        score9: 0,
       });
       
    
@@ -122,7 +126,8 @@ function Table({key,department,setDepartment,semester}) {
         calculateAndUpdateGPA();
       };
 
-   
+   console.log(semester);
+   console.log(level);
     
   return (
     <>
@@ -130,14 +135,20 @@ function Table({key,department,setDepartment,semester}) {
               
               
                <div className="inline-block min-w-full shadow rounded-lg ">
+               <TableSelect level={level} setLevel={setLevel} semester={semester} setSemester={setSemester} />
+
     <table className="min-w-full leading-normal ">
+  
       <TableHead/>
       <TableBody 
+
       department={department}
       setDepartment={setDepartment}
       key={key}
       semester={semester}
-   
+      level={level}
+      setLevel={setLevel}
+      setSemester={setSemester}
       tableData={tableData}
       scores={scores}
       handleChange={handleChange}

@@ -14,9 +14,10 @@ const TableBody = ({
     calculateGP,
     calculateLetterGrade,
     handleChange,
+    level,setLevel,semester,setSemester
 }) => {
 
-  const {level,setLevel,semester,SetSemester}=useContext(AppContext)
+  // const {level,setLevel,semester,setSemester}=useContext(AppContext)
 
 
   const [gp, setGp] = useState({scores});
@@ -34,31 +35,19 @@ const calculateCGPA = (scores, courses) => {
     const score = scores[`score${i + 1}`];
     
     if (score) {
-      const gradePoint = calculateGP(score);
-      const units = course.UNIT;
+      const gradePoint = Number(calculateGP(score));
+      const units = Number(course.UNIT);
       totalGradePoints += gradePoint * units;
       totalUnits += units;
     }
   }
   
   const cgpa = totalGradePoints / totalUnits;
-  return cgpa;
-}
-
-// Filter the data based on the selected department, level, and semester
-const filteredData = tableData.filter((row) => {
-  return (
-    row.DEPARTMENT === department &&
-    row.LEVEL === level &&
-    row.SEMESTER === semester
-  );
-});
+  console.log(cgpa);
   
-
-const deleteTable=(key)=>{
-  alert(key)
-tableData.filter((tableId)=> key===tableId)
+  return  cgpa;
 }
+
 
 
   return (
@@ -83,7 +72,6 @@ tableData.filter((tableId)=> key===tableId)
       <div className="w-full text-center">
       {/* SERIAL NUMBER */}
       {i +1}
-
       </div>
   </div>
 </td>
@@ -93,7 +81,7 @@ tableData.filter((tableId)=> key===tableId)
       <div className="w-full text-center">
         {/* COURSE CODE */}
       {course.CODE}
-
+      
       </div>
   </div>
 </td>
@@ -124,7 +112,7 @@ tableData.filter((tableId)=> key===tableId)
           <input
               type="number"
               name={`score${i + 1}`}
-              value={scores[`.score${i + 1}`]}
+              value={Number(scores[`.score${i + 1}`])}
               onChange={handleChange}
               className="w-full px-2 py-1 text-gray-700 bg-gray-100 rounded"
               min={4}
@@ -188,10 +176,11 @@ tableData.filter((tableId)=> key===tableId)
        ))}
 
      
-    <button>Cumilative GradePoint:  {calculateCGPA(scores, row[0].LEVELS[0][level===undefined || level==="" ? 100: level][0].SEMESTER[0][semester===undefined || semester===""? 1:
+    <div>Cumilative GradePoint:  { console.log( Number(calculateCGPA(scores, row[0].LEVELS[0][level===undefined || level==="" ? 100: level][0].SEMESTER[0][semester===undefined || semester===""? 1:
         semester==='1 st Semester'?1:
         semester==='1 st Semester'?2:
-        1][0].COURSES)}</button>
+        1][0].COURSES)) ) }  </div>
+    {/* <div>Cumilative GradePoint:  {} </div> */}
         
       {/* <button> Cumilative GradePoint: {gradePoint}</button> */}
   
