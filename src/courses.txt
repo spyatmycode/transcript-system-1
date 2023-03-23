@@ -1,0 +1,1484 @@
+
+FACULTY: SCIENCE AND TECHNOLOGY
+
+DEPARTMENT: HEALTH INFORMATION MANAGEMENT
+
+LEVEL: 400
+
+		FIRST SEMESTER
+
+FRN 401 - Advanced French III - 2 UNITS
+
+MGT 403 - Quality Management - 3 UNITS
+
+HIM 40 - Health Database Design and Development - 3 UNITS
+ 
+HIM 404 - Health Information Department Management - 3 UNITS
+
+ICT405 - Database Management - 3 UNITS
+
+		
+		SECOND SEMESTER
+
+FRN 421Advanced French IV - 2 UNTIS
+
+GNS 422 Research Project - 6 UNTIS
+
+HIM 411 - Health Science Research methods - 3 UNITS
+
+HIM 413 Professional Development in HIM - 3 UNITS
+
+ICT415 - Software Design and Application - 3 UNITS
+
+TOTAL: 31 UNITS
+
+
+===============================================================
+
+
+FACULTY: SCIENCE AND TECHNOLOGY
+
+DEPARTMENT: HEALTH INFORMATION MANAGEMENT
+
+LEVEL: 200
+
+		FIRST SEMESTER
+
+ICT201 - Computer Fundamental for Business - 3 UNITS
+
+ACC 202 - Principle of Financial Accounting - 3UNITS
+
+HIM 208 - Pathophysiology - 3 UNITS
+
+HIM 204 - Monitoring and Evaluation in Healthcare - 2 UNITS
+
+HIM 206 - Human Anatomy - 2 UNITS
+
+FRN 201 - French Language III - 2 UNITS
+
+GNS 203 - Human Resources Management - 2 UNITS
+
+
+		SECOND SEMESTER
+
+ACC 211Principle of Managerial Accounting - 3 UNITS
+
+ICT2012 - Introduction to Healthcare Informatics - 2 UNITS
+
+HIM 215 - Healthcare Finance - 3 UNITS
+
+HIM 218 - Health Statistics - 3 UNITS
+
+GNS 222 - French Language IV - 2 UNITS
+
+GNS 211 - Consumer Behaviours - 2 UNITS
+
+HIM 212 Human Physiology - 3 UNITS
+
+ **TOTAL : 36 UNITS
+
+
+=============================================================
+
+
+
+FACULTY: SCIENCE AND TECHNOLOGY
+
+DEPARTMENT: HEALTH INFORMATION MANAGEMENT
+
+LEVEL: 300
+
+			FIRST SEMESTER 
+
+
+FRN 301 - Advanced French I - 2 UNITS
+
+HIM 301 - Health Record Organization and Management - 3 UNITS
+
+HIM 302 - Healthcare Law - 3 UNITS
+
+HINI 303 - Health Data Management - 3 UNITS
+
+HIM 305 - Electronic Health Record and Information Exchange - 3 UNITS
+
+HIM 307 - Principle of Healthcare Insurance - 2 UNITS
+
+
+			SECOND SEMESTER
+
+FRN 321 - Advanced French II - 2 UNITS
+
+GNS 321 - Research Methodology - 2 UNITS
+
+HIM 306 - Medical Terminology - 2 UNITS
+
+HIM 314 - Procedura Coding - 3 UNITS
+
+HIM 317 - Health Record Organization and Management - 3 UNITS
+
+GNS 3013 - Introduction to Sociology - 3 UNITS
+
+**TOTAL : 31 UNITS
+
+
+===========================================================
+
+
+FACULTY: SCIENCE AND TECHNOLOGY
+
+DEPARTMENT: HEALTH INFORMATION MANAGEMENT
+
+LEVEL: 100
+
+			FIRST SEMESTER
+
+STA 102 - introduction to Statistics - 3 UNITS
+
+ICT 103 - Informatics in Healthcare - 2 UNITS
+
+HIM 104 - Healthcare Delivery System - 3 UNITS
+
+ICT 101 - Paper Based Record - 2 UNITS
+
+HIM 101 - Introduction to Public Health - 2 UNITS
+
+GNS 101 - Use of English & library - 2 UNITS
+
+FRN 101 - French Language I - 2 UNITS
+
+
+			SECOND SEMESTER
+
+MTH 103 - Basic Mathematics - 3 UNITS
+
+HIM 116 - Principle of Health Information Management - 3 UNITS
+
+CSC 122 - Introduction to Computer - 3 UNITS
+
+HIM 111 -  Principle of Statistics - 2 UNITS
+
+HIM 112 - Healthcare System and Administration - 2 UNITS
+
+FRN 121 - French Language II - 2 UNITS
+
+GNS III - Logic and Philosophy - 2 UNITS
+
+HIM 102 - Health Information Management - 2 UNITS
+
+**TOTAL: 35 UNITS
+
+
+=========================================================
+
+
+
+FACULTY: MANAGEMENT SCIENCE
+
+DEPARTMENT: ACCOUNTING
+
+LEVEL: 300
+
+			FIRST SEMESTER
+
+FRN 301 - ADVANCED FRENCH I - 2 UNITS
+
+ACCT 301 - MANAGEMENT ACCOUNTING I - 3 UNITS
+
+BEI 326 - INVESTMENT ANALYSIS - 3 UNITS
+
+BFI 301 - AUDITING I - 3 UNITS 
+
+ACCT 303 - TAXATION & TAX MANAGEMENT - 3 UNITS
+
+ACCT 305 - CORPORATE ACCOUNTING - 3 UNITS
+
+SAD 306 - INFORMATION SYSTEM MANAGEMENT - 3 UNITS
+
+BSAD 303 - SMALL SCALE BUSINESS MANAGEMENT - 2 UNITS
+
+
+			SECOND SEMESTER 
+
+FRN 321 - ADVANCED FRENCH II - 2 UNITS
+
+GNS 321 - RESEARCH METHODOLOGY - 3 UNITS
+
+ACCT 321 - MANAGEMENT ACCOUNTING II - 3 UNITS
+
+ECON 322 - INTERNATIONAL BANKING & FINANCE - 2 UNITS
+
+ACCT 323 - NIGERIA TAXATION I - 2 UNITS 
+
+GNS 322 - OPERATION RESEARCH - 3 UNITS
+
+ACCT 320 - AUDITING II - 3 UNITS
+
+BFI 322 - BANKING AND FINANCE - 3 UNITS
+
+**TOTAL UNITS: 44 UNITS
+
+
+===================================================================
+
+
+FACULTY: MANAGEMENT SCIENCE
+
+DEPARTMENT: ACCOUNTING
+
+LEVEL: 200
+
+			FIRST SEMESTER
+
+ACCT 201 - Financial Accounting I - 2 UNITS
+
+ACCT 202 - Basic Cost Accounting - 2 UNITS
+
+BSAD 202 - Organizational Behaviour - 2 UNITS
+
+ECON 202 - Structure of Nigeria Economy  - 2 UNITS
+
+ACCT 204 - Mathematics for Accounting I -  2 UNITS
+
+FRN 201 - FRENCH LANGUAGE III -  2 UNITS
+
+BFI 200 - Principles and Practice of Insurance -  2 UNITS
+
+BLAW211 - BUSINESS LAW -  2 UNITS
+
+
+			SECOND SEMESTER
+
+BSAD 231 - Introduction to Business - 2 UNITS
+
+BSTAT 231 - Business Applied Statistics - 3 UNITS
+
+FRN 221 - French Language IV -  2 UNITS
+
+BLAW 231 - Company Law -  2 UNITS
+
+ACCT 221 - Cost Accounting -  3 UNITS
+
+MAT 231 - Mathematics for Accounting II -  3 UNITS
+
+ACCT 223 - Financial Accounting II -  3 UNITS
+
+ACCT 224 - Financial & Security Analysis -  3 UNITS
+
+
+**TOTAL: 43 UNITS
+
+==================================================================
+
+
+
+FACULTY: MANAGEMENT SCIENCE
+
+DEPARTMENT: ACCOUNTING
+
+LEVEL: 400
+
+			FIRST SEMESTER
+
+
+ACCT 401 - ADVANCED FINANCIAL ACCOUNTING - 3 UNITS
+
+ACCT 400 - MULTI-DISCIPLINARY CASE STUDY - 3 UNITS
+
+ACCT 403 -  PUBLIC SECTOR ACCOUNTING - 3 UNITS
+
+ACCT 405 - PUBLIC FINANCE - 3 UNITS
+
+ACCT 415 - NIGERIAN TAXATION II - 3 UNITS
+
+BFI 411 - FINANCIAL INSTITUTIONS & PORTFOLIOS - 3 UNITS
+
+
+			SECOND SEMESTER
+
+BFI 420 - PROFESSIONAL ETHIC & SOCIAL RESPONSIBILITY
+
+GNS 422 - RESEARCH PROJECT - 6 UNITS
+
+GNS 421 - ENTREPRENEURSHIP DEVELOPMENT - 3 UNITS
+
+ACCT 407 - INTERNATIONAL ACCOUNTING - 3 UNITS
+
+ACCT 423 - OPERATIONS RESEARCH - 3 UNITS
+
+BFI 424 - FINANCIAL ADMINISTRATION - 3 UNITS
+
+**TOTAL UNITS: 39
+
+
+======================================================================
+
+FACULTY: MANAGEMENT SCIENCE
+
+DEPARTMENT: ACCOUNTING
+
+LEVEL: 100
+
+
+				FIRST SEMESTER
+
+ACCT IO1 - PRINCIPLES OF ACCOUNTING  - 3 UNITS
+
+BSAD 101 - Principles of MANAGEMENT I - 3 UNITS
+
+ECON 101 - PRINCIPLES OF ECONOMICS I - 3 UNITS 
+
+BMAT 101 -  Mathematics for Management Science - 3 UNITS
+
+ACCT 102 - Introduction to Finance - 3 UNITS
+
+GNS 101 - USE OF ENGLISH - 2 UNITS
+
+FRN 101 - Use of English & library - 2 UNITS
+
+GNS 102 - Benin People and Culture - 2 UNITS
+
+			SECOND SEMESTER 
+
+
+
+BCOM 131 - Business Communication - 3 UNITS
+
+GNS 133 - Computer Appreciation & Application - 3 UNITS
+
+FRN 121 - French Language II - 2 UNITS
+
+BSAT 122 - Statistics for Management Science  - 3 UNITS
+
+ACCT 121 - Principles of Accounting II - 3 UNITS
+
+ECON 121  - Principles of Economics II - 3 UNITS
+
+BSAD 121 - Principle of Management II - 3 UNITS
+
+GNS 121 - Introduction to Social Psychology - 2 UNITS
+
+**TOTAL UNITS: 43 UNITS
+
+
+=====================================================================
+
+
+
+
+FACULTY: MANAGEMENT SCIENCE
+
+DEPARTMENT: CONFLICT RESOLUTION AND HOSPITALITY MANAGEMENT
+
+LEVEL: 200
+
+
+			FIRST SEMESTER
+
+
+CRM 201 - THE GOOD STUDY GUIDE - 3 UNITS
+
+CRM 202 - CITIZENS AND THE STATE - 3 UNITS
+
+CRM 203 - ORGANIZATION OF GOVERNMENT - 3 UNITS  ******ERROR
+
+CRM 202 - INTRODUCTION TO LAW - 3 UNITS
+
+CRM 211 -  INTRODUCTION TO PSYCHOLOGY - 3 UNITS
+
+FRN 201 - FRENCH LANGUAGE III - 3 UNITS
+
+CRM 203 - Ethnography and Social Structure of Nigeria - 3 UNITS ****ERROR
+
+CRM 205 - GEOGRAPHY OF NIGERIA - 3 UNITS 
+
+
+			
+
+CRM 231 - INTRODUCTION TO CONFLICT RESOLUTION - 3 UNITS ***ERROR
+
+CRM 231 - DEMOCRACY AND GOOD GOVERNANCE - 3 UNITS. ***ERROR
+
+CRM 221 - FOUNDATIONS OF POLITICAL ECONOMY - 3 UNITS
+
+CRM 231 - CULTURE VALUES AND CONFLICTS IN WAR - 3 UNITS
+
+CRM 222 - THE SOCIOLOGY OF CRIME AND DELINQUENCY - 3 UNITS
+
+CRM 231 - PRINCIPLES OF SECURITY PRACTICE AND MGT - 3 UNITS
+
+CRM 238 - HUMAN RIGHT LAW I - 3 UNITS
+
+FRN 231 - FRENCH - 3 UNITS
+
+**TOTAL UNITS: 48 UNITS
+
+======================================================================
+
+FACULTY: MANAGEMENT SCIENCE
+
+DEPARTMENT: CONFLICT RESOLUTION AND HOSPITALITY MANAGEMENT
+
+LEVEL: 100
+
+			FIRST SEMESTER
+
+
+ACC 101 - PRINCIPLE OF ACCOUNTING - 3 UNITS
+
+BUS 101 - BUSINESS Communication
+
+ECO 101 - PRINCIPLES OF ECONOMICS I - 3 UNITS
+
+MAT IOI - Mathematics OF MANAGEMENT SCIENCE - 3 UNITS
+
+GNS 101 - USE OF ENGLISH AND library - 3 UNITS
+
+FRN 101 - FRENCH LANGUAGE I - 2 UNITS
+
+GNS 102 - Benin People AND CULTURE- 2 UNITS
+
+
+			SECOND SEMESTER 
+
+
+SOC 131 - INTRODUCTION TO SOCIOLOGY - 3 UNITS
+
+CRM 133 - Elements OF POLITICAL SCIENCE - 3 UNTIS
+
+FRN 121 - FRENCH - 3 UNITS
+
+CRM 123 - INTRODUCTION TO CONFLICT RESOLUTION Process - 3 UNITS
+
+CRM 202 - INTRODUCTION TO Education - 3 UNITS
+
+CRM 121 - INTRODUCTION TO PEACE Studies - 3 UNITS
+
+CSC 121 - Computer IN Society - 3 UNITS
+
+CRM 124 - History AND Philosophy OF Science - 3 UNITS
+
+**TOTAL UNITS: 45 UNITS
+
+===========================================================
+
+
+
+FACULTY: MANAGEMENT SCIENCE
+
+DEPARTMENT: CONFLICT RESOLUTION AND HOSPITALITY MANAGEMENT
+
+LEVEL: 300
+
+			FIRST SEMESTER
+
+FRN 301 - ADVANCED FRENCH I - 3 UNITS
+
+CRM 301 - NIGERIAN GOVERNMENT AND POLITICS I AND II - 3 UNITS
+
+CRM 302 - Understanding WAR AND CONFLICT - 3 UNITS
+
+CRM 301 - NIGERIAN PEOPLE AND CULTURES - 3 UNITS
+
+CRM 303 - INTRODUCTION TO CONFLICT TRANSFORMATION - 3 UNITS
+
+CRM305 - INTRODUCTION TO Comparative POLITICS - 3 UNITS
+
+CRM311 -  PRE-Colonial African Diplomacy - 3 UNITS
+
+CRM 313 - INTERNATIONAL LAW AND Diplomacy
+
+			SECOND SEMESTER
+
+FRN 321 - ADVANCED FRENCH II - 3 UNITS
+
+CRM 321 -  NIGERIAN GOVERNMENT AND POLITICS II - 3 UNITS
+
+CRM 324 - Perception AND CONFLICT - UNITS
+
+CRM 320 - Concepts AND PRACTICE OF PEACE BUILDING - 3 UNITS
+
+CRM 323 - Demobilisation AND Disarmament AND Reintegration - 3 UNITS
+
+CRM 322 - Domestic Violence - 3 UNITS
+
+CRM 332 - Constitutional LAW I AND II - 3 UNITS
+
+CRM 300 - History OF CONFLICT IN NIGERIA - 3 UNITS
+
+**TOTAL UNITS: 48 UNITS
+
+====================================================================
+
+
+
+
+FACULTY: MANAGEMENT SCIENCE
+
+DEPARTMENT: CONFLICT RESOLUTION AND HOSPITALITY MANAGEMENT
+
+LEVEL: 400
+
+
+				FIRST SEMESTER
+
+CRM 409 - Reseach and Methodology - 3 UNITS
+
+CRM 401 - International Relations and Security - 3 UNITS
+
+CRM 403 - Environmental Law I and II - 3 UNITS
+
+CRM 401 - International Organisations and Peace Building - 3 UNITS
+
+CRM 405 - Globalisation and Peace - 3 UNITS
+
+CRM 409 - Ward and Laboratory Management - 3 UNITS
+
+
+			SECOND SEMESTER 
+
+
+CRM 423 - Foreign Policies of Great Powers - 3 UNITS
+
+CRM 421 - Political Parties and Pressure Groups - 3 UNITS
+
+CRM 426 - Victims of Crimes and Human Right Violations - 3 UNITS
+
+CRM 422 - Thrid World Dependency and Development - 3 UNITS
+
+CRM 423 - Research Project - 6 UNITS
+
+CRM 424 -  The Nature of Global Terrorism - 4 UNITS
+
+**TOTAL UNITS: 40 UNITS
+
+====================================================================
+
+
+
+FACULTY: MANAGEMENT SCIENCE
+
+DEPARTMENT: BUSINESS ADMINISTRATION
+
+LEVEL: 300
+
+			FIRST SEMESTER
+
+FRN 301 - Advanced French I - 2 UNITS
+
+BSAD 3O3 - Small Scale Business Management - 3 UNITS
+
+MKTG 301 - Product, Distribution & Sales Management - 3 UNITS
+
+BSAD 302 - Business Policy And Strategy I - 2 UNITS
+
+BSAD 304 - Information System Management - 3 UNITS
+
+ECON 303 - Economic Development - 3 UNITS
+
+ACCT 305 - Corporate Accounting - 3 UNITS
+
+BSAD 314 - International Business - 2 UNITS
+
+
+			SECOND SEMESTER 
+
+FRN 321 - Advanced French II - 2 UNITS
+
+GNS 321 - Research Methodology - 3 UNITS
+
+ACCT 321 - Management Accounting II - 2 UNITS
+
+BSAD 322 - Business Policy And Strategy II - 2 UNITS
+
+BSAD 323 - Purchasing and Material Management - 3 UNITS
+
+BSAD 324 - World Political Economics - 3 UNITS
+
+GNS 322 - Operation Research - 3 UNITS
+
+BSAD 305 - Human Resources Management - 3 UNITS
+
+**TOTAL UNITS: 42 UNITS
+
+====================================================================
+
+
+FACULTY: MANAGEMENT SCIENCE
+
+DEPARTMENT: BUSINESS ADMINISTRATION
+
+LEVEL: 200
+
+			FIRST SEMESTER
+
+BSAD 231 - Personnel Management - 3 UNITS - 3 UNITS
+
+ACCT 201 - Basic Cost Accounting - 3 UNITS - 3 UNITS
+
+BSAD 201 - Management Theory & Practices - 3 UNITS
+
+BSTAT 231 - Business Applied Statistics - 3 UNITS
+
+BLAW 221 - Business Law - 2 UNITS
+
+FRN 201 - French Language III - 2 UNITS
+
+BMAT 213 - Calculus - 3 UNITS
+
+BSAD 205 - Labour and Industrial Relations - 3 UNITS
+
+			SECOND SEMESTER
+
+
+ACCT 202 - Financial Accounting - 3 UNITS
+
+BSAD 221 - Organizational Behaviour - 3 UNITS
+
+FRN 221 - French Language IV - 2 UNITS
+
+BLAW 231 - Company Law - 2 UNITS
+
+ECON 224 - Labour Economics - 3 UNITS
+
+BSAD 222 - Elements of Marketing & Promotion - 3 UNITS
+
+ACCT 223 Financial & Security Analysis - 2 UNITS
+
+ACCT 301 - Management Accounting I - 3 UNITS
+
+**TOTAL UNITS: 43 UNITS
+
+====================================================================
+
+
+
+FACULTY: MANAGEMENT SCIENCE
+
+DEPARTMENT: BUSINESS ADMINISTRATION
+
+LEVEL: 400
+
+				FIRST SEMESTER
+
+BFI 411 - Financial Institutions & Portfolios - 3 UNITS
+
+GNS 401 - Entrepreneurship Development - 3 UNITS
+
+BSAD 403 - Principles & Practice of Insurance - 3 UNITS
+
+BSAD 406 - Corporate Social Responsibility & Ethics - 3 UNITS
+
+ACCT 402 - Taxation & Tax Management - 3 UNITS
+
+ACCT 410 - International Finance - 3 UNITS
+
+				SECOND SEMESTER 
+
+MKTG 323 - Marketing Management - 3 UNITS
+
+GNS 422 - Research Project - 6 UNITS
+
+BSAD 421 - Business Decisions Analysis - 3 UNITS
+
+ECON 432 - Financial Management - 3 UNITS
+
+BSAD 424 - Comparative Management - 3 UNITS
+
+BSAD 426 - Project Management - 3 UNITS
+
+**TOTAL UNITS: 39 UNITS
+
+=================================================================
+
+
+
+FACULTY: MANAGEMENT SCIENCE
+
+DEPARTMENT: BUSINESS ADMINISTRATION
+
+LEVEL: 200
+
+				FIRST SEMESTER
+				
+
+BSAD 231 - Personnel Management - 3 UNITS
+
+ACCT 201 -  Basic Cost Accounting - 3 UNITS
+
+BSAD 201 - Management Theory & Practices - 3 UNITS
+
+BSTAT 231 - Business Applied Statistics - 3 UNITS
+
+BLAW 221 - Business Law - 2 UNITS
+
+FRN 201 -  French Language III - 2 UNITS
+
+BMAT 213 - Calculus - 3 UNITS
+
+BSAD 205 - Labour and Industrial Relations - 3 UNITS
+
+				SECOND SEMESTER
+
+ACCT 202 - Financial Accounting - 3 UNITS
+
+BSAD 221 - Organizational Behaviour - 3 UNITS
+
+FRN 221 - French Language IV - 2 UNITS
+
+BLAW 231 - Company Law - 2 UNITS
+
+ECON 224 - Labour Economics - 3 UNITS
+
+BSAD 222 - Elements of Marketing & Promotion - 3 UNITS
+
+ACCT 223 - Financial & Security Analysis - 2 UNITS
+
+ACCT 301 - Management Accounting I - 3 UNITS
+
+
+**TOTAL UNITS: 43 UNITS
+
+=================================================================
+
+
+
+
+FACULTY: MANAGEMENT SCIENCE
+
+DEPARTMENT: BUSINESS ADMINISTRATION
+
+LEVEL: 100
+
+				FIRST SEMESTER
+
+ACCT 101 - Principles of Accounting I - 3 UNITS
+
+BSAD 101 - Management and Society I - 3 UNITS
+
+ECON 101 - Principles of Economics I - 3 UNITS
+
+BMAT 101 - Mathematics for Management Science - 3 UNITS
+
+SAD 122 - Introduction and Organization of Business - 3 UNITS
+
+GNS 101 - Use of English & library - 2 UNITS
+
+FRN 101 - French Language I - 2 UNITS
+
+GNS 102 - Benin People and Culture - 2 UNITS
+
+
+			SECOND SEMESTER
+
+BCOM 131 - Business Communication - 3 UNITS
+
+GNS 133 - Computer Appreciation & Application - 2 UNITS
+
+FRN 121 - French Language II - 2 UNITS
+
+GNS 122 - Introduction to Sociall Psychology - 2 UNITS
+
+ACCT 121 - Principles of Accounting II - 3 UNITS
+
+ECON 121 - Principles of Economics II - 3 UNITS
+
+BSAD 121 - Management and Society II - 3 UNITS
+
+STAT 121 - Statistics for Management Science - 3 UNITS
+
+**TOTAL UNITS: 42 UNITS
+
+=================================================================
+
+
+
+
+FACULTY: POLITICAL & SOCIAL SCIENCE
+
+DEPARTMENT: POLITICAL SCIENCE
+
+LEVEL: 200
+
+				FIRST SEMESTER
+
+
+BSTAT 112 - Statistics Methods in Political Science - 3 UNITS
+
+FRN 201 - French Language Ill - 2 UNITS
+
+GNS 203 - Introduction to Psychology - 2 UNITS
+
+PIR 202 - Foreign Policy & Analysis - 2 UNITS
+
+POS 201 - Political Theories & Ideas - 3 UNITS
+
+POS 203 - International Political System and Africa I - 2 UNITS
+
+POS 205 - Logic And Methods in Political Inquiry - 3 UNITS
+
+PIR 120 - International Relations Theory - 3 UNITS
+
+
+			SECOND SEMESTER 
+
+POS 225 - International Political System and Africa II - 3 UNITS
+
+POS 223 - Political Analysis - 3 UNITS
+
+FRN 221 - French Language IV - 2 UNITS
+
+BLAW 231 - Company Law - 2 UNITS
+
+POS 224  - History of Political Thought - 3 UNITS
+
+BSAD 231 - Introduction to Business - 2 UNITS
+
+POS 226  - Politics in Africa II - 3 UNITS
+
+POS 221 - Nigeria Legal System II - 3 UNITS
+
+
+**TOTAL UNITS: 42 UNITS
+
+================================================================================
+
+
+
+FACULTY: POLITICAL & SOCIAL SCIENCE
+
+DEPARTMENT: POLITICAL SCIENCE
+
+LEVEL: 100
+
+				FIRST SEMESTER
+
+
+PIR 101 - Introduction to International Relations - 3 UNITS
+
+BSAD 101 - Management & Society - 3 UNITS
+
+POS 101 - Introduction to Political Science - 3 UNITS
+
+PAD 101 - Introduction to Public Administration - 3 UNITS
+
+PIR 102 - Nigerian Constitutional Development - 3 UNITS
+
+GNS 101 - Use of English & library - 2 UNITS
+
+FRN 101 - French Language 1 - 2 UNITS
+
+GNS 102 - Benin People and Culture - 2 UNITS
+
+
+			SECOND  SEMESTER
+
+POS 120 - Organisation of Government - 3 UNITS
+
+POS 121 - Africa Government & Politics - 3 UNITS
+
+POS 122 - Nigeria Legal System I - 3 UNITS
+
+PAD 121 - Nigerian Public Administration - 3 UNITS
+
+POS 124 - The Citizen & The State - 3 UNITS
+
+FRN 121 - French Language II - 2 UNITS
+
+GNS 113 - Computer Appreciation & Application - 2 UNITS
+
+BCOM 131 - Business Communication - 3 UNITS
+
+**TOTAL UNITS: 43 UNITS
+
+
+======================================================================
+
+
+
+FACULTY: POLITICAL & SOCIAL SCIENCE
+
+DEPARTMENT: POLITICAL SCIENCE
+
+LEVEL: 300
+
+				FIRST SEMESTER
+
+
+FRN 301 - Advanced French I - 2 UNITS
+
+POS 301 - The Theory & Practice of Local Government - 3 UNITS
+
+POS 302 - The Methodology of Comparative Politics - 3 UNITS
+
+POS 303 - Foundation of Political Economy - 3 UNITS
+
+PAD 305 - Theory And Practices of Administration - 3 UNITS
+
+POS 312 - Marxism - 2 UNITS
+
+POS 316 - Political Behaviour - 3 UNITS
+
+POS 317 - Administration of Nigeria Foreign Policy - 2 UNITS
+
+
+			SECOND SEMESTER
+
+FRN 321 - Advanced French II - 2 UNITS
+
+GNS 321 - Research Methodology - 3 UNITS
+
+PIR 321 - Third World & Dependency - 3 UNITS
+
+PIR 323 - African Politics & Diplomacy - 3 UNITS
+
+PIR 324 - Contemporary Strategic Study - 3 UNITS
+
+GNS 322 - Operation Research - 3 UNITS
+
+PIR 327 - Foreign Policy of Super Powers - 2 UNITS
+
+POS 325 - Politics of Underdevelopment - 2 UNITS
+
+
+**TOTAL UNITS: 42 UNITS
+
+
+======================================================================
+
+
+
+
+
+FACULTY: SCIENCE & TECHNOLOGY
+
+DEPARTMENT: COMPUTER SCIENCE
+
+LEVEL: 100
+
+				FIRST SEMESTER
+
+CHEM 101 - General Chemistry - 3 UNITS
+
+PHY 101 - General Physics - 3 UNITS
+3
+MAT 101 - General Maths - 3 UNITS
+4
+STAT 101 - Statistical Inference I - 3 UNITS
+S
+BSAD 101 - Management & Society - 3 UNITS
+6
+GNS 101 - Use of English & library - 2 UNITS
+
+FRN 101 - French Language I - 2 UNITS
+
+GNS 102 - Benin People and Culture - 2 UNITS
+
+
+				SECOND SEMESTER
+
+CSC 121 - Introduction to Programming - 3 UNITS
+
+CSC 122 - Software Packaging - 3 UNITS
+
+BCOM 121 - Business Communication - 3 UNITS
+4
+GNS 103 - Introduction to Computer - 3 UNITS
+
+SMAT 122 - Complex Variable & Matrices - 3 UNITS
+
+FRN 121 - French Language II - 2 UNITS
+
+CSC 120 - Number System & Code - 2 UNITS
+
+INTEC 122 - Fundamentals of Information Technology - 3 UNITS
+
+**TOTAL UNITS: 43 UNITS
+
+
+======================================================================
+
+
+
+FACULTY: POLITICAL AND SOCIAL SCIENCE
+DEPARTMENT: POLITICAL SCIENCE
+
+LEVEL: 400
+
+			FIRST SEMESTER 
+
+POS 411 - Foreign Policies of Africa States - 3 UNITS
+
+POS 401 - Foundation of Political Economy - 3 UNITS
+
+PAD 403 - Nigeria Political Administration - 3 UNITS
+
+POS 403 - Comparative Federalism - 3 UNITS
+
+POS 404 - World Politics & New State - 3 UNITS
+
+POS 406 - Comparative Civil Relations - 3 UNITS
+
+
+			SECOND SEMESTER
+
+POS 420 - Theory of the State - 3 UNITS
+
+GNS 422 -  Research Project - 6 UNITS
+
+GNS 421 - Entrepreneurship Development - 3 UNITS
+
+POS 421 - State and Economy - 3 UNITS
+
+POS 424 - Military in Politics - 3 UNITS
+
+POS 423 - Problems of Political Philosophy - 3 UNITS
+
+**TOTAL UNITS: 39 UNITS
+
+
+======================================================================
+
+
+
+
+FACULTY: SCIENCE & TECHNOLOGY
+
+DEPARTMENT: COMPUTER SCIENCE
+
+LEVEL: 300
+
+				FIRST SEMESTER
+
+
+FRN 301 - Advanced French I
+
+CSC 303 - Digital Electronics
+
+CSC 304 - Computer Hardware & Maintenance
+
+CSC 301 - Computer Dessign
+
+CSC 3O2 - System Analysis & Design
+
+CSC 311 - Circuit Design and Testing
+
+CSC 313 - Computer Architecture
+
+CSC 315 - Structured Programming in C++
+
+
+				SECOND SEMESTER 
+
+FRN 321 - Advanced French II
+
+GNS 321 - Research Methodology
+
+CSC 323 - Fundamentals of Software Engineering
+
+CSC 322 - Database Design and Management
+
+INF 322 - Data Communication
+
+GNS 322 - Operation Research
+
+CSC 334 - Web Programming
+
+CSC 326 - PASCA Programming Language
+
+**TOTAL UNITS: 42 UNITS
+
+
+======================================================================
+
+
+
+FACULTY: SCIENCE & TECHNOLOGY
+
+DEPARTMENT: COMPUTER SCIENCE
+
+LEVEL: 200
+
+				FIRST SEMESTER
+
+
+CSC 201 - Data Structure and Algorithm - 3 UNITS
+
+CSC 202 - Operating Systems - 3 UNITS
+
+CSC 203 - Computer Graphics & Animations - 3 UNITS
+
+INTEC 211 - File Processing & Management - 3 UNITS
+
+IFM 201 - Management Information System - 2 UNITS
+
+FRN 201 - French Language Ill - 2 UNITS
+
+GNS 203 - Introduction to Psychology - 2 UNITS
+
+MAT 201 - Calculus - 3 UNITS
+
+
+
+			SECOND SEMESTER
+
+CSC 224 - Business Data Processing - 2 UNITS
+
+BSTAT 231 -  Statistics Inference II - 3 UNITS
+
+FRN 221 - French Language IV - 2 UNITS
+
+BLAW 231 - Company Law - 2 UNITS
+
+MAT 222 - Numerical Computations - 3 UNITS
+
+CSC 221 - Information & Computing Theory - 3 UNITS
+
+ESC 222 - Assembly Language Programming - 3 UNITS
+
+MAT 214 - Linear Algebra - 3 UNITS
+
+
+
+
+**TOTAL UNITS: 42 UNITS
+
+
+
+
+======================================================================
+
+
+FACULTY: ARTS & COMMUNICATION
+
+DEPARTMENT: MASS COMMUNICATION
+
+LEVEL: 400
+
+				FIRST SEMESTER
+
+
+COM 401 - Law and the Media - 3 UNITS
+
+GNS 401 - Entrepreneurship Development - 3 UNITS
+
+COM 403 - Media Management and Organization - 3 UNITS
+
+COM 405 - Radio News and Programming - 3 UNITS
+
+PIR 405 - Advanced Media Presentation - 3 UNITS
+
+PIR 402 - Commentatorship for Events & Sports - 3 UNITS
+
+
+				SECOND SEMESTER
+
+COM 420 - TV News and Programming - 3 UNITS
+
+GNS 422 - Research Project - 6 UNITS
+
+COM422 - Investigative & Specialized Reporting - 3 UNITS
+
+COM424 - Public Relations Writing and Reporting - 3 UNITS
+
+COM 426 - Entertainment and the Communications Media - 3 UNITS
+
+COM 428 - Politics, Policy & Media Evaluation - 3 UNITS
+
+
+**TOTAL UNITS: 39 UNITS
+
+
+======================================================================
+
+
+
+
+
+FACULTY: SCIENCE & TECHNOLOGY
+
+DEPARTMENT: COMPUTER SCIENCE
+
+LEVEL: 400
+
+				FIRST SEMESTER
+
+CSC 411  - Computer Security and Networks - 3 UNITS
+
+CSC 405 - Artificial Intelligence - 3 UNITS
+
+CSC 401 - Programming in Java - 3 UNITS
+
+CSC 413 - Compiler Construction - 3 UNITS
+
+CSC 403 - Modeling & Simulation - 3 UNITS
+
+CSC 417 - Computer Installation Management - 3 UNITS
+
+
+			SECOND SEMESTER
+
+CSC 428 - Satellite Communication & Wireless - 3 UNITS
+
+CSC 422 - Research Project - 6 UNITS
+
+GNS 421 - Entrepreneurship Development - 3 UNITS
+
+SEM 422 - System Administration & Computer Ethics - 3 UNITS
+
+CSC 424 - Internet Technology - 3 UNITS
+
+BSAD 426 - Project Management - 3 UNITS
+
+
+**TOTAL UNITS: 39 UNITS
+
+
+======================================================================
+
+
+
+FACULTY: ARTS & COMMUNICATION
+
+DEPARTMENT: MASS COMMUNICATION
+
+LEVEL: 300
+
+				FIRST SEMESTER
+
+
+FRN 301 - Advanced French I - 2 UNITS
+
+COM 305 - Desk-Top Publishing & Computer Animation - 3 UNITS
+
+ECON 303 - Economic Development - 3 UNITS
+
+POS 304 - World Politics & New State - 3 UNITS
+
+COM 307 - Script Writing and Presentation Techniques - 3 UNITS
+
+COM 301 - Radio Broadcasting - 3 UNITS
+
+COM 312 - Newsroom Operations - 2 UNITS
+
+COM 310 - Television Programming - 3 UNITS
+
+
+
+				SECOND SEMESTER
+
+FRN 321 - Advanced French II - 2 UNITS
+
+GNS 321 -  Research Methodology - 3 UNITS
+
+COM 322 - Consumer Behaviour - 3 UNITS
+
+COM 326 - Film Production & its Techniques - 3 UNITS
+
+COM 324 - African People & Culture - 3 UNITS
+
+GNS 322 - Operation Research - 3 UNITS
+
+COM 328 - Marketing Research - 2 UNITS
+
+COM 300 - Industrial Attachment - 2 UNITS
+
+**TOTAL UNITS: 43 UNITS
+
+
+======================================================================
+
+
+FACULTY: ARTS & COMMUNICATION
+
+DEPARTMENT: MASS COMMUNICATION
+
+LEVEL: 200
+
+				FIRST SEMESTER
+
+COM 201 - Creative Writing & Communication in English - 3 UNITS
+
+COM 203 - The Production of Drama & Introductive Cinema - 3 UNITS
+
+COM 205 - News Reporting and Editing - 3 UNITS
+
+COM 207 - Computer Graphic Design & Photo Editing - 3 UNITS
+
+COM 209 - Video and Photo Journalism - 3 UNITS
+
+FRN 201 - French Language III - 2 UNITS
+
+GNS 205 - Philosophical Anthropology - 2 UNITS
+
+COM 215 - Cultural Analysis - 2 UNITS
+
+			SECOND SEMESTER
+
+COM 222 - Advertising & its Techniques - 3 UNITS
+
+COM 223 - TV and Video Production - 3 UNITS
+
+FRN 221 - French Language IV - 2 UNITS
+
+COM 232 - Book Publishing - 3 UNITS
+
+COM 236 - Corporate Communication - 2 UNITS
+
+COM 221 - Communication in English II - 3 UNITS
+
+COM 228 - Internet and Digital Communication - 3 UNITS
+
+COM 224 - Features and Magazine Writing - 3 UNITS
+
+**TOTAL UNITS: 43 UNITS
+
+
+======================================================================
+
+
+
+FACULTY: ARTS & COMMUNICATION
+
+DEPARTMENT: MASS COMMUNICATION
+
+LEVEL: 100
+
+				FIRST SEMESTER
+
+COM 101 - Introduction to the Mass Media - 3 UNITS 
+
+BSAD 101 - Introduction to Management & Society - 3 UNITS 
+
+COM 103 - Communication and Rhetorical Skills - 3 UNITS 
+
+COM 105 - Communication and the Arts - 3 UNITS 
+
+COM 107 - Basic Broadcasting and Journalism - 3 UNITS 
+
+GNS 101 - Use of English & library - 2 UNITS 
+
+FRN 101 - French Language I - 2 UNITS 
+
+GNS 102 - Benin People and Culture - 2 UNITS 
+
+
+				SECOND SEMESTER
+
+COM 122 - History of the Nigerian Mass Media - 2 UNITS 
+
+COM 124 - African Communications Systems - 3 UNITS 
+
+COM 126 - Prose Writing & Business Communication - 3 UNITS 
+
+GNS 103 - Computer Appreciation & Application - 3 UNITS 
+
+PIR 122 - History of International Relation - 2 UNITS 
+
+FRN 121 - French Language II - 2 UNITS 
+
+COM 123 - Basic Principles of Production - 3 UNITS 
+
+BSTA 112 - Statistics for Management Science - 3 UNITS 
+
+**TOTAL UNITS: 42 UNITS
+
+
+======================================================================
+
+
+FACULTY: MANAGEMENT SCIENCE
+
+DEPARTMENT: ECONOMICS
+
+LEVEL: 400
+
+				FIRST SEMESTER
+
+
+ECON 401 - International Macroeconomics - 3 UNITS
+
+GNS 421 - Entrepreneurship Development - 3 UNITS
+
+ECON 402 - Econometrics - 3 UNITS
+
+ECON 403 - Financial Economics - 3 UNITS
+
+BSAD 402 - Business Policy - 3 UNITS
+
+ECON 404 - History of Economic Thought - 3 UNITS
+
+				SECOND SEMESTER
+
+ECON 421 - Advanced Economics Analysis - 3 UNITS
+
+GNS 422 - Research Project - 6 UNITS
+
+ECON 423 - International Banking & Finance - 3 UNITS
+
+BSAD 422 - Monetary & Applied Monetary Economics - 3 UNITS
+
+ECON 431 - Petroleum Economics - 3 UNITS
+
+ECON 425 - Economics Planning & Comparative Economic - 3 UNITS
+
+
+**TOTAL UNITS: 39 UNITS
+
+
+======================================================================
+
+
+
+FACULTY: MANAGEMENT SCIENCE
+
+DEPARTMENT: ECONOMICS
+
+LEVEL: 300
+
+
+				FIRST SEMESTER
+
+FRN 301 - Advanced French I - 2 UNITS
+
+ECON 302 - Econometrics & Research Methodology - 3 UNITS
+
+ECON 303 - Economics Development - 3 UNITS
+
+ECON 304 - Industrial Economics - 3 UNITS
+
+ECON 301 - Micro - Economics - 3 UNITS
+
+BSAD 305 - Human Resources Management - 3 UNITS
+
+ECON 306 - Urban & Regional Economics - 3 UNITS
+
+ECON 310 - World Political Economics - 3 UNITS
+
+				SECOND SEMESTER
+
+FRN 321 - Advanced French II - 2 UNITS
+
+GNS 321 - Research Methodology - 3 UNITS
+
+BEI 321 - Nigeria Public Finance - 3 UNITS
+
+ECON 322 - Applied Economics - 3 UNITS
+
+ECON 325 - Macro - Economics - 3 UNITS
+
+BSAD 324 - Project Analysis - 3 UNITS
+
+GNS 322 - Operation Research - 3 UNITS
+
+ECON 327 - Financial & Security Analysis - 2 UNITS
+
+**TOTAL UNITS: 45 UNITS
+
+
+======================================================================
+
+
+
+
+
+

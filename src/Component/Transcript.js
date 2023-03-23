@@ -1,20 +1,98 @@
 import React, { useEffect, useState } from 'react'
 import { db } from '../firebase/firebaseConfig'
 import { collection, deleteDoc, doc, getDoc, getDocs } from 'firebase/firestore'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { uid } from "uid"
+import TableData from './TableData'
+// import Table from './Table'
+import Table1 from './Table1'
+import { data } from './Data/Data'
+import TableSelect from './Table/TableSelect'
+import Table from './Table/Table'
+import { useContext } from 'react'
+import { AppContext, ContextProvider } from './ContextProvider/ContextProvider'
+
+
 const Transcript = () => {
+    // const {level,setLevel,semester,SetSemester}=useContext(AppContext)
+ 
+
+    // const { level, setLevel, semester, setSemester } = useContext(AppContext)
+    const [level,setLevel]=useState(100)
+    const[semester,SetSemester]=useState('')
+  const handleLevelChange = (e) => {
+    setLevel(Number(e.target.value))
+  }
+
+  const handleSemesterChange = (e) => {
+    SetSemester(e.target.value)
+  }
 
 
+
+//  HEADER INFORMATION
     const [name, setName] = useState('')
     const [matric, setMatric] = useState('')
     const [college, setCollege] = useState('')
     const [department, setDepartment] = useState('')
     const [gender, setGender] = useState('')
     const [session, setSession] = useState('')
+  
     const [data, setData] = useState([])
-    const [Userinfo, setUserinfo] = useState([])
+    // const [Userinfo, setUserinfo] = useState([])
     const [students, setStudents] = useState([])
+  
+const navigate=useNavigate()
+
+   
+
+   
+
+    const [courseCode, setCourseCode] = useState('')
+    const [tableId, setTableId] = useState(1)
+    const [courseTitle, setCourseTitle] = useState('')
+    const [creditTitle, setCreditTitle] = useState('')
+    const [grade, setGrade] = useState('')
+    const [letterGrade, setLetterGrade] = useState('')
+    const [gp, setGp] = useState('')
+    const [cp, setCp] = useState('')
+    const [gpa, setGpa] = useState('')
+    const [save, setsave] = useState(false)
+    const [addNewCourse, setAddNewCourse] = useState(false)
+    const[tableType,setTableType]=useState("")
+
+    
+
+   //Faculty states
+   const [faculty,setFaculty]=useState("")
+
+   //semester state
+ 
+
+
+
+
+ console.log(faculty);
+ console.log(semester);
+
+   if(department==="Health Information Management" && semester==="1 st Semester" && level==="100" ){
+//    setTableType("Health Information Management 1.1")
+   console.log("Health Information Management 1.1")
+   }
+   if(department==="Health Information Management" && semester==="2 nd Semester" && level==="100" ){
+//    setTableType("Health Information Management 1.2")
+   console.log("Health Information Management 1.2")
+   }
+
+
+    const handleSave=(e)=>{
+    e.preventDefault()
+    setsave(true)
+    }
+
+
+
+
 
     const usedId = uid()
 
@@ -55,6 +133,7 @@ const Transcript = () => {
                 setDepartment(docSnap.data().department)
                 setGender(docSnap.data().gender)
                 setSession(docSnap.data().session)
+                setLevel(docSnap.data().level)
                 setData(docSnap.data())
             } else {
                 console.log("Document data:", docSnap.data());
@@ -66,6 +145,39 @@ const Transcript = () => {
     }, [id])
 
 
+    // data.map((e)=>(console.log(e[0].FACULTY)))
+    const [newLevel, setNewLevel] = useState(100)
+    const [newSemester, setNewSemester] = useState('1st Semester')
+     
+
+    const [tableNo, setTableNo] = useState(1);
+    const [newtables, setNewTables] = useState([{ id: 1, name: "Table 1" }]);
+    const [Tables,setTables]=useState([])
+  
+    const createNewTable = () => {
+          setTables([...Tables,
+            <>
+           <Table/>
+            </>
+          ])
+
+
+    
+         
+          
+    };
+
+    const deleteTable=(i)=>{
+       setTables(Tables.filter((table)=>table!==i))
+    }
+
+
+
+
+
+
+
+    
 
     return (
         <div className=' mx-[2em] mt-3 mb-8 md:mx-[3em] '>
@@ -82,7 +194,7 @@ const Transcript = () => {
 
                         <>
                             <li><span className=' font-bold '>Name (Nom):</span>{name}</li>
-                            <li> <span className='font-bold'>College:</span>{college}</li>
+                            <li> <span className='font-bold'>Faculty:</span>{college}</li>
                             <li><span className='font-bold'>Matric No (No Matricule):</span>{matric}</li>
 
                         </>
@@ -99,8 +211,13 @@ const Transcript = () => {
 
                     <ul>
 
-                        <li><span className='font-bold'>Department (Departement):</span>{department}</li>
-                        <li><span className='font-bold'>Gender:</span>{gender}</li>
+                    <label htmlFor="" >select your Department: </label>
+                            <select onChange={(e)=>setDepartment(e.target.value)} value={department}  className='border-[1.9px] p-[.9px] border-red-900' name="" id="">
+                                <option >none</option>
+                                <option >Health Information Management</option>
+                                <option >Accounting</option>
+                                <option >ams</option>
+                            </select>
 
                     </ul>
 
@@ -114,156 +231,48 @@ const Transcript = () => {
                 {/* TITLE  */}
                 <div className=' text-center my-11 '>
                     <h1 className='font-bold underline'>OFFICIAL TRANSCRIPT OF ACADEMIC RECORDS</h1>
-                    <p className=' font-[fantasy]'>(Transcript Des Note Academiques)</p>
+                    <p className=' font-[fantasy]'>(Transcript Des Note Acaddemiques)</p>
                 </div>
+                  
+                    {/* <TableSelect
+                    setFaculty={setFaculty}
+                    faculty={faculty}
+                    SetSemester={SetSemester}
+                    semester={semester}
+                    /> */}
+                            {/* {tableType === "Health Information Management 1" ? <Table level={level} tableType={tableType} /> :
+                             tableType === "Health Information Management 2" ? <Table/> :
+                             tableType === "Health Information Management 3" ? <Table/> :
+                             
+                             null} */}
+                           
+                                 
+                            {/* <Table department={department} setDepartment={setDepartment} semester={semester}   /> */}
+                      
+                            <button onClick={createNewTable}>Create New Table</button>
+                            
+                         
+                            
+           {Tables.map((table,i)=>(
+            <>
+            <div className='my-[5em]'>
+                  {table}
+            <button className='bg-red-700 p-4 mx-7  rounded-md text-white' onClick={()=>(
+            deleteTable(table))}>Delete Table</button>
+                             
+            </div>
+           
+            </>
+            
+           ))}
+                            
 
-
-                <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-                    <div className="inline-block min-w-full shadow rounded-lg ">
-                        <table className="min-w-full leading-normal">
-                            <thead>
-                                <tr className='text-center'>
-                                    <th
-                                        className=" px-4 py-3 border-b-2 border-gray-200 bg-[black] text-white text-left text-xs font-semibold  uppercase tracking-wider">
-                                        S/N
-                                    </th>
-                                    <th
-                                        className="px-4 py-3 border-b-2 border-gray-200 bg-[black] text-white text-left text-xs font-semibold  uppercase tracking-wider">
-                                        COURSE CODE
-                                    </th>
-                                    <th
-                                        className="px-4 py-3 border-b-2 border-gray-200 bg-[black] text-white text-left text-xs font-semibold  uppercase tracking-wider">
-                                        COURSE TITLE
-                                    </th>
-                                    <th
-                                        className="px-4 py-3 border-b-2 border-gray-200 bg-[black] text-white text-left text-xs font-semibold  uppercase tracking-wider">
-                                        CREDIT TITLE
-                                    </th>
-                                    <th
-                                        className="px-4 py-3 border-b-2 border-gray-200 bg-[black] text-white text-left text-xs font-semibold  uppercase tracking-wider">
-                                        GRADE (100)
-                                    </th>
-                                    <th
-                                        className="px-4 py-3 border-b-2 border-gray-200 bg-[black] text-white text-left text-xs font-semibold  uppercase tracking-wider">
-                                        LETTER GRADE
-                                    </th>
-                                    <th
-                                        className="px-4 py-3 border-b-2 border-gray-200 bg-[black] text-white text-left text-xs font-semibold  uppercase tracking-wider">
-                                        GP
-                                    </th>
-                                    <th
-                                        className="px-4 py-3 border-b-2 border-gray-200 bg-[black] text-white text-left text-xs font-semibold  uppercase tracking-wider">
-                                        CP
-                                    </th>
-                                    <th
-                                        className="px-4 py-3 border-b-2 border-gray-200 bg-[black] text-white text-left text-xs font-semibold  uppercase tracking-wider">
-                                        GRADE POINT AVERAGE
-                                    </th>
-
-
-                                </tr>
-                            </thead>
-                            <tbody className=' '>
-                                <tr className=' '>
-                                    <td className=" w-2  border-b border bg-white text-sm">
-                                        <div className="w-full flex items-center">
-
-                                            <div className="w-full text-center">
-                                                1
-
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td className=" w-9  border bg-white text-sm">
-                                        <div className=" flex items-center">
-
-                                            <div className="w-full]">
-                                                <input className="text-gray-900 w-full  whitespace-no-wrap  p-2" placeholder="e.g GNS112" />
-
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td className="w-9  border-b border bg-white text-sm">
-                                        <div className="w-full flex items-center">
-
-                                            <div className="w-full">
-                                                <input className="text-gray-900 w-full whitespace-no-wrap  p-2" placeholder="e.g  Philosophy : Logic Reasoning" />
-
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td className=" w-2  border-b border  bg-white text-sm">
-                                        <div className="w-full flex items-center">
-
-                                            <div className="w-full">
-                                                <input className="text-gray-900 w-full  whitespace-no-wrap  p-2" placeholder="e.g 2" />
-
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td className="  border-b border w-14 bg-white text-sm">
-                                        <div className="w-full flex items-center">
-
-                                            <div className="">
-                                                <input className="text-gray-900 w-full  whitespace-no-wrap  p-2" placeholder="e.g 75" />
-
-
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td className="  border-b border w-14 bg-white text-sm">
-                                        <div className="flex items-center">
-
-                                            <div className="">
-                                                <input className="text-gray-900 w-full  whitespace-no-wrap  p-2" placeholder="e.g B" />
-
-
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td className="  border-b border w-14 bg-white text-sm">
-                                        <div className="flex items-center">
-
-                                            <div className="">
-                                                <input className="text-gray-900 w-full  whitespace-no-wrap  p-2" placeholder="e.g  4" />
-
-
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td className="  border-b border w-14 bg-white text-sm">
-                                        <div className="flex items-center">
-
-                                            <div className="">
-                                                <input className="text-gray-900 w-full whitespace-no-wrap p-2" placeholder="e.g  12" />
-
-
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td className=" w-2 border-b border  bg-white text-sm">
-                                        <div className="flex items-center">
-
-                                            <div className="">
-                                                <input className="text-gray-900 w-full whitespace-no-wrap  p-2" placeholder="e.g  3.96" />
-
-
-                                            </div>
-                                        </div>
-                                    </td>
-
-                                </tr>
-
-
-                            </tbody>
-                        </table>
-
-                    </div>
-
-                </div>
-                <div className=' flex justify-center my-4'>
-                    <button className=' border  bg-[#2d85bb] text-[#f9f9f9] p-3 hover:bg-[#1a71a4]  rounded-md'> Add course</button>
-                </div>
+                                                             
+                            
+                   <div>
+                
+          
+                   </div>
 
             </section>
 

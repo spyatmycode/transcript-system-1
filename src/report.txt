@@ -1,0 +1,29 @@
+*********************************** REPORT **************************************
+
+## This institution has the following faculties
+
+1. SCIENCE AND TECHNOLOGY:
+		-HEALTH INFORMATION MANAGEMENT                          - complete
+		-COMPUTER SCIENCE                                       - complete
+
+
+2. POLITICAL AND SOCIAL SCIENCE:
+		-POLITICAL SCIENCE                                      - complete
+
+
+3. MANAGEMENT SCIENCE:
+
+		-ECONOMICS                                              - incomplete (100,200)
+		-ACCOUNTING                                             - complete
+		-CONFLICT RESOLUTION AND HOSPITALITY MANAGEMENT         - complete
+		-ACCOUNTING                                             - complete
+
+
+4. ARTS AND COMMUNICATION:
+		- MASS COMMUNICATION                                    - complete
+
+
+
+
+NOTE: - complete means all courses for the full 4 years were found and recorded.
+      - incomplete (missing years)
