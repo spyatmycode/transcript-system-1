@@ -6,7 +6,7 @@ import data from '../Data/Data'; // assuming the data is stored in a file named 
 import TableBody from './TableBody';
 import TableHead from './TableHead';
 
-function Table({department,setDepartment,semester}) {
+function Table({key,department,setDepartment,semester}) {
   const {level,setLevel}=useContext(AppContext)
   // console.log("ffffffff");
 
@@ -135,7 +135,7 @@ function Table({department,setDepartment,semester}) {
       <TableBody 
       department={department}
       setDepartment={setDepartment}
-      
+      key={key}
       semester={semester}
    
       tableData={tableData}
@@ -144,6 +144,7 @@ function Table({department,setDepartment,semester}) {
       calculateGP={calculateGP}
       calculateLetterGrade={calculateLetterGrade}
       />
+
     </table>
     </div>
     </div>

@@ -17,8 +17,8 @@ const data = [
                  {
                 COURSES:[
                   {
-                    CODE: 'FRN 401',
-                    COURSETITLE: 'Advanced French III',
+                    CODE: 'STA 102',
+                    COURSETITLE: 'introduction to Statistics',
                     UNIT: 2,
                   },
                   {

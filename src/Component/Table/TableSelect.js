@@ -18,7 +18,7 @@ const TableSelect = ({
         value={level}
         onChange={(e) => setLevel(e.target.value)}
       >
-        <option value={0}>none</option>
+        {/* <option value={0}>none</option> */}
         <option value={100}>100</option>
         <option value={200}>200</option>
         <option value={300}>300</option>
@@ -34,7 +34,7 @@ const TableSelect = ({
         value={semester}
         onChange={(e) => SetSemester(e.target.value)}
       >
-        <option value={0}>none</option>
+        {/* <option value={0}>none</option> */}
         <option value={"1 st Semester"}>1st Semester</option>
         <option value={"2 nd Semester"}>2nd Semester</option>
       </select>

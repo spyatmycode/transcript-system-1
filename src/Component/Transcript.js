@@ -15,9 +15,7 @@ import { AppContext, ContextProvider } from './ContextProvider/ContextProvider'
 
 const Transcript = () => {
     const {level,setLevel,semester,SetSemester}=useContext(AppContext)
-    console.log(1111111111111);
-    console.log(level==undefined || level=="" ? 100: level );
-    console.log(111111111111);
+
 
 //  HEADER INFORMATION
     const [name, setName] = useState('')
@@ -139,31 +137,28 @@ const navigate=useNavigate()
 
     const [tableNo, setTableNo] = useState(1);
     const [newtables, setNewTables] = useState([{ id: 1, name: "Table 1" }]);
+    const [Tables,setTables]=useState([])
   
     const createNewTable = () => {
-        SetSemester("")
-        setLevel("")
-        const newTable = {
-            id: tableId + 1,
-            name: `Table ${tableId + 1}`
-          };
-          setNewTables([...newtables, newTable]);
-          setTableNo(tableNo + 1);
+           
+           setTables([...Tables,
+            <>
+             <TableSelect/>
+           <Table/>
+            </>
+          ])
+
+
+    
          
           
     };
-  
-    const tables = [];
-  
-    for (let i = 1; i <= tableNo; i++) {
-      tables.push(
-        <table key={i} className='my-[4em]'>
-         <TableSelect  />
-          <Table />
-        </table>
-      );
-   
+
+    const deleteTable=(i)=>{
+       setTables(Tables.filter((table)=>table!==i))
     }
+
+
 
 
 
@@ -226,12 +221,12 @@ const navigate=useNavigate()
                     <p className=' font-[fantasy]'>(Transcript Des Note Acaddemiques)</p>
                 </div>
                   
-                    <TableSelect
+                    {/* <TableSelect
                     setFaculty={setFaculty}
                     faculty={faculty}
                     SetSemester={SetSemester}
                     semester={semester}
-                    />
+                    /> */}
                             {/* {tableType === "Health Information Management 1" ? <Table level={level} tableType={tableType} /> :
                              tableType === "Health Information Management 2" ? <Table/> :
                              tableType === "Health Information Management 3" ? <Table/> :
@@ -239,13 +234,24 @@ const navigate=useNavigate()
                              null} */}
                            
                                  
-                            <Table department={department} setDepartment={setDepartment} semester={semester}  />
+                            {/* <Table department={department} setDepartment={setDepartment} semester={semester}   /> */}
                       
                             <button onClick={createNewTable}>Create New Table</button>
-
-                            {tables}
                             
-
+                         
+                            
+           {Tables.map((table,i)=>(
+            <>
+            <div className='my-[5em]'>
+                  {table}
+            <button className='bg-red-700 p-4 mx-7  rounded-md text-white' onClick={()=>(
+            deleteTable(table))}>Delete Table</button>
+                             
+            </div>
+           
+            </>
+            
+           ))}
                             
 
                                                              

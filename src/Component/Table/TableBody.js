@@ -9,7 +9,7 @@ import TableSelect from './TableSelect';
 const TableBody = ({
     department,
     setDepartment,
-    // tableData,
+    key,
     scores,
     calculateGP,
     calculateLetterGrade,
@@ -53,7 +53,12 @@ const filteredData = tableData.filter((row) => {
     row.SEMESTER === semester
   );
 });
+  
 
+const deleteTable=(key)=>{
+  alert(key)
+tableData.filter((tableId)=> key===tableId)
+}
 
 
   return (
@@ -61,7 +66,7 @@ const filteredData = tableData.filter((row) => {
     {console.log(department)}
    
 
-    {tableData.map((row, indexd) => (
+    {tableData.map((row, indexed) => (
      <>
        {row[0].LEVELS[0][level===undefined || level==="" ? 100: level][0].SEMESTER[0][semester===undefined || semester===""? 1:
         semester==='1 st Semester'?1:
@@ -172,7 +177,6 @@ const filteredData = tableData.filter((row) => {
 </td>
 
 
-
 {/*<td>{row.semester}</td>
 <td>{row.total_unit}</td> */}
 </tr>
@@ -188,10 +192,12 @@ const filteredData = tableData.filter((row) => {
         semester==='1 st Semester'?1:
         semester==='1 st Semester'?2:
         1][0].COURSES)}</button>
+        
       {/* <button> Cumilative GradePoint: {gradePoint}</button> */}
   
-
+     
       </>
+  
     ))}
 
 
