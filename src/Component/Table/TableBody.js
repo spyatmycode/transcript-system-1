@@ -41,7 +41,7 @@ const calculateCGPA = (scores, courses) => {
       totalUnits += units;
     }
   }
-  
+  // console.log(total);
   const cgpa = totalGradePoints / totalUnits;
   console.log(cgpa);
   
@@ -112,7 +112,7 @@ const calculateCGPA = (scores, courses) => {
           <input
               type="number"
               name={`score${i + 1}`}
-              value={Number(scores[`.score${i + 1}`])}
+              value={scores[`.score${i + 1}`]}
               onChange={handleChange}
               className="w-full px-2 py-1 text-gray-700 bg-gray-100 rounded"
               min={4}
