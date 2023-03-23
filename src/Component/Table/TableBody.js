@@ -41,7 +41,7 @@ const calculateCGPA = (scores, courses) => {
       totalUnits += units;
     }
   }
-  // console.log(total);
+  
   const cgpa = totalGradePoints / totalUnits;
   console.log(cgpa);
   
@@ -176,10 +176,10 @@ const calculateCGPA = (scores, courses) => {
        ))}
 
      
-    <div>Cumilative GradePoint:  { console.log( Number(calculateCGPA(scores, row[0].LEVELS[0][level===undefined || level==="" ? 100: level][0].SEMESTER[0][semester===undefined || semester===""? 1:
+    <div>Cumilative GradePoint:  { Number(calculateCGPA(scores, row[0].LEVELS[0][level===undefined || level==="" ? 100: level][0].SEMESTER[0][semester===undefined || semester===""? 1:
         semester==='1 st Semester'?1:
         semester==='1 st Semester'?2:
-        1][0].COURSES)) ) }  </div>
+        1][0].COURSES))  }  </div>
     {/* <div>Cumilative GradePoint:  {} </div> */}
         
       {/* <button> Cumilative GradePoint: {gradePoint}</button> */}
