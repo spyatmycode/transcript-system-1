@@ -11,6 +11,7 @@ function Table({key,department,setDepartment}) {
   // const {level,setLevel}=useContext(AppContext)
   const [level, setLevel] = useState(100);
   const [semester, setSemester] = useState('1 st Semester');
+console.log(department);
 
   // console.log("ffffffff");
 
@@ -127,18 +128,20 @@ function Table({key,department,setDepartment}) {
       };
 
    console.log(semester);
+   console.log(department);
+   console.log('xcxcxc');
    console.log(level);
     
   return (
     <>
-    <div className="-mx-4  sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+    <div  className="-mx-4  sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
               
               
                <div className="inline-block min-w-full shadow rounded-lg ">
-               <TableSelect level={level} setLevel={setLevel} semester={semester} setSemester={setSemester} />
+               <TableSelect level={level} setLevel={setLevel} semester={semester} department={department} setDepartment={setDepartment} setSemester={setSemester} />
 
     <table className="min-w-full leading-normal ">
-  
+ 
       <TableHead/>
       <TableBody 
 

@@ -98,6 +98,20 @@ const Form = () => {
               <input value={session} onChange={(e) => setSession(e.target.value)} type="text" className="form-control  border border-[#7e7d7d] rounded-sm p-4" required id="exampleFormControlInput1" placeholder="e.g 2020/2021" />
 
             </div>
+            <div className='flex flex-col'>
+              <label className="form-label"></label>
+              <ul>
+
+                    <label className="form-label"  >select your Department: </label>
+                            <select onChange={(e)=>setDepartment(Number(e.target.value))} value={Number(department)}  className='border-[1.9px] p-[.9px] border-red-900' name="" id="">
+                           
+                                <option  value={0}>Health Information Management</option>
+                                <option  value={1}>Accounting</option>
+                                <option value={2} >CONFLICT RESOLUTION AND HOSPITALITY MANAGEMENT</option>
+                            </select>
+
+                    </ul>
+            </div>
             {/* <div className='flex flex-col'>
               <label className="form-label">Level</label>
               <input value={level} onChange={(e) => setLevel(e.target.value)} type="text" className="form-control  border border-[#7e7d7d] rounded-sm p-4" required id="exampleFormControlInput1" placeholder="e.g 300 level" />
