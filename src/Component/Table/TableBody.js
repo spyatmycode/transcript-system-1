@@ -7,17 +7,15 @@ import Table from '../Table1';
 import TableHead from './TableHead';
 import TableSelect from './TableSelect';
 const TableBody = ({
-    department,
-    setDepartment,
     key,
     scores,
     calculateGP,
     calculateLetterGrade,
     handleChange,
-    level,setLevel,semester,setSemester
+    level,setLevel,semester,setSemester,department,
+    setDepartment
 }) => {
 
-  // const {level,setLevel,semester,setSemester}=useContext(AppContext)
 
 
   const [gp, setGp] = useState({scores});
@@ -44,22 +42,24 @@ const calculateCGPA = (scores, courses) => {
     }
   }
   
-  const cgpa = totalGradePoints / totalUnits;
-  console.log(cgpa);
-  
+  const cgpa = totalUnits >0 ? totalGradePoints / totalUnits: 0;
+  console.log("CGP :" ,cgpa);
+  // setGPA([...GPA],cgpa)
+  // console.log(GPA);
   return  cgpa;
+   
 }
+
 
 
 
   return (
     <tbody>
-    {console.log(department)}
    
 
     {tableData.map((row, indexed) => (
      <>
-       {row[0].LEVELS[0][level===undefined || level==="" ? 100: level][0].SEMESTER[0][semester===undefined || semester===""? 1:
+       {row[department==="" || department=== undefined ? 0 : department].LEVELS[0][level===undefined || level==="" ? 100: level][0].SEMESTER[0][semester===undefined || semester===""? 1:
         semester==='1 st Semester'?1:
         semester==='2 nd Semester'?2:
         1][0].COURSES.map((course,i)=>(
@@ -74,6 +74,7 @@ const calculateCGPA = (scores, courses) => {
       <div className="w-full text-center">
       {/* SERIAL NUMBER */}
       {i +1}
+      {department}
       </div>
   </div>
 </td>
@@ -182,7 +183,12 @@ const calculateCGPA = (scores, courses) => {
         semester==='1 st Semester'?1:
         semester==='1 st Semester'?2:
         1][0].COURSES))  }  </div>
-    {/* <div>Cumilative GradePoint:  {} </div> */}
+    {/* {setGPA([...GPA, Number(calculateCGPA(scores, row[0].LEVELS[0][level===undefined || level==="" ? 100: level][0].SEMESTER[0][semester===undefined || semester===""? 1:
+        semester==='1 st Semester'?1:
+        semester==='1 st Semester'?2:
+        1][0].COURSES)) ])}
+
+        {GPA} */}
         
       {/* <button> Cumilative GradePoint: {gradePoint}</button> */}
   

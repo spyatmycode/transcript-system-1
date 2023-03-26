@@ -34,7 +34,7 @@ const Transcript = () => {
     const [name, setName] = useState('')
     const [matric, setMatric] = useState('')
     const [college, setCollege] = useState('')
-    const [department, setDepartment] = useState('')
+    const [department, setDepartment] = useState(0)
     const [gender, setGender] = useState('')
     const [session, setSession] = useState('')
   
@@ -160,13 +160,11 @@ const navigate=useNavigate()
            <Table/>
             </>
           ])
-
-
-    
-         
           
     };
 
+
+    
     const deleteTable=(i)=>{
        setTables(Tables.filter((table)=>table!==i))
     }
@@ -209,17 +207,17 @@ const navigate=useNavigate()
                 </div>
                 <div>
 
-                    <ul>
+                    {/* <ul>
 
                     <label htmlFor="" >select your Department: </label>
-                            <select onChange={(e)=>setDepartment(e.target.value)} value={department}  className='border-[1.9px] p-[.9px] border-red-900' name="" id="">
-                                <option >none</option>
-                                <option >Health Information Management</option>
-                                <option >Accounting</option>
-                                <option >ams</option>
+                            <select onChange={(e)=>setDepartment(Number(e.target.value))} value={Number(department)}  className='border-[1.9px] p-[.9px] border-red-900' name="" id="">
+                                <option value={0} >none</option>
+                                <option  value={0}>Health Information Management</option>
+                                <option  value={1}>Accounting</option>
+                                <option value={2} >CONFLICT RESOLUTION AND HOSPITALITY MANAGEMENT</option>
                             </select>
 
-                    </ul>
+                    </ul> */}
 
                 </div>
 
