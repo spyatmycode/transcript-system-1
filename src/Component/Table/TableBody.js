@@ -12,11 +12,9 @@ const TableBody = ({
     calculateGP,
     calculateLetterGrade,
     handleChange,
-    level,setLevel,semester,setSemester,department,
-    setDepartment
+    level,setLevel,semester,setSemester,
 }) => {
-
-
+  const{department,setDepartment}=useContext(AppContext)
 
   const [gp, setGp] = useState({scores});
   const {GPA,setGPA}=useContext(AppContext)
@@ -72,7 +70,7 @@ const calculateCGPA = (scores, courses) => {
       <div className="w-full text-center">
       {/* SERIAL NUMBER */}
       {i +1}
-      {department}
+  
       </div>
   </div>
 </td>

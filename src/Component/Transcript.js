@@ -16,7 +16,7 @@ import { AppContext, ContextProvider } from './ContextProvider/ContextProvider'
 const Transcript = () => {
     // const {level,setLevel,semester,SetSemester}=useContext(AppContext)
  
-
+    const {department,setDepartment}=useContext(AppContext)
     // const { level, setLevel, semester, setSemester } = useContext(AppContext)
     const [level,setLevel]=useState(100)
     const[semester,SetSemester]=useState('')
@@ -34,7 +34,6 @@ const Transcript = () => {
     const [name, setName] = useState('')
     const [matric, setMatric] = useState('')
     const [college, setCollege] = useState('')
-    const [department, setDepartment] = useState(0)
     const [gender, setGender] = useState('')
     const [session, setSession] = useState('')
   
@@ -257,6 +256,7 @@ const navigate=useNavigate()
                   {table}
             <button className='bg-red-700 p-4 mx-7  rounded-md text-white' onClick={()=>(
             deleteTable(table))}>Delete Table</button>
+          
                              
             </div>
            
