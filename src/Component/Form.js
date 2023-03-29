@@ -4,12 +4,14 @@ import { useNavigate } from 'react-router-dom'
 import { addDoc, collection } from "firebase/firestore"
 import { db } from '../firebase/firebaseConfig'
 import { uid } from 'uid'
+import { useContext } from 'react'
+import { AppContext } from './ContextProvider/ContextProvider'
 
 const Form = () => {
   const [name, setName] = useState('')
   const [matric, setMatric] = useState('')
   const [college, setCollege] = useState('')
-  const [department, setDepartment] = useState('')
+  const{department,setDepartment}=useContext(AppContext)
   const [gender, setGender] = useState('')
   const [session, setSession] = useState('')
   const [level, setLevel] = useState('')

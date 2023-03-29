@@ -11,11 +11,11 @@ const ContextProvider = (props) => { // pass 'props' as an argument
 
 
   // const [level, setLevel] = useState(100);
-  // // const [department, setDepartment] = useState(0);
+  const [department, setDepartment] = useState(0);
   // const [semester, setSemester] = useState('1 st Semester');
   return (
     <div>
-      <AppContext.Provider value={{ GPA, setGPA,}}>
+      <AppContext.Provider value={{ GPA, setGPA, department, setDepartment}}>
         {props.children}
       </AppContext.Provider>
     </div>

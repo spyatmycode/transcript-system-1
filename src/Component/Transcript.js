@@ -15,7 +15,7 @@ import { AppContext, ContextProvider } from './ContextProvider/ContextProvider'
 
 const Transcript = () => {
     // const {level,setLevel,semester,SetSemester}=useContext(AppContext)
-
+ 
 
     // const { level, setLevel, semester, setSemester } = useContext(AppContext)
     const [level, setLevel] = useState(100)
@@ -34,7 +34,6 @@ const Transcript = () => {
     const [name, setName] = useState('')
     const [matric, setMatric] = useState('')
     const [college, setCollege] = useState('')
-    const [department, setDepartment] = useState(0)
     const [gender, setGender] = useState('')
     const [session, setSession] = useState('')
 
@@ -238,27 +237,27 @@ const Transcript = () => {
                              tableType === "Health Information Management 3" ? <Table/> :
                              
                              null} */}
-
-
-                {/* <Table department={department} setDepartment={setDepartment} semester={semester}   /> */}
-
-                <button onClick={createNewTable}>Create New Table</button>
-
-
-
-                {Tables.map((table, i) => (
-                    <>
-                        <div className='my-[5em]'>
-                            {table}
-                            <button className='bg-red-700 p-4 mx-7  rounded-md text-white' onClick={() => (
-                                deleteTable(table))}>Delete Table</button>
-
-                        </div>
-
-                    </>
-
-                ))}
-
+                           
+                                 
+                            {/* <Table department={department} setDepartment={setDepartment} semester={semester}   /> */}
+                      
+                            <button onClick={createNewTable}>Create New Table</button>
+                            
+                         
+                            
+           {Tables.map((table,i)=>(
+            <>
+            <div className='my-[5em]'>
+                  {table}
+            <button className='bg-red-700 p-4 mx-7  rounded-md text-white' onClick={()=>(
+            deleteTable(table))}>Delete Table</button>
+                             
+            </div>
+           
+            </>
+            
+           ))}
+                            
 
 
 
