@@ -127,10 +127,7 @@ console.log(department);
         calculateAndUpdateGPA();
       };
 
-   console.log(semester);
-   console.log(department);
-   console.log('xcxcxc');
-   console.log(level);
+   
     
   return (
     <>
