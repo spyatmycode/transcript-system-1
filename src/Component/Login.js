@@ -30,6 +30,7 @@ const Login = () => {
                 const user = userCredential.user;
                 console.log(userCredential.user);
                 console.log(user);
+                localStorage.setItem("isAdminLogged", true)
                 navigate("/") //After successful login the user is taken to the admin dashboard
 
                 alert("Sign In successful !")

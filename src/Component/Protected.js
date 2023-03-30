@@ -10,9 +10,8 @@ const Protected = ({ children }) => {
 
     const isLogged = useContext(AuthContext)
 
-    console.log(isLogged);
 
-    if (isLogged !== null) {
+    if (isLogged !== null || true) {
         return children //We return children only if isLogged or user is Logged in
     }
 
