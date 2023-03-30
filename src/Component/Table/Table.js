@@ -20,10 +20,7 @@ console.log(department);
   // console.log(department);
  
   // console.log("ffffffff");
-    const tableData = data.map((item, index) => ({
-        ...item,
-        serial: index + 1,
-      }));
+   
       const [gpa, setGpa] = useState(0);
 
       const [scores, setScores] = useState({
@@ -149,7 +146,7 @@ console.log(department);
       level={level}
       setLevel={setLevel}
       setSemester={setSemester}
-      tableData={tableData}
+    
       scores={scores}
       handleChange={handleChange}
       calculateGP={calculateGP}

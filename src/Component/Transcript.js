@@ -68,6 +68,8 @@ const Transcript = () => {
     //semester state
 
 
+  
+
 
     if (department === "Health Information Management" && semester === "1 st Semester" && level === "100") {
         //    setTableType("Health Information Management 1.1")
