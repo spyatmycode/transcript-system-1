@@ -16,36 +16,36 @@ import { AppContext, ContextProvider } from './ContextProvider/ContextProvider'
 const Transcript = () => {
     // const {level,setLevel,semester,SetSemester}=useContext(AppContext)
  
-    const {department,setDepartment}=useContext(AppContext)
+
     // const { level, setLevel, semester, setSemester } = useContext(AppContext)
-    const [level,setLevel]=useState(100)
-    const[semester,SetSemester]=useState('')
-  const handleLevelChange = (e) => {
-    setLevel(Number(e.target.value))
-  }
+    const [level, setLevel] = useState(100)
+    const [semester, SetSemester] = useState('')
+    const handleLevelChange = (e) => {
+        setLevel(Number(e.target.value))
+    }
 
-  const handleSemesterChange = (e) => {
-    SetSemester(e.target.value)
-  }
+    const handleSemesterChange = (e) => {
+        SetSemester(e.target.value)
+    }
 
 
 
-//  HEADER INFORMATION
+    //  HEADER INFORMATION
     const [name, setName] = useState('')
     const [matric, setMatric] = useState('')
     const [college, setCollege] = useState('')
     const [gender, setGender] = useState('')
     const [session, setSession] = useState('')
-  
+
     const [data, setData] = useState([])
     // const [Userinfo, setUserinfo] = useState([])
     const [students, setStudents] = useState([])
-  
-const navigate=useNavigate()
 
-   
+    const navigate = useNavigate()
 
-   
+
+
+
 
     const [courseCode, setCourseCode] = useState('')
     const [tableId, setTableId] = useState(1)
@@ -58,37 +58,32 @@ const navigate=useNavigate()
     const [gpa, setGpa] = useState('')
     const [save, setsave] = useState(false)
     const [addNewCourse, setAddNewCourse] = useState(false)
-    const[tableType,setTableType]=useState("")
+    const [tableType, setTableType] = useState("")
 
-    
 
-   //Faculty states
-   const [faculty,setFaculty]=useState("")
 
-   //semester state
- 
+    //Faculty states
+    const [faculty, setFaculty] = useState("")
 
+    //semester state
 
 
   
 
 
- console.log(faculty);
- console.log(semester);
-
-   if(department==="Health Information Management" && semester==="1 st Semester" && level==="100" ){
-//    setTableType("Health Information Management 1.1")
-   console.log("Health Information Management 1.1")
-   }
-   if(department==="Health Information Management" && semester==="2 nd Semester" && level==="100" ){
-//    setTableType("Health Information Management 1.2")
-   console.log("Health Information Management 1.2")
-   }
+    if (department === "Health Information Management" && semester === "1 st Semester" && level === "100") {
+        //    setTableType("Health Information Management 1.1")
+        console.log("Health Information Management 1.1")
+    }
+    if (department === "Health Information Management" && semester === "2 nd Semester" && level === "100") {
+        //    setTableType("Health Information Management 1.2")
+        console.log("Health Information Management 1.2")
+    }
 
 
-    const handleSave=(e)=>{
-    e.preventDefault()
-    setsave(true)
+    const handleSave = (e) => {
+        e.preventDefault()
+        setsave(true)
     }
 
 
@@ -100,7 +95,7 @@ const navigate=useNavigate()
 
     const { id } = useParams()
     const transcriptHeaderCollectionRef = collection(db, "Transcript-header-info")
-    console.log(transcriptHeaderCollectionRef);
+
 
     useEffect(() => {
         const HeaderTranscriptInfo = async () => {
@@ -108,7 +103,7 @@ const navigate=useNavigate()
 
             const UserData = await getDocs(transcriptHeaderCollectionRef)
 
-            console.log(UserData);
+
 
             setStudents(UserData)
 
@@ -120,13 +115,13 @@ const navigate=useNavigate()
 
 
             const docRef = doc(db, "Transcript-header-info", id);
-            console.log(docRef);
+
 
             const docSnap = await getDoc(docRef);
 
             if (docSnap.exists()) {
                 //testing if document exist
-                console.log("Document data:", docSnap.data().college);
+
 
                 setName(docSnap.data().name)
                 setMatric(docSnap.data().matric)
@@ -149,25 +144,25 @@ const navigate=useNavigate()
     // data.map((e)=>(console.log(e[0].FACULTY)))
     const [newLevel, setNewLevel] = useState(100)
     const [newSemester, setNewSemester] = useState('1st Semester')
-     
+
 
     const [tableNo, setTableNo] = useState(1);
     const [newtables, setNewTables] = useState([{ id: 1, name: "Table 1" }]);
-    const [Tables,setTables]=useState([])
-  
+    const [Tables, setTables] = useState([])
+
     const createNewTable = () => {
-          setTables([...Tables,
-            <>
-           <Table/>
-            </>
-          ])
-          
+        setTables([...Tables,
+        <>
+            <Table />
+        </>
+        ])
+
     };
 
 
-    
-    const deleteTable=(i)=>{
-       setTables(Tables.filter((table)=>table!==i))
+
+    const deleteTable = (i) => {
+        setTables(Tables.filter((table) => table !== i))
     }
 
 
@@ -176,7 +171,7 @@ const navigate=useNavigate()
 
 
 
-    
+
 
     return (
         <div className=' mx-[2em] mt-3 mb-8 md:mx-[3em] '>
@@ -232,14 +227,14 @@ const navigate=useNavigate()
                     <h1 className='font-bold underline'>OFFICIAL TRANSCRIPT OF ACADEMIC RECORDS</h1>
                     <p className=' font-[fantasy]'>(Transcript Des Note Acaddemiques)</p>
                 </div>
-                  
-                    {/* <TableSelect
+
+                {/* <TableSelect
                     setFaculty={setFaculty}
                     faculty={faculty}
                     SetSemester={SetSemester}
                     semester={semester}
                     /> */}
-                            {/* {tableType === "Health Information Management 1" ? <Table level={level} tableType={tableType} /> :
+                {/* {tableType === "Health Information Management 1" ? <Table level={level} tableType={tableType} /> :
                              tableType === "Health Information Management 2" ? <Table/> :
                              tableType === "Health Information Management 3" ? <Table/> :
                              
@@ -258,7 +253,6 @@ const navigate=useNavigate()
                   {table}
             <button className='bg-red-700 p-4 mx-7  rounded-md text-white' onClick={()=>(
             deleteTable(table))}>Delete Table</button>
-          
                              
             </div>
            
@@ -267,12 +261,12 @@ const navigate=useNavigate()
            ))}
                             
 
-                                                             
-                            
-                   <div>
-                
-          
-                   </div>
+
+
+                <div>
+
+
+                </div>
 
             </section>
 

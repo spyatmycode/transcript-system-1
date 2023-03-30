@@ -20,6 +20,8 @@ const TableBody = ({
   const {GPA,setGPA}=useContext(AppContext)
   const [gradePoint,setGradePoint]=useState([])
   console.log(gradePoint);
+
+  
   
   
 const calculateCGPA = (scores, courses) => {

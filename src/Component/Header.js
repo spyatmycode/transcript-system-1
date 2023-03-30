@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from "../Assets/logo.jpg"
-import { Outlet, useNavigate, redirect } from 'react-router-dom'
+import { Outlet, useNavigate, redirect, useLocation } from 'react-router-dom'
 import { auth } from '../firebase/firebaseConfig';
 import { signOut } from "firebase/auth";
 import AuthContext from './Auth/AuthContext'
@@ -9,9 +9,11 @@ import { useContext } from 'react';
 
 const Header = () => {
 
+
+
   const isLogged = useContext(AuthContext)
 
-  console.log(isLogged);
+  
 
 
 

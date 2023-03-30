@@ -5,15 +5,18 @@ import Header from './Component/Header';
 import Transcript from './Component/Transcript';
 import Admin from './Component/Admin';
 import Protected from './Component/Protected';
-import { Routes, BrowserRouter, Route } from 'react-router-dom';
+import { Routes, BrowserRouter, Route, useLocation } from 'react-router-dom';
 import { AuthProvider } from './Component/Auth/AuthProvider';
 import LoginProtect from './Component/LoginProtect'
 import { ContextProvider } from './Component/ContextProvider/ContextProvider';
+import { useEffect } from 'react';
 
 
 function App() {
 
-  // localStorage.setItem("isLogged", true)
+  
+
+
 
 
 
