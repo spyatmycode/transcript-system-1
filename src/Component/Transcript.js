@@ -70,6 +70,8 @@ const navigate=useNavigate()
 
 
 
+  
+
 
  console.log(faculty);
  console.log(semester);

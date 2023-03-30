@@ -48,10 +48,15 @@ const calculateCGPA = (scores, courses) => {
 
 
 
+console.log(tableData.map((data)=>{
+  const dept=0
+ return  data[dept]
+}));
+
 
   return (
     <tbody>
-   
+     {department}
 
     {tableData.map((row, indexed) => (
      <>
@@ -59,6 +64,7 @@ const calculateCGPA = (scores, courses) => {
         semester==='1 st Semester'?1:
         semester==='2 nd Semester'?2:
         1][0].COURSES.map((course,i)=>(
+      
         
 <>
 <tr key={i}>
