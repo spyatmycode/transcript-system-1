@@ -8,18 +8,12 @@ import TableHead from './TableHead';
 import TableSelect from './TableSelect';
 
 function Table({key,department,setDepartment}) {
-  // const {level,setLevel}=useContext(AppContext)
+
   const [level, setLevel] = useState(100);
   const [semester, setSemester] = useState('1 st Semester');
 console.log(department);
 
-  // console.log("ffffffff");
 
-  // console.log(level);
-  // console.log(semester);
-  // console.log(department);
- 
-  // console.log("ffffffff");
    
       const [gpa, setGpa] = useState(0);
 
@@ -37,14 +31,7 @@ console.log(department);
       
    
       
-      // const calculateGradePoint=()=>{
-      //   gp.scores
-      // }
-      // calculateGradePoint()
-
-      // console.log(gp);
-   
-
+     {/* ====================== FUNCTION FOR THE LETTER GRADE  [ e.g A,B,C  ]===============================  */}
 
       const calculateLetterGrade = (score) => {
         if (score >= 70) {
@@ -63,13 +50,9 @@ console.log(department);
        
       };
 
-    //   calculatePercentage(100)
+    {/* ====================== FUNCTION TO CALCULATE THE GRADE POINT ===============================  */}
       
       const calculateGP = (score) => {
-        // const totalScore = scores.reduce((acc, cur) => acc + parseInt(cur), 0);
-        // const averageScore = totalScore / scores.length;
-        // console.log(averageScore);
-        // let gpa;
         if (score >= 70) {
         return 5.0;
         } else if (score >= 60) {
@@ -83,7 +66,6 @@ console.log(department);
         } else {
           return 0.0;
         }
-        // return gpa;
       };
 
       const calculateAndUpdateGPA = () => {
@@ -100,7 +82,7 @@ console.log(department);
         );
         setGpa(calculatedGPA);
       };
-      // console.log(scores);
+    
         
 
 
@@ -132,6 +114,7 @@ console.log(department);
               
               
                <div className="inline-block min-w-full shadow rounded-lg ">
+                {/* TABLE SELECTION TO CHOOSE YOUR LEVEL AND SEMESTER  PERTAINING TO YOUR DEPARTMENT OF YOUR CHOICE   */}
                <TableSelect level={level} setLevel={setLevel} semester={semester} department={department} setDepartment={setDepartment} setSemester={setSemester} />
 
     <table className="min-w-full leading-normal ">

@@ -3,27 +3,24 @@ import { useContext } from 'react';
 import { useState } from 'react';
 import { AppContext } from '../ContextProvider/ContextProvider';
 import tableData from '../Data/Data';
-import Table from '../Table1';
-import TableHead from './TableHead';
-import TableSelect from './TableSelect';
+
 const TableBody = ({
-    key,
+    
     scores,
     calculateGP,
     calculateLetterGrade,
     handleChange,
-    level,setLevel,semester,setSemester,
+    level,semester,
 }) => {
-  const{department,setDepartment}=useContext(AppContext)
+  const{department}=useContext(AppContext)
 
-  const [gp, setGp] = useState({scores});
   const {GPA,setGPA}=useContext(AppContext)
   const [gradePoint,setGradePoint]=useState([])
   console.log(gradePoint);
 
   
   
-  
+  {/* ====================== FUNCTION TO CALCULATE CUMILATIVE GRADE POINT (CGP)===============================  */}
 const calculateCGPA = (scores, courses) => {
   let totalGradePoints = 0;
   let totalUnits = 0;
@@ -41,26 +38,17 @@ const calculateCGPA = (scores, courses) => {
   }
   
   const cgpa = totalUnits >0 ? totalGradePoints / totalUnits: 0;
-  console.log("CGP :" ,cgpa);
-  // setGPA([...GPA],cgpa)
-  // console.log(GPA);
+
   return  cgpa;
    
 }
-
-
-
-console.log(tableData.map((data)=>{
-  const dept=0
- return  data[dept]
-}));
 
 
   return (
     <tbody>
      {department}
 
-    {tableData.map((row, indexed) => (
+    {tableData.map((row) => (
      <>
        {row[department==="" || department=== undefined ? 0 : department].LEVELS[0][level===undefined || level==="" ? 100: level][0].SEMESTER[0][semester===undefined || semester===""? 1:
         semester==='1 st Semester'?1:
@@ -116,6 +104,13 @@ console.log(tableData.map((data)=>{
   <div className="w-full  flex items-center">
 
       <div className="w-full  text-center">
+
+          {/* NOTE: 
+             ===========================================================================================================================
+               THIS INPUT IS TO COLLECT THE SCORES OF EACH TABLE ROW YOU HAVE ,AND THESE DATA ARE PASSED IN  TO THE IMPLEMENT THOSE 
+               CALCULATIONS
+             ===========================================================================================================================
+          */}
           <input
               type="number"
               name={`score${i + 1}`}
@@ -134,11 +129,13 @@ console.log(tableData.map((data)=>{
   <div className="w-fit flex items-center">
 
       <div className="w-full text-center">
+         {/* ====================== LETTER GRADE===============================  */}
       <p className='p-4 w-[100%] text-red-600 '>  
-      {/* {calculateLetterGrade(scores.score1)} */}
-      {console.log(scores[`score${i + 1}`],111)}
          {scores[`score${i + 1}`] ?
-         calculateLetterGrade(scores[`score${i + 1}`]) :" "   }</p>
+         calculateLetterGrade(scores[`score${i + 1}`]) :" "   }
+         </p>
+           {/* ====================== LETTER GRADE===============================  */}
+
       </div>
   </div>
 </td>
@@ -146,34 +143,33 @@ console.log(tableData.map((data)=>{
   <div className="w-full flex items-center">
 
       <div className=" w-fit text-center">
+
+          {/* ====================== GRADE POINT (GP)===============================  */}
       <p className='p-4 w-[100%] '>  {scores[`score${i + 1}`] ?
-         calculateGP(scores[`score${i + 1}`]) :" "   }</p>
+         calculateGP(scores[`score${i + 1}`]) :" "   }
+      </p>
+         {/* ======================END OF GRADE POINT (GP)===============================  */}
       </div>
   </div>
 </td>
 <td className="  border-b border bg-white px-4 py-3  text-left text-xs font-semibold  uppercase tracking-wider">
   <div className="w-full flex items-center">
-     {GPA}
+   
       <div className="w-full text-center">
-        {/* xxcxccxcx */}
-      <p className='p-4 w-[100%] '>  {scores[`score${i + 1}`] ?
-      <> 
-      
-      {course.UNIT * calculateGP(scores[`score${i + 1}`]) }
-      {/* {setGradePoint( course.UNIT * calculateGP(scores[`score${i + 1}`])  )} */}
-      {/* { console.log(gradePoint)} */}
-      {/* {setGradePoint([...gradePoint,{scores}])} */}
-      </>
-      :" "   }  </p>
 
+
+        {/* ======================TOTAL GRADE POINT===============================  */}
+      <p className='p-4 w-[100%] '>  {scores[`score${i + 1}`] ?
+       <> 
+      {course.UNIT * calculateGP(scores[`score${i + 1}`]) }
+      </>:" "   }  
+      </p>
+   {/* ====================== END OF TOTAL GRADE POINT===============================  */}
 
       </div>
   </div>
 </td>
 
-
-{/*<td>{row.semester}</td>
-<td>{row.total_unit}</td> */}
 </tr>
 
 </>
@@ -182,19 +178,14 @@ console.log(tableData.map((data)=>{
       
        ))}
 
-     
+      {/* ======================CUMILATIVE GRADE POINT (CGP)===============================  */}
     <div>Cumilative GradePoint:  { Number(calculateCGPA(scores, row[0].LEVELS[0][level===undefined || level==="" ? 100: level][0].SEMESTER[0][semester===undefined || semester===""? 1:
         semester==='1 st Semester'?1:
         semester==='1 st Semester'?2:
-        1][0].COURSES))  }  </div>
-    {/* {setGPA([...GPA, Number(calculateCGPA(scores, row[0].LEVELS[0][level===undefined || level==="" ? 100: level][0].SEMESTER[0][semester===undefined || semester===""? 1:
-        semester==='1 st Semester'?1:
-        semester==='1 st Semester'?2:
-        1][0].COURSES)) ])}
-
-        {GPA} */}
-        
-      {/* <button> Cumilative GradePoint: {gradePoint}</button> */}
+        1][0].COURSES)).toPrecision(3) } 
+     </div>
+      {/* ======================END OF CUMILATIVE GRADE POINT (CGP)===============================  */}
+   
   
      
       </>

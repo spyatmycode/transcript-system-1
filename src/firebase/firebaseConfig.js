@@ -13,7 +13,7 @@ const firebaseConfig = {
     measurementId: "G-87ZF0NMCDC"
 };
 
-<<<<<<< HEAD
+
 // const firebaseConfig = {
 //     apiKey: "AIzaSyDeJnF_pX2eq6vrHtlo3Dk4F6WrIMSHRxI",
 //     authDomain: "final-c6a63.firebaseapp.com",
@@ -22,7 +22,7 @@ const firebaseConfig = {
 //     messagingSenderId: "618261984698",
 //     appId: "1:618261984698:web:37001e558db11763405983"
 // }; 
-=======
+
 
 // KELVIN
 /* const firebaseConfig = {
@@ -33,8 +33,6 @@ const firebaseConfig = {
     messagingSenderId: "618261984698",
     appId: "1:618261984698:web:37001e558db11763405983"
 };  */
->>>>>>> f6798f01fbadabd4ba8d7e9948705ebefca8aa97
-
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
