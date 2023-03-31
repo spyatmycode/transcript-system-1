@@ -1,101 +1,52 @@
 import React, { useEffect, useState } from 'react'
 import { db } from '../firebase/firebaseConfig'
-import { collection, deleteDoc, doc, getDoc, getDocs } from 'firebase/firestore'
-import { useNavigate, useParams } from 'react-router-dom'
-import { uid } from "uid"
-import TableData from './TableData'
-// import Table from './Table'
-import Table1 from './Table1'
-import { data } from './Data/Data'
-import TableSelect from './Table/TableSelect'
+import { collection, doc, getDoc, getDocs } from 'firebase/firestore'
+import {  useParams } from 'react-router-dom'
+
 import Table from './Table/Table'
 import { useContext } from 'react'
-import { AppContext, ContextProvider } from './ContextProvider/ContextProvider'
+import { AppContext} from './ContextProvider/ContextProvider'
 
 
 const Transcript = () => {
-    // const {level,setLevel,semester,SetSemester}=useContext(AppContext)
  
-
-    // const { level, setLevel, semester, setSemester } = useContext(AppContext)
-    const [level, setLevel] = useState(100)
-    const [semester, SetSemester] = useState('')
-    const handleLevelChange = (e) => {
-        setLevel(Number(e.target.value))
-    }
-
-    const handleSemesterChange = (e) => {
-        SetSemester(e.target.value)
-    }
+    const {department,setDepartment}=useContext(AppContext)
+    const [level,setLevel]=useState(100)
+    const[semester,SetSemester]=useState('')
 
 
+  const handleLevelChange = (e) => {
+    setLevel(Number(e.target.value))
+  }
 
-    //  HEADER INFORMATION
+  const handleSemesterChange = (e) => {
+    SetSemester(e.target.value)
+  }
+
+
+
+//  HEADER INFORMATION
     const [name, setName] = useState('')
     const [matric, setMatric] = useState('')
     const [college, setCollege] = useState('')
     const [gender, setGender] = useState('')
     const [session, setSession] = useState('')
-
     const [data, setData] = useState([])
-    // const [Userinfo, setUserinfo] = useState([])
     const [students, setStudents] = useState([])
-
-    const navigate = useNavigate()
-
-
-
-
-
-    const [courseCode, setCourseCode] = useState('')
-    const [tableId, setTableId] = useState(1)
-    const [courseTitle, setCourseTitle] = useState('')
-    const [creditTitle, setCreditTitle] = useState('')
-    const [grade, setGrade] = useState('')
-    const [letterGrade, setLetterGrade] = useState('')
-    const [gp, setGp] = useState('')
-    const [cp, setCp] = useState('')
-    const [gpa, setGpa] = useState('')
     const [save, setsave] = useState(false)
-    const [addNewCourse, setAddNewCourse] = useState(false)
-    const [tableType, setTableType] = useState("")
 
 
+   
 
-    //Faculty states
-    const [faculty, setFaculty] = useState("")
-
-    //semester state
-
-
-  
-
-
-    if (department === "Health Information Management" && semester === "1 st Semester" && level === "100") {
-        //    setTableType("Health Information Management 1.1")
-        console.log("Health Information Management 1.1")
+    const handleSave=(e)=>{
+    e.preventDefault()
+    setsave(true)
     }
-    if (department === "Health Information Management" && semester === "2 nd Semester" && level === "100") {
-        //    setTableType("Health Information Management 1.2")
-        console.log("Health Information Management 1.2")
-    }
-
-
-    const handleSave = (e) => {
-        e.preventDefault()
-        setsave(true)
-    }
-
-
-
-
-
-    const usedId = uid()
 
 
     const { id } = useParams()
     const transcriptHeaderCollectionRef = collection(db, "Transcript-header-info")
-
+    console.log(transcriptHeaderCollectionRef);
 
     useEffect(() => {
         const HeaderTranscriptInfo = async () => {
@@ -103,7 +54,7 @@ const Transcript = () => {
 
             const UserData = await getDocs(transcriptHeaderCollectionRef)
 
-
+            console.log(UserData);
 
             setStudents(UserData)
 
@@ -115,13 +66,13 @@ const Transcript = () => {
 
 
             const docRef = doc(db, "Transcript-header-info", id);
-
+            console.log(docRef);
 
             const docSnap = await getDoc(docRef);
 
             if (docSnap.exists()) {
                 //testing if document exist
-
+                console.log("Document data:", docSnap.data().college);
 
                 setName(docSnap.data().name)
                 setMatric(docSnap.data().matric)
@@ -134,35 +85,28 @@ const Transcript = () => {
             } else {
                 console.log("Document data:", docSnap.data());
             }
-
         }
 
         HeaderTranscriptInfo()
     }, [id])
 
 
-    // data.map((e)=>(console.log(e[0].FACULTY)))
-    const [newLevel, setNewLevel] = useState(100)
-    const [newSemester, setNewSemester] = useState('1st Semester')
-
-
-    const [tableNo, setTableNo] = useState(1);
-    const [newtables, setNewTables] = useState([{ id: 1, name: "Table 1" }]);
-    const [Tables, setTables] = useState([])
-
+   
+    const [Tables,setTables]=useState([])
+  
     const createNewTable = () => {
-        setTables([...Tables,
-        <>
-            <Table />
-        </>
-        ])
-
+          setTables([...Tables,
+            <>
+           <Table/>
+            </>
+          ])
+          
     };
 
 
-
-    const deleteTable = (i) => {
-        setTables(Tables.filter((table) => table !== i))
+    
+    const deleteTable=(i)=>{
+       setTables(Tables.filter((table)=>table!==i))
     }
 
 
@@ -171,20 +115,16 @@ const Transcript = () => {
 
 
 
-
+    
 
     return (
         <div className=' mx-[2em] mt-3 mb-8 md:mx-[3em] '>
 
-
             <div className='flex flex-col md:flex-row gap-6 items-center justify-between'>
-
 
                 <div>
 
                     <ul>
-
-
 
                         <>
                             <li><span className=' font-bold '>Name (Nom):</span>{name}</li>
@@ -193,30 +133,12 @@ const Transcript = () => {
 
                         </>
 
-
-
-
-
-
                     </ul>
 
                 </div>
                 <div>
 
-                    {/* <ul>
-
-                    <label htmlFor="" >select your Department: </label>
-                            <select onChange={(e)=>setDepartment(Number(e.target.value))} value={Number(department)}  className='border-[1.9px] p-[.9px] border-red-900' name="" id="">
-                                <option value={0} >none</option>
-                                <option  value={0}>Health Information Management</option>
-                                <option  value={1}>Accounting</option>
-                                <option value={2} >CONFLICT RESOLUTION AND HOSPITALITY MANAGEMENT</option>
-                            </select>
-
-                    </ul> */}
-
                 </div>
-
 
             </div>
 
@@ -227,46 +149,26 @@ const Transcript = () => {
                     <h1 className='font-bold underline'>OFFICIAL TRANSCRIPT OF ACADEMIC RECORDS</h1>
                     <p className=' font-[fantasy]'>(Transcript Des Note Acaddemiques)</p>
                 </div>
-
-                {/* <TableSelect
-                    setFaculty={setFaculty}
-                    faculty={faculty}
-                    SetSemester={SetSemester}
-                    semester={semester}
-                    /> */}
-                {/* {tableType === "Health Information Management 1" ? <Table level={level} tableType={tableType} /> :
-                             tableType === "Health Information Management 2" ? <Table/> :
-                             tableType === "Health Information Management 3" ? <Table/> :
-                             
-                             null} */}
-                           
-                                 
-                            {/* <Table department={department} setDepartment={setDepartment} semester={semester}   /> */}
-                      
-                            <button onClick={createNewTable}>Create New Table</button>
-                            
-                         
-                            
-           {Tables.map((table,i)=>(
-            <>
-            <div className='my-[5em]'>
-                  {table}
-            <button className='bg-red-700 p-4 mx-7  rounded-md text-white' onClick={()=>(
-            deleteTable(table))}>Delete Table</button>
-                             
-            </div>
-           
-            </>
+                  
             
-           ))}
-                            
-
-
-
-                <div>
-
-
-                </div>
+                <button className='bg-[#7323be] text-white  py-2 px-4 rounded-md' onClick={createNewTable}>Create New Table</button>
+                        {/* Table */}
+                    {Tables.map((table,i)=>(
+                        <>
+                        <div className='my-[5em]'>
+                            {table}
+                        <button className='bg-red-700 p-4 mx-7  rounded-md text-white' onClick={()=>(
+                        deleteTable(table))}>Delete Table</button>
+                    
+                                        
+                        </div>
+                    
+                        </>
+                        
+                    ))}
+                    
+                   <div>
+                   </div>
 
             </section>
 
