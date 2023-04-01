@@ -5,7 +5,7 @@ import { AppContext } from '../ContextProvider/ContextProvider';
 import tableData from '../Data/Data';
 
 const TableBody = ({
-    
+    cgpa,
     scores,
     calculateGP,
     calculateLetterGrade,
@@ -14,20 +14,23 @@ const TableBody = ({
 }) => {
   const{department}=useContext(AppContext)
 
-  const {GPA,setGPA}=useContext(AppContext)
+  const {GPA,setGPA,CGP,SETCGP}=useContext(AppContext)
   const [gradePoint,setGradePoint]=useState([])
   console.log(gradePoint);
 
   
   
   {/* ====================== FUNCTION TO CALCULATE CUMILATIVE GRADE POINT (CGP)===============================  */}
-const calculateCGPA = (scores, courses) => {
+const calculateCGP = (scores, courses) => {
+  console.log(courses);
   let totalGradePoints = 0;
   let totalUnits = 0;
+ 
   
   for (let i = 0; i < courses.length; i++) {
     const course = courses[i];
     const score = scores[`score${i + 1}`];
+    console.log(course,"teuyyr");
     
     if (score) {
       const gradePoint = Number(calculateGP(score));
@@ -37,29 +40,55 @@ const calculateCGPA = (scores, courses) => {
     }
   }
   
-  const cgpa = totalUnits >0 ? totalGradePoints / totalUnits: 0;
-
-  return  cgpa;
+  const cgp = totalUnits >0 ? totalGradePoints / totalUnits: 0;
+   SETCGP(cgp)
+  return  cgp;
+  
    
 }
 
+  {/* ====================== FUNCTION TO HANDLE CHANGEs IN  CUMILATIVE GRADE POINT AVERAGE (CGPA)===============================  */}
+const handleChangeCGPA=()=>{
+
+}
+
+
+
+
+
+
+  {/* ====================== FUNCTION TO CALCULATE CUMILATIVE GRADE POINT AVERAGE (CGPA)===============================  */}
+
+
+// const calculatedCGPA=(cgp)=>{
+//   const score=0
+//   for(let i=0;i<cgp.length;i++){
+//     const cgp=cgp[i]
+//     const CGPASCORE=cgp[`table${i + 1}`]
+//   }
+
+// }
+
+console.log(scores);
 
   return (
     <tbody>
-     {department}
 
-    {tableData.map((row) => (
+    {tableData.map((row,index) => (
      <>
+     
        {row[department==="" || department=== undefined ? 0 : department].LEVELS[0][level===undefined || level==="" ? 100: level][0].SEMESTER[0][semester===undefined || semester===""? 1:
         semester==='1 st Semester'?1:
         semester==='2 nd Semester'?2:
         1][0].COURSES.map((course,i)=>(
+          
       
         
 <>
+
+
 <tr key={i}>
-    
-     
+  
 <td className="   border-b border bg-white px-4 py-3  text-left text-xs font-semibold  uppercase tracking-wider">
   <div className="w-full flex items-center">
 
@@ -86,6 +115,7 @@ const calculateCGPA = (scores, courses) => {
       <div className="w-full text-center">
         {/* COURSE TITLE */}
       {course.COURSETITLE}
+      
       </div>
   </div>
 </td>
@@ -122,6 +152,7 @@ const calculateCGPA = (scores, courses) => {
               step={1}
               required
             />
+            
      </div>
   </div>
 </td>
@@ -177,17 +208,37 @@ const calculateCGPA = (scores, courses) => {
        
       
        ))}
+       <tr>
+
+       
+
+<div className='flex justify-between '>
+
 
       {/* ======================CUMILATIVE GRADE POINT (CGP)===============================  */}
-    <div>Cumilative GradePoint:  { Number(calculateCGPA(scores, row[0].LEVELS[0][level===undefined || level==="" ? 100: level][0].SEMESTER[0][semester===undefined || semester===""? 1:
+    <div className='flex'>
+      
+      <p className=''>CGP: { Number(calculateCGP(scores, row[department==="" || department=== undefined ? 0 : department].LEVELS[0][level===undefined || level==="" ? 100: level][0].SEMESTER[0][semester===undefined || semester===""? 1:
         semester==='1 st Semester'?1:
-        semester==='1 st Semester'?2:
-        1][0].COURSES)).toPrecision(3) } 
+        semester==='2 nd Semester'?2:
+        1][0].COURSES)).toPrecision(3) } </p> 
+
+
+
+       
      </div>
       {/* ======================END OF CUMILATIVE GRADE POINT (CGP)===============================  */}
    
   
-     
+      {/* ======================CUMILATIVE GRADE POINT (CGP)===============================  */}
+    <div className='absolute right-0'>(CGPA): 
+      <input type="number" className=' cursor-no-drop w-fit' value={cgpa[`.table${index+1}`]} onChange={(handleChangeCGPA)} disabled />
+      
+     </div>
+      {/* ======================END OF CUMILATIVE GRADE POINT (CGP)===============================  */}
+   
+</div>
+</tr>
       </>
   
     ))}

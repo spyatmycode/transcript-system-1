@@ -27,6 +27,19 @@ console.log(department);
         score7: 0,
         score8: 0,
         score9: 0,
+        score10: 0,
+      });
+      
+      const [cgpa, setCgpa] = useState({
+        table1: 0,
+         table2: 0,
+         table3: 0,
+         table4: 0,
+         table5: 0,
+         table6: 0,
+         table7: 0,
+         table8: 0,
+         table9: 0,
       });
       
    
@@ -68,20 +81,20 @@ console.log(department);
         }
       };
 
-      const calculateAndUpdateGPA = () => {
-        const calculatedGPA = calculateGP(
-          scores.score1,
-          scores.score2,
-          scores.score3,
-          scores.score4,
-          scores.score5,
-          scores.score6,
-          scores.score7,
-          scores.score8,
-          scores.score9
-        );
-        setGpa(calculatedGPA);
-      };
+      // const calculateAndUpdateGPA = () => {
+      //   const calculatedGPA = calculateGP(
+      //     scores.score1,
+      //     scores.score2,
+      //     scores.score3,
+      //     scores.score4,
+      //     scores.score5,
+      //     scores.score6,
+      //     scores.score7,
+      //     scores.score8,
+      //     scores.score9
+      //   );
+      //   setGpa(calculatedGPA);
+      // };
     
         
 
@@ -100,10 +113,7 @@ console.log(department);
         const newNumbers = [...GPs];
         newNumbers[index] = Number(event.target.value);
         setGps(newNumbers);
-        // console.log(scores);
-  
-      
-        calculateAndUpdateGPA();
+       
       };
 
    
@@ -121,7 +131,8 @@ console.log(department);
  
       <TableHead/>
       <TableBody 
-
+      cgpa={cgpa}
+      setCgpa={setCgpa}
       department={department}
       setDepartment={setDepartment}
       key={key}
