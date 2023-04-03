@@ -52,7 +52,7 @@ const data = [
                     UNIT: 2,
                   },
                 ],
-              
+              CGPA:0
                 }
                   ],
 
@@ -102,7 +102,7 @@ const data = [
                     UNIT: 2,
                   },
                 ],
-              
+               
                 }
                   ],
                  
