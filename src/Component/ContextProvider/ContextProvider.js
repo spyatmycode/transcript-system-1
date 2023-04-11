@@ -1,30 +1,40 @@
 import React, { useState } from 'react'
 import { createContext } from 'react'
 
- const AppContext = createContext()
-const ContextProvider = (props) => { // pass 'props' as an argument
+const AppContext = createContext()
 
+const ContextProvider = (props) => {
 
-  const [GPA, setGPA] = useState([])
-  const [CGP, SETCGP] = useState(0)
-
+  // const [CGPA, setCGPA] = useState({
+  //   table1: 0,
+  //   table2: 0,
+  //   table3: 0,
+  //   table4: 0,
+  //   table5: 0,
+  //   table6: 0,
+  //   table7: 0,
+  //   table8: 0,
+  //   table9: 0,
+  // });
   
-
-
-  // const [level, setLevel] = useState(100);
+  const [CGPA, SETCGPA] = useState(0)
+  const [CGP, SETCGP] = useState(0)
+  const [tableNo, setTableNo] = useState(1)
   const [department, setDepartment] = useState(0);
-  // const [semester, setSemester] = useState('1 st Semester');
+  const[totalCGPA,setTotalCGPA]=useState(0)
+
+  let gradePointArray = [];
+const [summaryRow,setSummaryRow]=useState([])
+const [summaryLevel,setSummaryLevel]=useState(100)
+const [summarySemester,setSummarySemester]=useState('')
+
   return (
     <div>
-      <AppContext.Provider value={{CGP,SETCGP, GPA, setGPA, department, setDepartment}}>
+      <AppContext.Provider value={{summaryLevel, summarySemester,setSummaryLevel,setSummarySemester,setTotalCGPA,totalCGPA,CGP,SETCGP,CGPA,setSummaryRow,summaryRow, gradePointArray, tableNo, setTableNo, SETCGPA, CGPA, department, setDepartment }}>
         {props.children}
       </AppContext.Provider>
     </div>
   )
 }
 
-export {ContextProvider,AppContext}
-
-
-
-
+export { ContextProvider, AppContext }
