@@ -11,10 +11,17 @@ const Form = () => {
   const [name, setName] = useState('')
   const [matric, setMatric] = useState('')
   const [college, setCollege] = useState('')
-  const{department,setDepartment}=useContext(AppContext)
+
   const [gender, setGender] = useState('')
   const [session, setSession] = useState('')
   const [level, setLevel] = useState('')
+
+  const {
+    department,
+    setDepartment,
+   
+    
+  } = useContext(AppContext)
 
   const navigate = useNavigate()
 
@@ -25,7 +32,7 @@ const Form = () => {
   const handleSubmit = async (e) => {
 
     e.preventDefault()
-
+   
     if (window.confirm("Are you sure of this User Information")) {
       const docref = await addDoc(transcriptHeaderCollectionRef, {
         name,
@@ -48,6 +55,7 @@ const Form = () => {
       setGender("")
       setSession("")
       setLevel("")
+     
       navigate(`/transcript/${docref.id}`)
 
     }

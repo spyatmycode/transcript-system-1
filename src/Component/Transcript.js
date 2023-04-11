@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react';
 import { db } from '../firebase/firebaseConfig'
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore'
 import {  useParams } from 'react-router-dom'
@@ -6,21 +6,32 @@ import {  useParams } from 'react-router-dom'
 import Table from './Table/Table'
 import { useContext } from 'react'
 import { AppContext} from './ContextProvider/ContextProvider'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import SummaryTable from './Table/SummaryTable'
+import SummaryRow from './Table/SummaryRow'
+import SaveBtn from './SaveBtn'
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+import html2canvas from 'html2canvas';
 
 const Transcript = () => {
  
-    const {department,setDepartment}=useContext(AppContext)
+    const {department,setSummaryLevel,summaryLevel,summarySemester,setSummarySemester,gradePointArray,setDepartment,tableNo,setTableNo,setSummaryRow,CGPA,summaryRow}=useContext(AppContext)
     const [level,setLevel]=useState(100)
     const[semester,SetSemester]=useState('')
-
-
+    const[saveBtnState,setSaveBtnState]=useState(false)
+    const [buttonColorState, setButtonColorState] = useState(true)
+    const[showOption,setShowOption]=useState(true)
+    
+    const mainPageRef = useRef(null);
   const handleLevelChange = (e) => {
     setLevel(Number(e.target.value))
   }
 
   const handleSemesterChange = (e) => {
     SetSemester(e.target.value)
+   
   }
 
 
@@ -34,6 +45,9 @@ const Transcript = () => {
     const [data, setData] = useState([])
     const [students, setStudents] = useState([])
     const [save, setsave] = useState(false)
+    const [count, setCount] = useState(0);
+
+
 
 
    
@@ -90,36 +104,168 @@ const Transcript = () => {
         HeaderTranscriptInfo()
     }, [id])
 
-
+    const calculateTableSummary = (gradePointArray) => {
+        let total = 0;
+        for (let i = 0; i < gradePointArray.length; i++) {
+          total += gradePointArray[i];
+        }
+        const average=  total/ gradePointArray.length
+        return average;
+      };
    
     const [Tables,setTables]=useState([])
   
     const createNewTable = () => {
-          setTables([...Tables,
+      const newTableNo = Tables.length > 0 ? tableNo + 1 : 1;
+      setTableNo(newTableNo);
+    
+      setTables((prevTables) => [
+        ...prevTables,
+        {
+          tableNo: newTableNo,
+          table: (
             <>
-           <Table/>
+              <Table key={newTableNo} />
             </>
-          ])
-          
+          ),
+        },
+      ]);
+    
+      toast.success("Table created successfully!");
+      setButtonColorState(!buttonColorState);
+      setCount(count + 1);
+      setSaveBtnState(false)
     };
+       
 
+    console.log(Tables);
+    const deleteTable = (tableNo) => {
+
+      setCount(count - 1);
+
+        setTables((prevTables) =>
+          prevTables.filter((table) => table.tableNo !== tableNo)
+        );
+        if(saveBtnState===true){
+          setSummaryRow((summaryrow)=>summaryrow.filter((row)=>(
+         row.year!==tableNo)))
+        }
+         
+        setSaveBtnState(true)
+        toast.warning('Table deleted successfully!');
+
+      };
+
+      const saveBtn = (num) => {
+        
+        // const newTableNo = Tables.length > 0 ? tableNo + 1 : 1;
+
+        // setTableNo(newTableNo);
+
+       if(saveBtnState===false){
+        setSummaryRow((prev) => [
+          ...prev,
+          {
+            year: tableNo,
+            gpa: 2.43,
+            cgpa: 5.0,
+            grade: "A",
+            classDegree: "First Class",
+            Row: (
+              <SummaryRow
+                count={`${count}`}
+                cgp={
+                  gradePointArray[gradePointArray.length - 2]
+                    ? gradePointArray[gradePointArray.length - 2]
+                    : 0
+                }
+                level={summaryLevel}
+                semester={summarySemester}
+                year={tableNo - 1}
+                tableNo={tableNo}
+              />
+            ),
+          
+          },
+        ]);
+        toast.info('Saved successfully!');
+       } 
+       else{
+      
+          setSummaryRow((summaryrow)=>summaryrow.filter((row)=>(
+         row.year!==tableNo)))
+         toast.warning('UnSaved successfully!');
+     
+       }
+
+       
+            
+       
+          
+          // setSaveBtnState(!saveBtnState);
+
+      
+        
+      };
 
     
-    const deleteTable=(i)=>{
-       setTables(Tables.filter((table)=>table!==i))
-    }
 
+ // Define the print function
+const handlePrint = () => {
+  setShowOption(false);
+  setTimeout(() => {
+    // Capture HTML content of main component using html2canvas
+    html2canvas(mainPageRef.current, { scale: window.devicePixelRatio }) // Use window.devicePixelRatio to capture the correct size based on the device's pixel density
+      .then((canvas) => {
+        setShowOption(false);
+        // Convert captured content to image data URL
+        const imgData = canvas.toDataURL('image/png', 1.0); // Use quality option to set image quality to 100%
 
+        // Create new jsPDF instance
+        const pdf = new jsPDF('l', 'mm', 'a5'); // Set page orientation to portrait, measurement unit to millimeters, and page size to A4
 
+        const maxPages = 15; // Maximum number of pages allowed in PDF
+        const imgHeight = (canvas.height * pdf.internal.pageSize.getWidth()) / canvas.width; // Calculate image height based on aspect ratio
 
+        let totalPages = Math.ceil(imgHeight / pdf.internal.pageSize.getHeight()); // Calculate total number of pages based on image height and page height
 
+        // Limit total pages to maximum allowed pages and minimum of 1 page
+        totalPages = Math.max(Math.min(totalPages, maxPages), 1);
 
-
-    
+        // Loop through each page and add image to PDF
+        for (let i = 0; i < totalPages; i++) {
+          if (i > 0) {
+            pdf.addPage(); // Add new page for remaining content
+          }
+          pdf.addImage(
+            imgData,
+            'PNG',
+            0,
+            -(i * pdf.internal.pageSize.getHeight()),
+            pdf.internal.pageSize.getWidth(),
+            0
+          ); // Use internal.pageSize to get current page size and adjust y position for each page
+        }
+        setShowOption(false);
+        // Save PDF with specified file name
+        pdf.save(`${name} ${matric} IUT BENIN`);
+        setTimeout(() => {
+          setShowOption(true);
+        }, 1000);
+      })
+      .catch((error) => {
+        console.error('Error generating PDF:', error);
+        setShowOption(true);
+      });
+  }, 1000);
+};
 
     return (
-        <div className=' mx-[2em] mt-3 mb-8 md:mx-[3em] '>
-
+        <div className=' mx-[2em] mt-3 mb-8 md:mx-[3em] ' ref={mainPageRef} id="main-page">
+           {showOption ? <button className='bg-gray-400 text-black font-bold px-4 py-3 rounded-md' onClick={handlePrint}>Print</button>:null}
+          
+              {showOption? <ToastContainer  />:null}
+             
             <div className='flex flex-col md:flex-row gap-6 items-center justify-between'>
 
                 <div>
@@ -150,25 +296,36 @@ const Transcript = () => {
                     <p className=' font-[fantasy]'>(Transcript Des Note Acaddemiques)</p>
                 </div>
                   
-            
-                <button className='bg-[#7323be] text-white  py-2 px-4 rounded-md' onClick={createNewTable}>Create New Table</button>
+            {showOption?<button className='bg-[#7323be] text-white  py-2 px-4 rounded-md' onClick={createNewTable}>Create New Table</button> :null}
+                
                         {/* Table */}
-                    {Tables.map((table,i)=>(
-                        <>
-                        <div className='my-[5em]'>
-                            {table}
-                        <button className='bg-red-700 p-4 mx-7  rounded-md text-white' onClick={()=>(
-                        deleteTable(table))}>Delete Table</button>
-                    
-                                        
-                        </div>
-                    
-                        </>
+                 
+                        {Tables.map((table) => (
                         
-                    ))}
-                    
-                   <div>
-                   </div>
+                                <div key={table.tableNo} className='my-[-2vh]'>
+                                {table.table}
+                                
+                               {showOption?<button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => deleteTable(table.tableNo)}>
+                                    Delete table
+                                  </button> : null} 
+                                  
+
+                          
+                               {showOption ?  <SaveBtn saveBtnState={saveBtnState} setSaveBtnState={setSaveBtnState}  saveBtnColor={table.saveBtnColor} tableNo={table.tableNo} saveBtn={saveBtn}/>
+                                :null }
+                                
+
+                           
+      
+                                </div>
+                        ))}
+
+                        {/* THIS DISPLAY THE SUMMARY OF THE DATA WHEN THERE IS A TABLE PRESENT FOR CALCULATION */}
+                                   {Tables.length >0 && <SummaryTable className=""  />  }
+                     
+                      
+                  
+                  
 
             </section>
 

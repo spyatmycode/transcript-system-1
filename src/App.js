@@ -10,7 +10,7 @@ import { AuthProvider } from './Component/Auth/AuthProvider';
 import LoginProtect from './Component/LoginProtect'
 import { ContextProvider } from './Component/ContextProvider/ContextProvider';
 import { useEffect } from 'react';
-
+import jsPDF from 'jspdf';
 
 function App() {
 
@@ -22,6 +22,7 @@ function App() {
 
   return (
     <>
+    
   <ContextProvider>
       <AuthProvider>
       
@@ -57,6 +58,7 @@ function App() {
       
       </AuthProvider>
   </ContextProvider>
+
     </>
   );
 }

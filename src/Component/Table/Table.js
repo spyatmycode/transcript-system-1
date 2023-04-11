@@ -8,9 +8,9 @@ import TableHead from './TableHead';
 import TableSelect from './TableSelect';
 
 function Table({key,department,setDepartment}) {
-
+ 
   const [level, setLevel] = useState(100);
-  const [semester, setSemester] = useState('1 st Semester');
+  const [semester, setSemester] = useState('1st Semester');
 console.log(department);
 
 
@@ -27,19 +27,6 @@ console.log(department);
         score7: 0,
         score8: 0,
         score9: 0,
-        score10: 0,
-      });
-      
-      const [cgpa, setCgpa] = useState({
-        table1: 0,
-         table2: 0,
-         table3: 0,
-         table4: 0,
-         table5: 0,
-         table6: 0,
-         table7: 0,
-         table8: 0,
-         table9: 0,
       });
       
    
@@ -56,7 +43,7 @@ console.log(department);
         } else if (score >= 45) {
           return 'D';
         } else if (score >= 40) {
-          return 'E';
+          return 'f';
         } else {
           return 'F';
         }
@@ -74,27 +61,27 @@ console.log(department);
           return 3.0;
         } else if (score >= 45) {
           return 2.0;
-        } else if (score >= 40) {
-          return 1.0;
+        } else if (score >= 0) {
+          return 0.0;
         } else {
           return 0.0;
         }
       };
 
-      // const calculateAndUpdateGPA = () => {
-      //   const calculatedGPA = calculateGP(
-      //     scores.score1,
-      //     scores.score2,
-      //     scores.score3,
-      //     scores.score4,
-      //     scores.score5,
-      //     scores.score6,
-      //     scores.score7,
-      //     scores.score8,
-      //     scores.score9
-      //   );
-      //   setGpa(calculatedGPA);
-      // };
+      const calculateAndUpdateGPA = () => {
+        const calculatedGPA = calculateGP(
+          scores.score1,
+          scores.score2,
+          scores.score3,
+          scores.score4,
+          scores.score5,
+          scores.score6,
+          scores.score7,
+          scores.score8,
+          scores.score9
+        );
+        setGpa(calculatedGPA);
+      };
     
         
 
@@ -113,14 +100,29 @@ console.log(department);
         const newNumbers = [...GPs];
         newNumbers[index] = Number(event.target.value);
         setGps(newNumbers);
-       
+        // console.log(scores);
+  
+      
+        calculateAndUpdateGPA();
+      };
+
+
+
+
+      const bd = (gradePointArray) => {
+        let total = 0;
+        for (let i = 0; i < gradePointArray.length; i++) {
+          total += gradePointArray[i];
+        }
+        const average=  total/ gradePointArray.length
+        return average;
       };
 
    
     
   return (
     <>
-    <div  className="-mx-4  sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+    <div  className="mx-4  max-h-[100vh] min-h-[100vh]  sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
               
               
                <div className="inline-block min-w-full shadow rounded-lg ">
@@ -131,8 +133,7 @@ console.log(department);
  
       <TableHead/>
       <TableBody 
-      cgpa={cgpa}
-      setCgpa={setCgpa}
+
       department={department}
       setDepartment={setDepartment}
       key={key}
@@ -148,6 +149,7 @@ console.log(department);
       />
 
     </table>
+ 
     </div>
     </div>
     </>
