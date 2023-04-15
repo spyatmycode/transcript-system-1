@@ -14,6 +14,7 @@ const TableBody = ({
     level,semester,
 }) => {
   const{department}=useContext(AppContext)
+  const {showOption,setShowOption}=useContext(AppContext)
   
   const {GPA,setGPA, setSummaryLevel,summaryLevel,
     setSummarySemester,gradePointArray,SETCGPA,SETCGP,setTotalCGPA}=useContext(AppContext)
@@ -79,31 +80,32 @@ const TableBody = ({
     console.log(gradePointArray)
   return (
     <tbody>
- 
+
 
     {tableData.map((row,tableNo) => (
      <>
        {row[department==="" || department=== undefined ? 0 : department].LEVELS[0][level===undefined || level==="" ? 100: level][0].SEMESTER[0][semester===undefined || semester===""? 1:
         semester==='1 st Semester'?1:
-        semester==='2 nd Semester'?2:
+        semester==='2nd Semester'?2:
         1][0].COURSES.map((course,i)=>(
       
         
 <>
 <tr key={i}>
     
-     
-<td className="   border-b border bg-white px-4 py-3  text-left text-xs font-semibold  uppercase tracking-wider">
-  <div className="w-full flex items-center">
+<td className=" w-[.3em]    border-b border bg-white    text-left text-xs font-semibold  uppercase ">
+  <div className=" flex items-center">
 
-      <div className="w-full text-center">
+  <div className=" w-fit text-center">
       {/* SERIAL NUMBER */}
-      {i +1}
+     
+      <p className=' px-4 py-3    '>  {i +1}
+      </p>
   
       </div>
   </div>
 </td>
-<td className="    border-b border bg-white px-4 py-3  text-left text-xs font-semibold  uppercase tracking-wider">
+<td className="    border-b border bg-white  px-4 py-3    text-left text-xs font-semibold  uppercase tracking-wider">
   <div className="w-full flex items-center">
 
       <div className="w-full text-center">
@@ -113,7 +115,7 @@ const TableBody = ({
       </div>
   </div>
 </td>
-<td className="    border-b border bg-white px-4 py-3  text-left text-xs font-semibold  uppercase tracking-wider">
+<td className="    border-b border bg-white  px-4 py-3    text-left text-xs font-semibold  uppercase tracking-wider">
   <div className="w-full flex items-center">
 
       <div className="w-full text-center">
@@ -122,18 +124,18 @@ const TableBody = ({
       </div>
   </div>
 </td>
-<td className="   w border-b border bg-white px-4 py-3  text-left text-xs font-semibold  uppercase tracking-wider">
+<td className="   w border-b border bg-white  px-4 py-3    text-left text-xs font-semibold  uppercase tracking-wider">
   <div className="w-full flex items-center">
 
       <div className="w-full text-center">
-       <p className='p-4 w-[100%] '> 
+       <p className=' px-4 py-3   w-[100%] '> 
        {/* COURSE UNIT */}
         {course.UNIT}</p>
     
       </div>
   </div>
 </td>
-<td className="   border-b border bg-white px-4 py-3  text-left text-xs font-semibold  uppercase tracking-wider">
+<td className="   border-b border bg-white  px-4 py-3    text-left text-xs font-semibold  uppercase tracking-wider">
   <div className="w-full  flex items-center">
 
       <div className="w-full  text-center">
@@ -149,7 +151,7 @@ const TableBody = ({
               name={`score${i + 1}`}
               value={scores[`.score${i + 1}`]}
               onChange={handleChange}
-              className="w-full px-2 text-base font-semibold py-1 text-gray-700 bg-gray-100 rounded"
+              className={`w-full px-1 text-base font-semibold py-1 text-gray-700 ${showOption && "bg-gray-100"} rounded`}
               min={4}
               max={100}
               step={1}
@@ -158,12 +160,13 @@ const TableBody = ({
      </div>
   </div>
 </td>
-<td className="      border-b border bg-white px-4 py-3  text-left text-xs font-semibold  uppercase tracking-wider">
-  <div className="w-fit flex items-center">
+<td className="   border-b border bg-white  px-4 py-3    text-left text-xs font-semibold  uppercase tracking-wider">
+  <div className="w-full  flex items-center">
 
-      <div className="w-full text-center">
+      <div className="w-full  text-center">
+
          {/* ====================== LETTER GRADE===============================  */}
-      <p className='p-4 w-[100%] text-red-600 '>  
+      <p className={` px-4 py-3   w-[100%] ${showOption && 'text-red-600'}  `}>  
          {scores[`score${i + 1}`] ?
          calculateLetterGrade(scores[`score${i + 1}`]) :" "   }
          </p>
@@ -172,27 +175,27 @@ const TableBody = ({
       </div>
   </div>
 </td>
-<td className="     border-b border bg-white px-4 py-3  text-left text-xs font-semibold  uppercase tracking-wider">
+<td className="     border-b border bg-white  px-4 py-3    text-left text-xs font-semibold  uppercase tracking-wider">
   <div className="w-full flex items-center">
 
       <div className=" w-fit text-center">
 
           {/* ====================== GRADE POINT (GP)===============================  */}
-      <p className='p-4 w-[100%] '>  {scores[`score${i + 1}`] ?
+      <p className=' px-4 py-3   w-[100%] '>  {scores[`score${i + 1}`] ?
          calculateGP(scores[`score${i + 1}`]) :" "   }
       </p>
          {/* ======================END OF GRADE POINT (GP)===============================  */}
       </div>
   </div>
 </td>
-<td className="  border-b border bg-white px-4 py-3  text-left text-xs font-semibold  uppercase tracking-wider">
+<td className="  border-b border bg-white  px-4 py-3    text-left text-xs font-semibold  uppercase tracking-wider">
   <div className="w-full flex items-center">
    
       <div className="w-full text-center">
 
 
         {/* ======================TOTAL GRADE POINT===============================  */}
-      <p className='p-4 w-[100%] '>  {scores[`score${i + 1}`] ?
+      <p className=' px-4 py-3   w-[100%] '>  {scores[`score${i + 1}`] ?
        <> 
       {course.UNIT * calculateGP(scores[`score${i + 1}`]) }
       </>:" "   }  
@@ -212,7 +215,7 @@ const TableBody = ({
        ))}
 
       {/* ======================CUMILATIVE GRADE POINT (CGP)===============================  */}
-    <div> GradePoint:   { Number(calculateCGPA(scores, row[0].LEVELS[0][level===undefined || level==="" ? 100: level][0].SEMESTER[0][semester===undefined || semester===""? 1:
+    <div className=' absolute b-0 py-7'> GradePoint:   { Number(calculateCGPA(scores, row[0].LEVELS[0][level===undefined || level==="" ? 100: level][0].SEMESTER[0][semester===undefined || semester===""? 1:
         semester==='1 st Semester'?1:
         semester==='1 st Semester'?2:
         1][0].COURSES).cgpa).toPrecision(3) } 

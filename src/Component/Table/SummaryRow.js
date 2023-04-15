@@ -38,21 +38,21 @@ const SummaryRow = ({year,level,semester,cgp,count}) => {
           className="
             text-center text-dark
             font-medium
-            text-base
+            text-[1em]
             py-5
             px-2
             bg-[#F3F6FF]
             border-b border-l border-[#E8E8E8]
           "
         >
-            
+      
             {count===1 ?<>0 </>  : <>{level} {semester} </>} 
         </td>
         <td
           className="
             text-center text-dark
             font-medium
-            text-base
+            text-[1em]
             py-5
             px-2
             bg-white

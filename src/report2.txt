@@ -1,0 +1,802 @@
+Faculty : Management Science
+Department : Accounting
+
+LEVEL 100 - SEMESTER 2
+1 BCOM131 Business Communication
+2 GNS 133 Computer Appreciation & Application
+3 ERN 121 French Language Il
+4 BSAT 122 Statistics for Management Science
+5 ACCT 121 Principles of Accounting Il
+6 ECON 121 Principles of Economics II
+7 SAD 121 Principle of Management Il
+8 GNS 121 Introduction to Social Psychology
+
+LEVEL 200 - SEMESTER I
+
+ACCT 201	Financial Accounting I
+ACCT 202	Basic Cost Accounting
+BSAD 202	Organizational Behaviour
+ECON 202	Structure of Nigeria Economy
+ACCT 204	Mathematics for Accounting I
+FRN 201	French Language Ill
+BFI 200	Principles and Practice of Insurance
+BLAW211	Business Law
+
+
+
+
+LEVEL 200 - SEMESTER 2
+
+BSAD 231	Introduction to Business
+RSTAT231	Business Applied Statistics
+FRN 221	French Language IV
+BLAW 231	Company Law
+ACCT 221	Cost Accounting
+MAT 231	Mathematics for Accounting Il
+ACCT223	Financial Accounting Il
+ACCT 224	Financial & Security Analysis
+
+LEVEL 300 - SEMESTER 1
+FRN 301	Advanced French I
+ACCT 301	Management Accounting I
+BFI 326	Investment Analysis
+BFI 301	Auditing I
+ACCT 303	Taxation & Tax Management
+ACCT 305	Corporate Accounting
+BSAD 306	Information System Management
+BSAD 303	Small Scale Business Management
+
+LEVEL 300 - SEMESTER 2
+FRN 32 1	Advanced French Il
+GNS 32/	Research Methodology
+ACCT 321	Management Accounting Il
+ECON 322	International Banking & Finance
+ACCT 323	Nigeria Taxation I
+GNS 322	Operation Research
+ACCT 320	Auditing Il
+BFI 322	Banking and Finance
+
+LEVEL 400 - SEMESTER 1
+ACCT 401	Advanced Financial Accounting
+ACCT 400	Multi-Disciplinary Case Study
+ACCT 403	Public Sector Accounting
+ACCT 405	Public Finance
+ACCT 415	Nigeria Taxation Il
+BFI411	Financial Institutions & Portfolios
+
+LEVEL 400 - SEMESTER 2
+BFI 420	Professional Ethic & Social Responsibility
+GNS 422	Research Project
+GNS 421	Entrepreneurship Development
+ACCT 407	International Accounting
+ACCT 423	Operations Research
+BFI 424	Financial Administration
+
+Faculty :Management Science
+Department :Conflict Resolution and Hospitality Management
+
+LEVEL 100 - SEMESTER1
+ACCI01	Principle of Accounting
+BUS 101	Business Communication
+ECO101	Principles of Economics I
+MAT 101	Mathematics for Management Science
+HCMIII	Introduction to African Politics
+GNS 101	Use of English & library
+FRN 101	French Language 1
+GNS 102	Benin People and Culture
+
+LEVEL 100 - SEMESTER 2
+
+SOC 131	Introduction to Sociology
+CRM 133	Elements of Political Science
+FRN 121	French
+CRM 123	Introduction to Conflict Resolution Process
+CRM 202	Introdution to Peace Education
+CRM 121	Introduction to Peace Studies
+CSC 121	Computer in Society
+CRM 124	History and Phylosophy of Science
+
+LEVEL 200 - SEMESTER 1
+CRM 201	The Good Study Guide
+CRM202	Citisens and the State
+CRM 203	Organization of Government
+CRM 202	Introduction to Law
+CRM211	Introduction to Psychology
+FRN 201	French Language Ill
+CRM 203	Ethnograpgy and Social Structure of Nigeria
+CRM 205	Geograpgy of Nigeria
+
+LEVEL 200 - SEMESTER 2
+
+CRM 231	Introduction to Conflict Resolution
+CRM 231	Democracy and Good Governance
+CRM 221	Foundations of Political Economy
+CRM 231	Culture Values and Conflicts in War
+CRM 222	The Sociology of Crime and Delinquency
+CRM 231	Principles of Security Practice and Mgt
+CRM 238	Human Right Law I
+FRN 231	French
+
+LEVEL 300 - SEMESTER 1
+FRN 301	Advanced French I
+CRM 301	Nigerian Government and Politics I and It
+CRM 302	Understanding War and Conflict
+CRM 301	Nigerian Peoples and Cultures
+CRM 303	Introduction to Conflict Transformation
+CRM 305	Introduction to Comparative Politics
+CRM311	Pre-Colonial African Diplomacy
+CRM313	International Law and Diplomacy
+
+LEVEL 300 - SEMESTER 2
+FRN 321	Advanced French Il
+CRM321	Nigerian Government and Politics Il
+CRM 324	Perception and Conflict
+CRM 320	Concepts and Practice of Peace Building
+CRM 323	Demobilisation Disarmament and Reintegration
+CRM 322	Domestic Violence
+CRM 332	Constitutional Law I and Il
+CRM 300	History of Conflict in Nigeria
+
+LEVEL 400 - SEMESTER 1
+CRM 409	Reseach and Methodology
+CRM 401	International Relations and Security
+CRM 403	Environmental Law Il and Il
+CRM 401	International Organisations and Peace Building
+CRM 405	Globalisation and Peace
+CRM 409	Ward and Laboratory Management
+
+LEVEL 400 - SEMESTER 2
+CRM 423	Foreign Policies of Great Powers
+CRM 421	Political Parties and Pressure Groups
+CRM 426	Victims of Crimes and Human Right Violations
+CRM 422	Thrid World Dependency and Development
+CRM 423	Research Project
+CRM 424	The Nature of Global Terrorism
+
+Faculty: Management Science
+Department :Business Administration
+
+LEVEL 100 - SEMESTER 1
+ACCT 101	Principles of Accounting I
+BSAD 101	Management and Society I
+ECON 101	Principles of Economics I
+BMAT 101	Mathematics for Management Science
+BSAD 122	Introduction and Organization of Business
+GNS 101	Use of English & library
+FRN 101	French Language I
+GNS 102	Benin People and Culture
+
+LEVEL 100 - SEMESTER 2
+BCOM 131	Business Communication
+GNS 133	Computer Appreciation & Application
+FRN 121	French Language Il
+GNS 122	Introduction to Social Psychology
+ACCT 121	Principles of Accounting Il
+ECON 121	Principles of Economics Il
+BSAD 121	Management and Society Il
+BSTAT 121	Statistics for Management Science
+
+LEVEL 200 - SEMESTER 1 
+BSAD 231	Personnel Management
+ACCT 201	Basic Cost Accounting
+BSAD 201	Management Theory & Practices
+STAT 231	Business Applied Statistics
+BLAW 221	Business Law
+FRN 201	French Language Ill
+MAT 213	Calculus
+BSAD 205	Labour and Industrial Relations
+
+LEVEL 200 - SEMESTER 2
+ACCT 202	Financial Accounting
+BSAD 221	Organizational Behaviour
+FRN 221	French Language IV
+BLAW 231	Company Law
+ECON 224	Labour Economics
+BSAD 222	Elements of Marketing & Promotion
+ACCT 223	Financial & Security Analysis
+ACCT 301	Management Accounting I
+
+LEVEL 300 - SEMESTER 1 
+FRN 301	Advanced French I
+BSAD 303	Small Scale Business Management
+MKTG 301	Product, Distribution & Sales Management
+BSAD 302	Business Policy And Strategy I
+BAD 304	Information System Management
+ECON 303	Economic Development
+ACCT 305	Corporate Accounting
+BSAD 314	International Business
+
+LEVEL 300 - SEMESTER 2
+FRN 321	Advanced French Il
+GNS 321	Research Methodology
+ACCT 321	Management Accounting Il
+BSAD 322	Business Policy And Strategy Il
+BSAD 323	Purchasing and Material Management
+BSAD 324	World Political Economics
+GNS 322	Operation Research
+BSAD 305	Human Resources Management
+
+LEVEL 400 - SEMESTER 1 
+BFI411	Financial Institutions & Portfolios
+GNS 401	Entreprencurship Development
+BSAD 403	Principles & Practice of Insurance
+BSAD 406	Corporate Social Responsibility & Ethics
+ACCT 402	Taxation & Tax Management
+ACCT 410	International Finance
+
+LEVEL 400 - SEMESTER 2
+MKTG 323	Marketing Management
+GNS 422	Research Project
+BSAD 42 1	Business Decisions Analysis
+ECON 432	Financial Management
+BSAD 424	Comparative Management
+BSAD 426	Project Management
+
+Faculty : Politics & Social Science
+Department : Political Science
+
+LEVEL 100 - SEMESTER I
+PIR 101	Introduction to International Relations
+SAD 101	Management & Society
+POS 101	Introduction to Political Science
+PAD 101	Introduction to Public Administration
+PIR 102	Nigerian Constitutional Development
+GNS 101	Use of English & library
+FRN 101	French Language I
+GNS 102	Benin People and Culture
+
+LEVEL 100 - SEMESTER 2
+POS 120	Organisation of Government
+POS 121	Africa Government & Politics
+POS 122	Nigeria Legal System I
+PAD 121	Nigerian Public Administration
+POS 124	The Citizen & The State
+FRN 121	French Language Il
+GNS 113	Computer Appreciation & Application
+COM 131	Business Communication
+
+LEVEL 200 - SEMESTER 1
+
+BSTAT 112	Statistics Methods in Political Science
+FRN 201	French Language Ill
+GNS 203	Introduction to Psychology
+PIR 202	Foreign Policy & Analysis
+POS 201	Political Theories & Ideas
+POS 203	International Political System and Africa I
+POS 205	Logic And Methods in Political Inquiry
+PIR 120	International Relations Theory
+
+LEVEL 200 - SEMESTER 2
+POS 225	International Political System and Africa Il
+POS 223	Political Amalysis
+FRN 221	French Language IV
+BLAW 231	Company Law
+POS 224	History of Political Thought
+BSAD 231	Introduction to Business
+POS 226	Politics in Africa Il
+POS 221	Nigeria Legal System Il
+
+LEVEL 300 - SEMESTER 1
+FRN 301	Advanced French I
+POS 301	The Theory & Practice of Local Government
+POS 302	The Methodology of Comparative Politics
+POS 303	Foundation of Political Economy
+PAD 305	Theory And Practices of Administration
+POS 312	Marxism
+POS 316	Political Behaviour
+POS 317	Administration of Nigeria Foreign Policy
+
+LEVEL 300 - SEMESTER 2
+FRN 321	Advanced French Il
+GNS 321	Research Methodology
+PIR 321	Third World & Dependency
+PIR 323	African Politics & Diplomacy
+PIR 324	Contemporary Strategic Study
+GNS 322	Operation Research
+PIR 327	Foreign Policy of Super Powers
+POS 325	Politics of Underdevelopment
+
+LEVEL 400 - SEMESTER 1
+
+POS 411	Foreign Policies of Africa States
+POS 401	Foundation of Political Economy
+PAD 403	Nigeria Political Administration
+POS 403	Comparative Federalism
+POS 404	World Politics & New State
+POS 406	Comparative Civil Relations
+
+LEVEL 400 - SEMESTER 2
+POS 420	Theory of the State
+GNS 422	Research Project
+GNS 421	Entrepreneurship Development
+POS 421	State and Economy
+POS 424	Military in Politics
+POS 423	Problems of Political Philosophy
+
+Faculty : Science & Technology
+Department: Computer Science
+
+LEVEL 100 - SEMESTER 1
+
+CHEM 101	General Chemistry
+PHY 101	General Physics
+MAT 101	General Maths
+STAT 101	Statistical Inference I
+SAD 101	Management & Society
+GNS 101	Use of English & library
+FRN 101	French Language I
+GNS 102	Benin People and Culture
+
+LEVEL 100 - SEMESTER 2
+SC 121	Introduction to Programming
+CSC 122	Software Packaging
+BCOM 121	Business Communication
+GNS 103	Introduction to Computer
+MAT 122	Complex Variable & Matrices
+FRN 121	French Language Il
+CSC 120	Number System & Code
+INTEC 122	Fundamentals of Information Technology
+
+LEVEL 200 - SEMESTER 1
+CSC 201	Data Structure and Algorithm
+SC 202	Operating Systems
+CSC 203	Computer Graphics & Animations
+INTEC 211	File Processing & Management
+IFM 201	Management Information System
+FRN 201	French Language Ill
+GNS 203	Introduction to Psychology
+MAT 201	Calculus
+
+LEVEL 200 - SEMESTER 2
+CSC 224	Business Data Processing
+BSTAT231	Statistics Inference Il
+FRN 221	French Language IV
+BLAW 231	Company Law
+MAT 222	Numerical Computations
+CSC 221	Information & Computing Theory
+CSC 222	Assembly Language Programming
+MAT214	Linear Algebra
+
+LEVEL 300 - SEMESTER I
+FRN 301	Advanced French I
+CSC 303	Digital Electronics
+CSC 304	Computer Hardware & Maintenance
+CSC 301	Computer Dessign
+CSC 302	System Analysis & Design
+CSC 311	Circuit Design and Testing
+CSC 313	Computer Architecture
+CSC 315	Structured Programming in C++
+
+LEVEL 300 - SEMESTER 2
+FRN 321	Advanced French Il
+GNS 32/	Research Methodology
+CSC 323	Fundamentals of Software Engineering
+CSC 322	Database Design and Management
+INF322	Data Communication
+GNS 322	Operation Research
+CSC 334	Web Programming
+CSC 326	PASCA Programming Language
+
+LEVEL 400 - SEMESTER 1 
+CSC 411	Computer Security and Networks
+CSC 405	Artificial Intelligence
+CSC 401	Programming in Java
+CSC 413	Compiler Construction
+CSC 403	Modeling & Simulation
+CSC 417	Computer Installation Management
+
+LEVEL 400 - SEMESTER2
+CSC428	Satellite Communication & Wireless
+GNS 422	Research Project
+GNS 421	Entrepreneurship Development
+SEM 422	System Administration & Computer Ethics
+CSC 424	Internet Technology
+BSAD 426	Project Management
+
+Faculty : Science & Technology
+Department :Health Information Management
+
+LEVEL 100 - SEMESTER 1 
+STA 102	Introduction to Statistics
+ICT103	Informatics in Healthcare
+HIM 104	Healthcare Delivery System
+ICT 101	Paper Based Record
+HIM 101	Introduction to Public Health
+GNS 101	Use of English & library
+FRN 101	French Language I
+
+LEVEL 100 - SEMESTER 2
+MTH 103	Basic Mathematics
+HIM 116	Principle of Health Information Management
+CSC 122	introduction to Computer
+HIM Ill	Principle of Statistics
+HIM 112	Healthcare System and Administration
+FR 121	French Language Il
+GNS 111	Logic and Philosophy
+HIM 102	Health Information Management
+
+LEVEL 200 - SEMESTER 1
+ICT201	Computer Fundamental for Business
+ACC 202	Principle of Financial Accounting
+HIM 208	Pathophysiology
+HIM 204	Monitoring and Evaluation in Healthcare
+HIM 206	Human Anatomy
+FRN 201	French Language Ill
+GNS 203	Human Resources Management
+
+LEVEL 200 - SEMESTER 2
+ACC211	Principle of Managerial Accounting
+ICT 2012	Introduction to Healthcare Informatics
+HIM 215	Healthcare Finance
+HIM 218	Health Statistics
+GNS 222	French Language IV
+GNS 211	Consumer Behavious
+HIM212	Human Physiology
+
+LEVEL 300 - SEMESTER 1
+FRN 301	Advanced French I
+HIM 301	Health Record Organization and Management
+HIM 302	Healthcare Law
+MIXE 303	Health Data Management
+HIS 305	Electronic Health Record and Information Exchange
+HIM 307	Principle of Healthcare Insurance
+
+LEVEL 300 - SEMESTER 2
+FRN 321	Advanced French Il
+GNS 321	Research Methodology
+HIM 306	Medical Terminilogy
+HIM 314	Procedura Coding
+HIM 317	Health Record Organization and Management
+GNS 3013	Introduction to Sciology
+
+LEVEL 400 - SEMESTER 1
+FRN 401	Advanced French Ill
+MGT 403	Qualit Management
+HIM 403	Health Database Sedign and Development
+HIM 404	Health Information Department Management
+ICT 405	Database Management
+
+LEVEL 400 - SEMESTER 2
+FRN 421	Advanced French IV
+GNS 422	Research Project
+HIM 411	Health Science Research methods
+HIM 413	Professional Developmont in HIM
+ICT415	Software Design and Application
+
+
+Faculty : Management Science
+Department :Human Resources Management
+
+LEVEL 100 - SEMESTER 1
+
+ACCT IOI	Principles of Accounting I
+BSAD 101	Management & Society I
+ECON 101	Principles of Economics I
+BMAT 101	Mathematics for Management Science
+BSAD 122	Introduction and Organization of Business
+GNS 101	Use of English & library
+FRN 101	French Language I
+GNS 102	Benin People and Culture
+
+LEVEL 100 - SEMESTER 2
+
+BCOM 131	Business Communication
+GNS 133	Computer Appreciation & Application
+FRN 121	French Language Il
+GNS 122	Introduction to Social Psychology
+ACCT R2I	Principles of Accounting Il
+ECON 121	Principles of Economics Il
+BSAD 121	Management & Society Il
+BSTA 122	Statistics for management science
+LEVEL 200 - SEMESTER 1
+
+ACCT 201	Financial Accounting I
+ECON 202	Structure of Nigeria Economy
+BSAD 201	Management Theory & Practices
+HRM 201	Introduction to HRMI
+GNS 222	Introduction to Sociology
+FRN 201	French Language Ill
+BSAD 202	Organizational Behaviour
+BMAT213	Calculus
+
+LEVEL 200 - SEMESTER 2
+
+BSAD 231	Introduction to Business I
+BSTAT231	Business Applied Statistics
+ERM 221	French Language IV
+BLAW 231	Company Lowe
+HRM 221	Introduction to HRM Il
+ACCT 223	Financial Accounting Il
+ACCT 224	Financial & Security Analysis
+ECO 224	Labour Economics
+LEVEL 300 - SEMESTER 1
+
+FRN 301	Advanced French I
+HRM 301	HRM and Quality Management
+HRM 302	Organisation&Human Resource Development
+MKTG 302	Elements of Marketing and Promotion
+IFN 301	Information System Theory & Manangement
+BSAD 302	Business Policy & Strategy
+ACCT 307	Financial Management
+SAD 310	Project Analysis
+
+LEVEL 300 - SEMESTER 2
+
+
+FRN 321	Advanced French Il
+GNS 32/	Research Methodology
+HRM321	Personnel Management
+BSAD 205	Labour and Industrial Relations
+GNS 320	Industrial and Organizational Psychology
+GNS 322	Operation Research
+BFI 307	Money & Banking Policy
+HRM324	Advance Human Resources Management
+LEVEL 400 - SEMESTER 1
+
+BSAD314	International Business
+HRM 401	Recruitment Selection, Planning
+HRM 402	Personnel Psychology
+HRM 403	Strategies Human Resources Management
+HRM 404	Organisation Structure and Design
+HRM 405	Production Management
+
+LEVEL 400 - SEMESTER 2
+
+HRM 424	International Human Resources Management
+GNS 422	Research Project
+GNS 421	Entrepreneurship Development
+HRM 415	Resource Mobilization & Performance Mgt
+HRM 422	Work Placement, Monitoring & Evaluation
+HRM 426	Training and Development
+
+Faculty : Management Science
+
+Department : Economies
+
+LEVEL 100 - SEMESTER 1
+
+ACCTIOI	Principles of Accounting I
+BSAD 101	Introduction to Management and Society
+ECON 101	Principles of Economies I
+BMAT 101	introductory Mathematics for Economics
+BSTAT 102	Statistics for Management Science
+GNS 101	Use of English & library
+FRN 101	French Language I
+GNS 102	Benin People and Culture
+
+LEVEL 100 - SEMESTER 2
+
+BCOM 131	Business Communication
+GNS 133	Computer Appreciation and Application
+FRN 121	French Language Il
+GNS 122	Introduction to Social Psychology
+ACCT 121	Principles of Accounting Il
+ECON 121	Principles of Economics !!
+BSAD 222	Elements of Marketing & Promotion
+BLAW 121	Business Law
+LEVEL 200 - SEMESTER 1
+
+BSAD 231	Introduction & Organisation of Business
+BSAD 202	Organizational Behaviours
+ECON 202	Structure of Nigeria Economy
+ECON 203	L.abour Economics
+ECON 204	Intermediate Micro-Economics
+FRN 201	French Language ill
+BSAD 323	information Sysytem Management
+ACCT 201	Financial Accounting
+
+LEVEL 200 - SEMESTER 2
+
+ACCT 203	Cost Accounting
+BSTAT'230	Business Applied Statistics
+FRN 221	French Language IV
+BLAW 23/	Company Law
+BSAD 224	Personnel Management
+MAT' 231	Mathematics for Economics
+ECON 223	Intermediate Macroeconomics
+ACCT 225	Finacial Management
+LEVEL 300 - SEMESTER 1
+
+FRN 301	Advanced French I
+ECON 302	Econometrics & Research Methodology
+ECON 303	Economics Development
+ECON 304	Industrial Economies
+ECON 301	Micro - Economics
+BSAD 305	Human Resources Management
+ECON 306	Urban & Regional Economics
+ECON 310	World Political Economics
+
+LEVEL 300 - SEMESTER 2
+
+FRN 321	Advanced French Il
+GNS 321	Research Methodology
+BF1 32/	Nigeria Public Finance
+ECON 322	Applied Economics
+ECON 325	Macro - Economics
+BSAD 324	Project Analysis
+GNS 322	Operation Research
+ECON 327	Financial & Security Analysis
+LEVEL 400 - SEMESTER 1
+
+ECON 401	International Macroeconomics
+GNS 421	Entrepreneurship Development
+ECON 402	Econometrics
+ECON 403	Financial Economics
+BSAD 402	Business Policy
+ECON 404	History of Economic Thought
+
+LEVEL 400 - SEMESTER 2
+
+ECON 421	Advanced Economics Analysis
+GNS 422	Research Project
+ECON 423	International Banking & Finance
+BSAD 422	Monetary & Applied Monetary Economies
+ECON 431	Petroleum Economics
+ECON 425	Economics Planning & Comparative Economic
+
+Faculty : Arts & Communication
+Department :Mass Communication
+
+LEVEL 100 - SEMESTER 1
+
+COM 101	Introduction to the Mass Media
+BSAD 101	Introduction to Management & Society
+COM 103	Communication and Rhetorical Skills
+COM 105	Communication and the Arts
+COM 107	Basic Broadcasting and Journalism
+GNS 101	Use of English & library
+FRN 101	French Language I
+GNS 102	Benin People and Culture
+
+LEVEL 100 - SEMESTER 2
+
+COM 122	History of the Nigerian Mass Media
+COM 124	African Communications Systems
+COM 126	Prose Writing & Business Communication
+GNS 103	Computer Appreciation & Application
+PIR 122	History of International Relation
+FRN 121	French Language Il
+COM 123	Basic Principles of Production
+BSTA 112	Statistics for Management Science
+LEVEL 200 - SEMESTER 1
+
+COM 201	Creative Writing & Communication in English
+COM 203	The Production of Drama & Introductive Cinema
+COM 205	News Reporting and Editing
+COM 207	Computer Graphic Design & Photo Editing
+COM 209	Video and Photo Journalism
+FRN 201	French Language Ill
+GNS 205	Philosophical Anthropology
+COM 215	Cultural Analysis
+
+LEVEL 200 - SEMESTER 2
+
+COM 222	Advertising & its Techniques
+COM 223	TV and Video Production
+FRN 221	French Language IV
+COM 232	Book Publishing
+COM 236	Corporate Communication
+COM 221	Communication in English Il
+COM 228	Internet and Digital Communication
+COM 224	Features and Magazine Writing
+LEVEL 300 - SEMESTER 1
+
+FRN 301	Advanced French I
+COM 305	Desk-Top Publishing & Computer Animation
+ECON 303	Economic Development
+POS 304	World Politics & New State
+COM 307	Script Writing and Presentation Techniques
+COM 301	Radio Broadcasting
+COM 312	Newsroom Operations
+COM 310	Television Programming
+
+LEVEL 300 - SEMESTER 2
+
+FRN 321	Advanced French Il
+GNS 321	Research Methodology
+COM 322	Consumer Behaviour
+COM 326	Film Production & its Techniques
+COM 324	African People & Culture
+GNS 322	Operation Research
+COM 328	Marketing Research
+COM 300	Industrial Attachment
+LEVEL 400 - SEMESTER 1
+
+COM 401	Law and the Media
+GNS 401	Entrepreneurship Development
+COM 403	Media Management and Organization
+COM 405	Radio News and Programming
+PIR 405	Advanced Media Presentation
+PIR 402	Commentatorship for Events & Sports
+
+LEVEL 400 - SEMESTER 2
+
+COM 420	TV News and Programming
+GNS 422	Research Project
+COM422	Investigative & Specialized Reporting
+COM424	Public Relations Writing and Reporting
+COM 426	Entertainment and the Communications Media
+COM 428	Politics. Policy & Media Evaluation
+Faculty : Management Science
+Department : Conflict Resolution and Hospitality Management
+
+LEVEL 100 - SEMESTER 1
+
+ACC/01	Principle of Accounting
+BUS 101	Business Communication
+ECOIOI	Principles of Economies I
+MAT 101	Mathematics for Management Science
+HCM IN	Introduction to African Politics
+GNS 101	Use of English & library
+FRN 101	French Language I
+GNS 102	Benin People and Culture
+
+LEVEL 100 - SEMESTER 2
+
+SOC 131	Introduction to Sociology
+CRM 133	Elements of Political Science
+FRN 121	French
+CRM 123	Introduction to Conflict Resolution Process
+CRM 202	Introdution to Peace Education
+CRM 121	Introduction to Peace Studies
+CSC 121	Computer in Society
+CRM 124	History and Phylosophy of Science
+LEVEL 200 - SEMESTER 1
+
+CRM201	The Good Study Guide
+CRM202	Citisens and the State
+CRM 203	Organization of Government
+CRM 202	Introduction to Law
+CRM211	Introduction to Psychology
+FRN 201	French Language Ill
+CRM 203	Ethnograpgy and Social Structure of Nigeria
+CRM 205	Geograpgy of Nigeria
+
+LEVEL 200 - SEMESTER 2
+
+CRM231	Introduction to Conflict Resolution
+CRM 231	Democracy and Good Governance
+CRM221	Foundations of Political Economy
+CRM 231	Culture Values and Conflicts in War
+CRM222	The Sociology of Crime and Delinquency
+CRM231	Principles of Security Practice and Mgt
+CRM 238	Human Right Law I
+FRN 231	French
+LEVEL 300 - SEMESTER 1
+
+FRN 301	Advanced French I
+CRM 301	Nigerian Government and Polities I and Il
+CRM 302	Understanding War and Conflict
+CRM 301	Nigerian Peoples and Cultures
+CRM 303	Introduction to Conflict Transformation
+CRM 305	Introduction to Comparative Politics
+CRM311	Pre-Colonial African Diplomacy
+CRM313	International Law and Diplomacy
+
+LEVEL 300 - SEMESTER 2
+
+FRN 321	Advanced French Il
+CRM321	Nigerian Government and Politics Il
+CRM 324	Perception and Conflict
+CRM 320	Concepts and Practice of Peace Building
+CRM 323	Demobilisation Disarmament and Reintegration
+CRM 322	Domestic Violence
+CRM 332	Constitutional Law I and Il
+CRM 300	History of Conflict in Nigeria
+LEVEL 400 - SEMESTER 1
+
+CRM 409	Reseach and Methodology
+CRM 401	International Relations and Security
+CRM 403	Environmental Law Il and Il
+CRM 401	International Organisations and Peace Building
+CRM 405	Globalisation and Peace
+CRM 409	Ward and Laboratory Management
+
+LEVEL 400 - SEMESTER 2
+
+CRM 423	Foreign Policies of Great Powers
+CRM 421	Political Parties and Pressure Groups
+CRM 426	Victims of Crimes and Human Right Violations
+CRM 422	Thrid World Dependency and Development
+CRM 423	Research Project
+CRM 424	The Nature of Global Terrorism
