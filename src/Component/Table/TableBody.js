@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import { useContext } from 'react';
 import { useState } from 'react';
 import { AppContext } from '../ContextProvider/ContextProvider';
@@ -11,14 +11,52 @@ const TableBody = ({
     calculateGP,
     calculateLetterGrade,
     handleChange,
-    level,semester,
+    level,semester,key
 }) => {
   const{department}=useContext(AppContext)
   const {showOption,setShowOption}=useContext(AppContext)
   
   const {GPA,setGPA, setSummaryLevel,summaryLevel,
-    setSummarySemester,gradePointArray,SETCGPA,SETCGP,setTotalCGPA}=useContext(AppContext)
+    setSummarySemester,gradePointArray,SETCGPA,SETCGP,setTotalCGPA,currentTableResult, setCurrentTableResult}=useContext(AppContext)
   const [gradePoint,setGradePoint]=useState([])
+
+// console.log("table numbers",key);
+
+
+  const currentResultObjectInit = useCallback(()=>{
+    return {
+      scores: Object.entries(scores).map(([keys, scores],index)=>(scores && {[keys]:scores})).filter((each)=>(each != 0)),
+      department,
+      level,
+      semester,
+      
+
+
+    }
+  },[scores,level,semester])
+
+
+
+
+
+ 
+
+  useEffect(()=>{
+    setCurrentTableResult(currentResultObjectInit())
+
+    
+  }, [currentResultObjectInit])
+
+  
+
+  
+  
+  
+
+
+
+
+  
   
 
   
@@ -46,7 +84,7 @@ const TableBody = ({
       const cumulativeAverage =
         gradePointArray.reduce((a, b) => a + b,0) / gradePointArray.length;
         gradePointArray.push(cgpa);
-    console.log(gradePointArray)
+    // console.log(gradePointArray)
 
 
     let total = 0;
@@ -56,7 +94,7 @@ const TableBody = ({
       }
       const average= totalUnits > 0 ? total / (gradePointArray.length):0
        
-    console.log(cumulativeAverage);
+    // console.log(cumulativeAverage);
    
      SETCGPA(average)
      SETCGP(cgpa)
@@ -76,8 +114,8 @@ const TableBody = ({
       return average;
     };
   
-    console.log(111111111111111)
-    console.log(gradePointArray)
+    // console.log(111111111111111)
+    // console.log(gradePointArray)
   return (
     <tbody>
 
