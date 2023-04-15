@@ -16,6 +16,7 @@ import 'jspdf-autotable';
 import html2canvas from 'html2canvas';
 import ConfirmationModal from "./ConfirmationModal";
 import SummaryGrades from './Table/SummaryGrades';
+import LetterHead from './LetterHead';
 
 const Transcript = () => {
  
@@ -24,6 +25,9 @@ const Transcript = () => {
     const[semester,SetSemester]=useState('')
     const[saveBtnState,setSaveBtnState]=useState(true)
     const [buttonColorState, setButtonColorState] = useState(true)
+    const [bgColor, setBgColor] = useState('bg-gray-500');
+
+
 
     
 
@@ -149,7 +153,7 @@ const Transcript = () => {
           tableNo: newTableNo,
           table: (
             <>
-              <Table key={newTableNo} />
+              <Table tableNo={newTableNo} />
             </>
           ),
         },
@@ -169,6 +173,8 @@ const Transcript = () => {
        
 
     console.log(Tables);
+
+
     const deleteTable = (tableNo) => {
 
       setCount(count - 1);
@@ -196,7 +202,7 @@ const Transcript = () => {
       const saveBtn = (num) => {
         
          setSaveBtnState(false)
-         
+
        if(saveBtnState===false){
         setSummaryRow((prev) => [
           ...prev,
@@ -239,11 +245,31 @@ const Transcript = () => {
       };
 
     
+      useEffect(() => {
+        const interval = setInterval(() => {
+          if (bgColor === 'bg-gray-500') {
+            setBgColor('bg-gray-700');
+          } else if (bgColor === 'bg-gray-700') {
+            setBgColor('bg-gray-900');
+          } else {
+            setBgColor('bg-gray-500');
+          }
+        }, 1000);
+    
+        return () => {
+          clearInterval(interval);
+        }
+      }, [bgColor]);
+    
+
+
+
 
  // Define the print function
 const handlePrint = () => {
   //RESTRICTIONS FOR USERS
-  if(saveBtnState===true   ){
+ 
+
     setShowOption(false);
     setTimeout(() => {
      
@@ -296,19 +322,22 @@ const handlePrint = () => {
 
 
 
-    }
-  else{
-    setShowModal(true)
-    // const result = window.confirm('You cant proceed !! save the previous table')
- 
-  }
+   
 };
 
 
 
     return (
+
         <div className=' p-[6em]  mt-3 mb-8 md:mx-[3em] ' ref={mainPageRef} id="main-page">
-           {showOption ? <button className='bg-gray-400 text-black font-bold px-4 py-3 rounded-md' onClick={handlePrint}>Print</button>:null}
+          <LetterHead/>
+            {showOption ? (
+       <button
+       className={`fixed right-[4%] bottom-8 text-[#ffffff] font-bold px-4 py-3 rounded-md transition duration-500 ${bgColor} bg-gradient-to-bottom-right`}
+       onClick={handlePrint}
+     > Print</button>
+      ) : null}
+ 
           
               {showOption? <ToastContainer  />:null}
              
@@ -371,6 +400,7 @@ const handlePrint = () => {
                         ))}
 
                         {/* THIS DISPLAY THE SUMMARY OF THE DATA WHEN THERE IS A TABLE PRESENT FOR CALCULATION */}
+
                                    {Tables.length >0 && <><SummaryTable className=""  />  <SummaryGrades/>  </>}
                      
                   <div className=''>

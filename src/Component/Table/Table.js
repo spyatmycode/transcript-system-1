@@ -7,7 +7,7 @@ import TableBody from './TableBody';
 import TableHead from './TableHead';
 import TableSelect from './TableSelect';
 
-function Table({key,department,setDepartment}) {
+function Table({tableNo,department,setDepartment}) {
  
   const [level, setLevel] = useState(100);
   const [semester, setSemester] = useState('1st Semester');
@@ -122,9 +122,9 @@ console.log(department);
     
   return (
     <>
-    <div  className="mx-4  max-h-[200vh] min-h-[100vh]  sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+    <div  className="mx-4 my-9  max-h-[200vh] min-h-[100vh]  sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
               
-              
+         
                <div className="inline-block min-w-full rounded-lg ">
                 {/* TABLE SELECTION TO CHOOSE YOUR LEVEL AND SEMESTER  PERTAINING TO YOUR DEPARTMENT OF YOUR CHOICE   */}
                <TableSelect level={level} setLevel={setLevel} semester={semester} department={department} setDepartment={setDepartment} setSemester={setSemester} />
@@ -136,7 +136,7 @@ console.log(department);
 
       department={department}
       setDepartment={setDepartment}
-      key={key}
+      tableNo={tableNo}
       semester={semester}
       level={level}
       setLevel={setLevel}
