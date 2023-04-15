@@ -30,7 +30,7 @@ const TableSelect = ({
           setLevel(Number(e.target.value))
         }}
       >
-        {console.log(level)}
+       
         {setLevel(level)}
         {/* <option value={0}>none</option> */}
         <option value={100}>100</option>

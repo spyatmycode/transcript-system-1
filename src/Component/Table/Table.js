@@ -7,11 +7,11 @@ import TableBody from './TableBody';
 import TableHead from './TableHead';
 import TableSelect from './TableSelect';
 
-function Table({key,department,setDepartment}) {
+function Table({department,setDepartment}) {
  
   const [level, setLevel] = useState(100);
   const [semester, setSemester] = useState('1st Semester');
-console.log(department);
+// console.log(department);
 
 
    
@@ -118,6 +118,8 @@ console.log(department);
         return average;
       };
 
+
+
    
     
   return (
@@ -134,14 +136,15 @@ console.log(department);
       <TableHead/>
       <TableBody 
 
+
+      
+
       department={department}
       setDepartment={setDepartment}
-      key={key}
       semester={semester}
       level={level}
       setLevel={setLevel}
       setSemester={setSemester}
-    
       scores={scores}
       handleChange={handleChange}
       calculateGP={calculateGP}

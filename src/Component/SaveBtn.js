@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { AppContext } from './ContextProvider/ContextProvider'
 
-const SaveBtn = ({saveBtn,tableNo,saveBtnColor,saveBtnState,setSaveBtnState}) => {
+const SaveBtn = ({saveBtn,tableNo,saveBtnColor,saveBtnState,setSaveBtnState,saveToLocalStorage, matric}) => {
     const[saveState,setSaveState]=useState(true)
+    const {localStorageDb, setLocalStorageDb, currentTableResult, setCurrentTableResult} = useContext(AppContext)
   return (
     <>
         <button
@@ -9,7 +11,11 @@ const SaveBtn = ({saveBtn,tableNo,saveBtnColor,saveBtnState,setSaveBtnState}) =>
             onClick={() =>{  
                 setSaveBtnState(!saveBtnState)
                 setSaveState(!saveState)
-                saveBtn(tableNo)}} 
+                saveBtn(tableNo)
+                //database, studentMatric, currentResult, tableNo, saveState
+                saveToLocalStorage(localStorageDb,matric,currentTableResult, tableNo, saveState )
+              }
+              } 
             >
             {saveState===false ? "UnSave" : "Save"}
             </button>

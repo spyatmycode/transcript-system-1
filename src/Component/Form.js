@@ -19,6 +19,7 @@ const Form = () => {
   const {
     department,
     setDepartment,
+     localStorageDb, setLocalStorageDb
    
     
   } = useContext(AppContext)
@@ -57,6 +58,16 @@ const Form = () => {
       setLevel("")
      
       navigate(`/transcript/${docref.id}`)
+
+      setLocalStorageDb([...localStorageDb, {
+        name,
+        matric,
+        college,
+        id,
+        department,
+        results: [ ]
+      
+        }])
 
     }
 
