@@ -27,10 +27,10 @@ const ContextProvider = (props) => {
 const [summaryRow,setSummaryRow]=useState([])
 const [summaryLevel,setSummaryLevel]=useState(100)
 const [summarySemester,setSummarySemester]=useState('')
-
+const[showOption,setShowOption]=useState(true)
   return (
     <div>
-      <AppContext.Provider value={{summaryLevel, summarySemester,setSummaryLevel,setSummarySemester,setTotalCGPA,totalCGPA,CGP,SETCGP,CGPA,setSummaryRow,summaryRow, gradePointArray, tableNo, setTableNo, SETCGPA, CGPA, department, setDepartment }}>
+      <AppContext.Provider value={{summaryLevel,showOption,setShowOption, summarySemester,setSummaryLevel,setSummarySemester,setTotalCGPA,totalCGPA,CGP,SETCGP,CGPA,setSummaryRow,summaryRow, gradePointArray, tableNo, setTableNo, SETCGPA, CGPA, department, setDepartment }}>
         {props.children}
       </AppContext.Provider>
     </div>

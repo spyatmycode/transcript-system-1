@@ -76,92 +76,27 @@ const SummaryTable = ({ level,semester,}) => {
 <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 {/* <!-- ====== Table Section Start --> */}
-<section className=" w-[100%] h-fit max-h-[100vh] min-h-[100vh]  mx-4  sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+<section className=" mx-auto h-fit max-h-[100vh]  px-4 sm:px-8 py-4 overflow-x-auto">
     
          
-            <div className="inline-block w-fit   min-w-full shadow rounded-lg">
+            <div className="inline-block w-fit   shadow rounded-lg">
             
-               <table width={10}   className="min-w-full w-fit h-fit    leading-normal ">
-                  <thead>
-                     <tr className="bg-[#0b0b32] text-center">
-                     <th
-                           className="
-                           w-1/6
-                             min-w-[100px]
-                           text-[1em]
-                        font-sans
-                            font-bold
-                           text-white
-                           py-4
-                           lg:py-3
-                            
-                           border-[4px] border-[#909090] 
-                           "
-                           >
+            <table className='my-[3em] mx-auto w-[60vw] text-[.8em]  '>
+                <thead className=''>
+                <tr className=' bg-[#0e0e42]    text-white '>
+                <th className='  border-[.2em]     border-[#4f4f4fe5]  p-4  relative    '>
                           Year  <span className=' block'> (Annee)</span> 
                         </th>
-                        <th
-                           className="
-                           w-1/6
-                             min-w-[100px]
-                           text-[1em]
-                        font-sans
-                            font-bold
-                           text-white
-                           py-4
-                           lg:py-3
-                            
-                           border-[4px] border-[#909090] 
-                           "
-                           >
+                        <th className='  border-[.2em]     border-[#4f4f4fe5]  p-4  relative    '>
                           Grade Point Average  <span className=' block'> (Moyenne Ponderee )</span> 
                         </th>
-                        <th
-                           className="
-                           w-1/6
-                             min-w-[100px]
-                           text-[.8em]
-                       
-                            font-bold
-                           text-white
-                           py-4
-                           lg:py-3
-                            px-5
-                           border-[4px] border-[#909090] 
-                           "
-                           >
+                        <th className='  border-[.2em]     border-[#4f4f4fe5]  p-4  relative    '>
                           Cumulative Grade Point Average  <span className=' block'> (Moyenne Ponderee Cumlee)</span>
                         </th>
-                        <th
-                           className="
-                           w-1/6
-                             min-w-[100px]
-                           text-[1em]
-                        font-sans
-                            font-bold
-                           text-white
-                           py-4
-                           lg:py-3
-                            
-                           border-[4px] border-[#909090] 
-                           "
-                           >
+                        <th className='  border-[.2em]     border-[#4f4f4fe5]  p-4  relative    '>
                           Final Grade  <span className=' block'> (Note Finale)</span>
                         </th>
-                        <th
-                           className="
-                           w-1/6
-                             min-w-[100px]
-                           text-[1em]
-                        font-sans
-                            font-bold
-                           text-white
-                           py-4
-                           lg:py-3
-                            
-                           border-[4px] border-[#909090] 
-                           "
-                           >
+                        <th className='  border-[.2em]     border-[#4f4f4fe5]  p-4  relative    '>
                           Class of Degree <span className=' block'> (Type de Diplome)</span>
                         </th>
                        
@@ -176,7 +111,7 @@ const SummaryTable = ({ level,semester,}) => {
           className="
             text-center text-dark
             font-medium
-            text-base
+            text-[1em]
             
             px-2
             bg-[#F3F6FF]
@@ -189,8 +124,8 @@ const SummaryTable = ({ level,semester,}) => {
         <td
           className="
             text-center text-dark
-            font-medium
-            text-base
+            font-bold
+            text-[1.3em]
             py-5
             px-2
             bg-white
@@ -204,7 +139,7 @@ const SummaryTable = ({ level,semester,}) => {
           className="
             text-center text-dark
             font-medium
-            text-base
+            text-[1em]
             py-5
             px-2
             bg-[#F3F6FF]
@@ -271,7 +206,7 @@ const SummaryTable = ({ level,semester,}) => {
 {/* <!-- ====== Table Section End --> */}
 
 
-<SummaryGrades/>
+
 
     </div>
   )

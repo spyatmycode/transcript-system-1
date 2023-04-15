@@ -27,3 +27,38 @@
 
 NOTE: - complete means all courses for the full 4 years were found and recorded.
       - incomplete (missing years)
+
+
+
+
+
+students=[
+	COLANS:{
+			stud_1:{
+					name:"ko",
+					matric:"------",
+					departmen:""
+					levels: [ 
+						{scores: [],semester: 1st semester , level: 100},
+						{scores: [],semester: 2nd semester , level: 100}, 
+						{scores: [],semester: 1st semester , level: 200},
+						{scores: [],semester: 2nd semester , level: 200},
+						...............
+						]
+					},
+				stud_2:{
+					name:"ko",
+					matric:"------",
+					levels: [ 
+						{scores: [],semester: 1st semester , level: 100},
+						{scores: [],semester: 2nd semester , level: 100}, 
+						{scores: [],semester: 1st semester , level: 200},
+						{scores: [],semester: 2nd semester , level: 200},
+						...............
+						]
+					},
+
+				}
+      
+		  
+]

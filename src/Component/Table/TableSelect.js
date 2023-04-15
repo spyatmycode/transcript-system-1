@@ -13,18 +13,18 @@ const TableSelect = ({
     setSummaryLevel,
     setSummarySemester,
     summaryLevel,
-    summarySemester
-
+    summarySemester,
+    showOption,
     
   } = useContext(AppContext)
 
 
   return (
-    <div>
-      <label htmlFor="level" className="m-2">Select Level:{level}</label>
-      <select
+    <div  className=' flex gap-8  items-center'>
+      <label htmlFor="level" className="py-9">Select Level:  {showOption ? null:level}</label>
+      {showOption ?  <select
         id="level"
-        className="m-2 border-[1.9px] p-[.9px] border-red-900"
+        className={`m-5  p-[7.9px] ${showOption?'  border-red-900  border-[1.9px]':null}`}
         value={level}
         onChange={(e) =>{ 
           setLevel(Number(e.target.value))
@@ -37,14 +37,15 @@ const TableSelect = ({
         <option value={200}>200</option>
         <option value={300}>300</option>
         <option value={400}>400</option>
-        <option value={500}>500</option>
-      </select>
+     
+      </select>:null }
+     
 
 
-      <label htmlFor="semester" className="m-2">Select Semester:</label>
-      <select
+      <label htmlFor="semester" className="py-9">Select Semester: {showOption? null:semester}</label>
+      {showOption ?  <select
         id="semester"
-        className="m-2 border-[1.9px] p-[.9px] border-red-900"
+        className={`m-5  p-[7.9px] ${showOption?'border-[1.9px]  border-red-900 ':null}`}
         value={semester}
         onChange={(e) =>{
           setSummarySemester(semester)
@@ -53,7 +54,8 @@ const TableSelect = ({
         {/* <option value={0}>none</option> */}
         <option value={"1st Semester"}>1st Semester</option>
         <option value={"2nd Semester"}>2nd Semester</option>
-      </select>
+      </select> : null }
+     
     </div>
   );
 }

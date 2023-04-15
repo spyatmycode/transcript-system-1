@@ -116,6 +116,13 @@ const Form = () => {
                                 <option  value={0}>Health Information Management</option>
                                 <option  value={1}>Accounting</option>
                                 <option value={2} >CONFLICT RESOLUTION AND HOSPITALITY MANAGEMENT</option>
+                                <option value={3} >Business </option>
+                                <option value={4} >Political Science</option>
+                                <option value={5} >Computer Science</option>
+                                <option value={6} >Human Resources Management</option>
+                                <option value={7} >Economics</option>
+                                <option value={8} >Mass Communication
+ </option>
                             </select>
 
                     </ul>

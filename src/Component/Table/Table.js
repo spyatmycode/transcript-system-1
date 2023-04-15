@@ -122,14 +122,14 @@ console.log(department);
     
   return (
     <>
-    <div  className="mx-4  max-h-[100vh] min-h-[100vh]  sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+    <div  className="mx-4  max-h-[200vh] min-h-[100vh]  sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
               
               
-               <div className="inline-block min-w-full shadow rounded-lg ">
+               <div className="inline-block min-w-full rounded-lg ">
                 {/* TABLE SELECTION TO CHOOSE YOUR LEVEL AND SEMESTER  PERTAINING TO YOUR DEPARTMENT OF YOUR CHOICE   */}
                <TableSelect level={level} setLevel={setLevel} semester={semester} department={department} setDepartment={setDepartment} setSemester={setSemester} />
 
-    <table className="min-w-full leading-normal ">
+    <table className="min-w-full my-4 leading-normal ">
  
       <TableHead/>
       <TableBody 
