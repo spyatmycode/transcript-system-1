@@ -22,6 +22,7 @@ const ContextProvider = (props) => {
   const [tableNo, setTableNo] = useState(1)
   const [department, setDepartment] = useState(0);
   const[totalCGPA,setTotalCGPA]=useState(0)
+  const [showLocalTables,setShowLocalTables]=useState(false)
 
   const localstorageInit = () => {
     const existingDb = localStorage.getItem("localStorageDb");
@@ -52,7 +53,7 @@ const [summarySemester,setSummarySemester]=useState('')
 const[showOption,setShowOption]=useState(true)
   return (
     <div>
-      <AppContext.Provider value={{summaryLevel,showOption,setShowOption, summarySemester,setSummaryLevel,setSummarySemester,setTotalCGPA,totalCGPA,CGP,SETCGP,CGPA,setSummaryRow,summaryRow, gradePointArray, tableNo, setTableNo, SETCGPA, CGPA, department, setDepartment, localStorageDb, setLocalStorageDb, currentTableResult, setCurrentTableResult }}>
+      <AppContext.Provider value={{showLocalTables,setShowLocalTables,summaryLevel,showOption,setShowOption, summarySemester,setSummaryLevel,setSummarySemester,setTotalCGPA,totalCGPA,CGP,SETCGP,CGPA,setSummaryRow,summaryRow, gradePointArray, tableNo, setTableNo, SETCGPA, CGPA, department, setDepartment, localStorageDb, setLocalStorageDb, currentTableResult, setCurrentTableResult }}>
         {props.children}
       </AppContext.Provider>
     </div>

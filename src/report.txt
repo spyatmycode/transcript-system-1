@@ -32,7 +32,7 @@ NOTE: - complete means all courses for the full 4 years were found and recorded.
 
 
 
-students=[
+students={
 	COLANS:{
 			stud_1:{
 					name:"ko",
@@ -61,4 +61,32 @@ students=[
 				}
       
 		  
-]
+}
+
+
+
+
+function multiply(arr,n){
+	if (n<= 0){
+		return 1;
+
+	}
+	else{
+		return multiply(arr,n-1)* arr[n-1]
+	}
+}
+
+arr=[1,2,3,4,5]
+
+n=5
+
+1st-     multiply(arr,4)* arr[4]
+2nd-     multiply(arr,3)* arr[3]
+3rd-     multiply(arr,3)* arr[3]
+
+
+
+
+
+
+

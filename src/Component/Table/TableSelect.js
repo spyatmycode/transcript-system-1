@@ -21,7 +21,7 @@ const TableSelect = ({
 
   return (
     <div  className=' flex gap-8  items-center'>
-      <label htmlFor="level" className="py-9">Select Level:  {showOption ? null:level}</label>
+      <label htmlFor="level" className="py-5 font-semibold">{showOption && "Select" } Level:  {showOption ? null:level}</label>
       {showOption ?  <select
         id="level"
         className={`m-5  p-[7.9px] ${showOption?'  border-red-900  border-[1.9px]':null}`}
@@ -42,7 +42,7 @@ const TableSelect = ({
      
 
 
-      <label htmlFor="semester" className="py-9">Select Semester: {showOption? null:semester}</label>
+      <label htmlFor="semester" className="py-5 font-semibold">{showOption && "Select" } Semester: {showOption? null:semester}</label>
       {showOption ?  <select
         id="semester"
         className={`m-5  p-[7.9px] ${showOption?'border-[1.9px]  border-red-900 ':null}`}

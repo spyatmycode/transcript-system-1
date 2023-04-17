@@ -116,9 +116,11 @@ const TableBody = ({
   
     // console.log(111111111111111)
     // console.log(gradePointArray)
+    let item =localStorage.getItem("localStorageDb")
+    let result=JSON.parse(item)
   return (
     <tbody>
-
+                 
 
     {tableData.map((row,tableNo) => (
      <>
@@ -131,7 +133,7 @@ const TableBody = ({
 <>
 <tr key={i}>
     
-<td className=" w-[.3em]    border-b border bg-white    text-left text-xs font-semibold  uppercase ">
+<td className=" w-[.3em]    border-[1px] border-[black] bg-white    text-left text-xs font-semibold  uppercase ">
   <div className=" flex items-center">
 
   <div className=" w-fit text-center">
@@ -143,7 +145,7 @@ const TableBody = ({
       </div>
   </div>
 </td>
-<td className="    border-b border bg-white  px-4 py-3    text-left text-xs font-semibold  uppercase tracking-wider">
+<td className="    border-[1px] border-[black] bg-white  px-4 py-3    text-left text-xs font-semibold  uppercase tracking-wider">
   <div className="w-full flex items-center">
 
       <div className="w-full text-center">
@@ -153,7 +155,7 @@ const TableBody = ({
       </div>
   </div>
 </td>
-<td className="    border-b border bg-white  px-4 py-3    text-left text-xs font-semibold  uppercase tracking-wider">
+<td className="    border-[1px] border-[black] bg-white  px-4 py-3    text-left text-xs font-semibold  uppercase tracking-wider">
   <div className="w-full flex items-center">
 
       <div className="w-full text-center">
@@ -162,7 +164,7 @@ const TableBody = ({
       </div>
   </div>
 </td>
-<td className="   w border-b border bg-white  px-4 py-3    text-left text-xs font-semibold  uppercase tracking-wider">
+<td className="   w border-[1px] border-[black] bg-white  px-4 py-3    text-left text-xs font-semibold  uppercase tracking-wider">
   <div className="w-full flex items-center">
 
       <div className="w-full text-center">
@@ -173,7 +175,7 @@ const TableBody = ({
       </div>
   </div>
 </td>
-<td className="   border-b border bg-white  px-4 py-3    text-left text-xs font-semibold  uppercase tracking-wider">
+<td className="   border-[1px] border-[black] bg-white  px-4 py-3    text-left text-xs font-semibold  uppercase tracking-wider">
   <div className="w-full  flex items-center">
 
       <div className="w-full  text-center">
@@ -198,7 +200,7 @@ const TableBody = ({
      </div>
   </div>
 </td>
-<td className="   border-b border bg-white  px-4 py-3    text-left text-xs font-semibold  uppercase tracking-wider">
+<td className="   border-[1px] border-[black] bg-white  px-4 py-3    text-left text-xs font-semibold  uppercase tracking-wider">
   <div className="w-full  flex items-center">
 
       <div className="w-full  text-center">
@@ -213,7 +215,7 @@ const TableBody = ({
       </div>
   </div>
 </td>
-<td className="     border-b border bg-white  px-4 py-3    text-left text-xs font-semibold  uppercase tracking-wider">
+<td className="     border-[1px] border-[black] bg-white  px-4 py-3    text-left text-xs font-semibold  uppercase tracking-wider">
   <div className="w-full flex items-center">
 
       <div className=" w-fit text-center">
@@ -226,7 +228,7 @@ const TableBody = ({
       </div>
   </div>
 </td>
-<td className="  border-b border bg-white  px-4 py-3    text-left text-xs font-semibold  uppercase tracking-wider">
+<td className="  border-[1px] border-[black] bg-white  px-4 py-3    text-left text-xs font-semibold  uppercase tracking-wider">
   <div className="w-full flex items-center">
    
       <div className="w-full text-center">
@@ -253,12 +255,12 @@ const TableBody = ({
        ))}
 
       {/* ======================CUMILATIVE GRADE POINT (CGP)===============================  */}
-    <div className=' absolute b-0 py-7'> GradePoint:   { Number(calculateCGPA(scores, row[0].LEVELS[0][level===undefined || level==="" ? 100: level][0].SEMESTER[0][semester===undefined || semester===""? 1:
+    <div className=' absolute b-0 py-7'> Grade Point:   { Number(calculateCGPA(scores, row[0].LEVELS[0][level===undefined || level==="" ? 100: level][0].SEMESTER[0][semester===undefined || semester===""? 1:
         semester==='1 st Semester'?1:
         semester==='1 st Semester'?2:
         1][0].COURSES).cgpa).toPrecision(3) } 
      <div>
-     cumulativeGradePointAverage:{ Number(calculateCGPA(scores, row[0].LEVELS[0][level===undefined || level==="" ? 100: level][0].SEMESTER[0][semester===undefined || semester===""? 1:
+     Cumulative Grade Point Average: { Number(calculateCGPA(scores, row[0].LEVELS[0][level===undefined || level==="" ? 100: level][0].SEMESTER[0][semester===undefined || semester===""? 1:
         semester==='1 st Semester'?1:
         semester==='1 st Semester'?2:
         1][0].COURSES).average).toPrecision(3) } 

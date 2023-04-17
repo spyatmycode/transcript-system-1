@@ -11,6 +11,7 @@ import LoginProtect from './Component/LoginProtect'
 import { ContextProvider } from './Component/ContextProvider/ContextProvider';
 import { useEffect } from 'react';
 import jsPDF from 'jspdf';
+import LocalTable from './Component/LocalTable/LocalTable';
 
 function App() {
 
@@ -46,6 +47,7 @@ function App() {
               <Route element={<Protected><Form /></Protected>} path='/fill-form' />
 
               <Route element={<Protected><Admin /></Protected>} path='/' index />
+              {/* <Route element={<Protected><LocalTable /></Protected>} path='/:id' index /> */}
 
               <Route element={<Protected><Transcript /></Protected>} path='/transcript/:id' />
 

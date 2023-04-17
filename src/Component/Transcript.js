@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { db } from '../firebase/firebaseConfig'
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore'
-import { useParams } from 'react-router-dom'
-
+import { useNavigate, useParams } from 'react-router-dom'
 import Table from './Table/Table'
 import { useContext } from 'react'
 import { AppContext } from './ContextProvider/ContextProvider'
@@ -16,14 +15,23 @@ import 'jspdf-autotable';
 import html2canvas from 'html2canvas';
 import ConfirmationModal from "./ConfirmationModal";
 import SummaryGrades from './Table/SummaryGrades';
+import LetterHead from './LetterHead';
+import LocalTable from './LocalTable/LocalTable';
+import TableSelect from './Table/TableSelect';
 
 const Transcript = () => {
+  const {...idMatric}=useParams()
+   const navigate=useNavigate()
+    const {department,showLocalTables,setSummaryLevel,summaryLevel,summarySemester,setSummarySemester,gradePointArray,setDepartment,tableNo,setTableNo,setSummaryRow,CGPA,summaryRow,showOption,localStorageDb,setLocalStorageDb,setShowOption}=useContext(AppContext)
+    const [level,setLevel]=useState(100)
+    const[semester,SetSemester]=useState('')
+    const[saveBtnState,setSaveBtnState]=useState(true)
+    const [buttonColorState, setButtonColorState] = useState(true)
+    const [bgColor, setBgColor] = useState('bg-gray-500');
 
-  const { department, setSummaryLevel, summaryLevel, summarySemester, setSummarySemester, gradePointArray, setDepartment, tableNo, setTableNo, setSummaryRow, CGPA, summaryRow, showOption, setShowOption, setLocalStorageDb, localStorageDb } = useContext(AppContext)
-  const [level, setLevel] = useState(100)
-  const [semester, SetSemester] = useState('')
-  const [saveBtnState, setSaveBtnState] = useState(true)
-  const [buttonColorState, setButtonColorState] = useState(true)
+
+
+    
 
 
 
@@ -82,7 +90,7 @@ const Transcript = () => {
       setStudents(UserData)
 
 
-
+       
       getDocs(transcriptHeaderCollectionRef).then((res) => {
         setData(res.docs)
       })
@@ -92,11 +100,11 @@ const Transcript = () => {
       // console.log(docRef);
 
       const docSnap = await getDoc(docRef);
-
+      console.log("Document data:", docSnap.data());
       if (docSnap.exists()) {
         //testing if document exist
-        // console.log("Document data:", docSnap.data().college);
-
+        console.log("Document data:", docSnap.data());
+        console.log(name);
         setName(docSnap.data().name)
         setMatric(docSnap.data().matric)
         setCollege(docSnap.data().college)
@@ -105,6 +113,7 @@ const Transcript = () => {
         setSession(docSnap.data().session)
         setLevel(docSnap.data().level)
         setData(docSnap.data())
+        alert(docSnap.data().name)
       } else {
         // console.log("Document data:", docSnap.data());
       }
@@ -123,6 +132,8 @@ const Transcript = () => {
   };
 
   const [Tables, setTables] = useState([])
+
+
 
   const createNewTable = () => {
     const newTableNo = Tables.length > 0 ? tableNo + 1 : 1;
@@ -149,27 +160,24 @@ const Transcript = () => {
           tableNo: newTableNo,
           table: (
             <>
-              <Table key={newTableNo} />
+              <Table tableNo={newTableNo} />
             </>
           ),
         },
       ]);
 
     }
-
-
-
-
-
-
-
-
-
   };
 
 
-  // console.log(Tables);
-  const deleteTable = (tableNo) => {
+
+  
+
+  
+
+
+    // console.log(Tables);
+    const deleteTable = (tableNo) => {
 
     setCount(count - 1);
 
@@ -202,26 +210,14 @@ const Transcript = () => {
 
   const saveToLocalStorage = (database, studentMatric, currentResult, tableNo, saveState) =>{
     if(database){
-
-      
       const updatedDb = [...database]
-
-     
-
-    const currentStudentIndex = database.findIndex((student)=> student.matric === studentMatric)
-
+    const currentStudentIndex = database.findIndex((student)=> student.matric === idMatric.id)
     if (saveState !== false){
-      
-      
-
       // console.log("thisnis the current student index",currentStudentIndex);
 
-      updatedDb[currentStudentIndex].results = [...updatedDb[currentStudentIndex].results, {...currentResult, id: tableNo}]
+      updatedDb[currentStudentIndex].results = [...updatedDb[currentStudentIndex].results, {...currentResult, id: tableNo,saveState}]
 
       setLocalStorageDb(updatedDb)
-
-      
-
     }
     else{
       updatedDb[currentStudentIndex].results = updatedDb[currentStudentIndex].results.filter((result) => (result.id !== tableNo))
@@ -237,7 +233,7 @@ const Transcript = () => {
   const deleteFromLocalStorage = (database, studentMatric, tableNo) =>{
     if(database){
       const updatedDb = [...database]
-      const currentStudentIndex = database.findIndex((student)=> student.matric === studentMatric)
+      const currentStudentIndex = database.findIndex((student)=> student.matric ===idMatric.id)
 
       updatedDb[currentStudentIndex].results = updatedDb[currentStudentIndex].results.filter((result) => (result.id !== tableNo))
 
@@ -249,139 +245,196 @@ const Transcript = () => {
 
 
   //  SAVE BTN 
+      const saveBtn = (num) => {
+        
+         setSaveBtnState(false)
+         
+       if(saveBtnState===false){
+        setSummaryRow((prev) => [
+          ...prev,
+          {
+            year: num,
+            gpa: 2.43,
+            cgpa: 5.0,
+            grade: "A",
+            classDegree: "First Class",
+            Row: (
+              <SummaryRow
+                count={`${count}`}
+                cgp={
+                  gradePointArray[gradePointArray.length - 2]
+                    ? gradePointArray[gradePointArray.length - 2]
+                    : 0
+                }
+                level={summaryLevel}
+                semester={summarySemester}
+                year={num }
+                tableNo={num}
+              />
+            ),
+          
+          },
+        ]);
+        toast.info('Saved successfully!');
+        //reset
+        setSaveBtnState(true)
+       } 
+       else{
+      
+          setSummaryRow((summaryrow)=>summaryrow.filter((row)=>(
+         row.year!==num)))
+         toast.warning('UnSaved successfully!');
+     
+       }
+      
+        
+      };
 
 
-  const saveBtn = (num) => {
-
-    setSaveBtnState(false)
-
-    if (saveBtnState === false) {
-      setSummaryRow((prev) => [
-        ...prev,
-        {
-          year: num,
-          gpa: 2.43,
-          cgpa: 5.0,
-          grade: "A",
-          classDegree: "First Class",
-          Row: (
-            <SummaryRow
-              count={`${count}`}
-              cgp={
-                gradePointArray[gradePointArray.length - 2]
-                  ? gradePointArray[gradePointArray.length - 2]
-                  : 0
-              }
-              level={summaryLevel}
-              semester={summarySemester}
-              year={num}
-              tableNo={num}
-            />
-          ),
-
-        },
-      ]);
-      toast.info('Saved successfully!');
-      //reset
-      setSaveBtnState(true)
-    }
-    else {
-
-      setSummaryRow((summaryrow) => summaryrow.filter((row) => (
-        row.year !== num)))
-      toast.warning('UnSaved successfully!');
-
-    }
-
-
-  };
 
 
 
-  // Define the print function
-  const handlePrint = () => {
-    //RESTRICTIONS FOR USERS
-    if (saveBtnState === true) {
-      setShowOption(false);
-      setTimeout(() => {
+      useEffect(() => {
+        const interval = setInterval(() => {
+          if (bgColor === 'bg-gray-500') {
+            setBgColor('bg-gray-700');
+          } else if (bgColor === 'bg-gray-700') {
+            setBgColor('bg-gray-900');
+          } else {
+            setBgColor('bg-gray-500');
+          }
+        }, 1000);
+    
+        return () => {
+          clearInterval(interval);
+        }
+      }, [bgColor]);
+    
 
-        // Capture HTML content of main component using html2canvas
-        html2canvas(mainPageRef.current, { scale: window.devicePixelRatio }) // Use window.devicePixelRatio to capture the correct size based on the device's pixel density
-          .then((canvas) => {
-            setShowOption(false);
-            // Convert captured content to image data URL
-            const imgData = canvas.toDataURL('image/png', 1.0); // Use quality option to set image quality to 100%
 
-            // Create new jsPDF instance
-            const pdf = new jsPDF('p', 'mm', 'a5'); // Set page orientation to portrait, measurement unit to millimeters, and page size to A4
+    
 
-            const maxPages = 15; // Maximum number of pages allowed in PDF
-            const imgHeight = (canvas.height * pdf.internal.pageSize.getWidth()) / canvas.width; // Calculate image height based on aspect ratio
-
-            let totalPages = Math.ceil(imgHeight / pdf.internal.pageSize.getHeight()); // Calculate total number of pages based on image height and page height
-
-            // Limit total pages to maximum allowed pages and minimum of 1 page
-            totalPages = Math.max(Math.min(totalPages, maxPages), 1);
-
-            // Loop through each page and add image to PDF
-            for (let i = 0; i < totalPages; i++) {
-              if (i > 0) {
-                pdf.addPage(); // Add new page for remaining content
-              }
-              pdf.addImage(
-                imgData,
-                'PNG',
-                0,
-                -(i * pdf.internal.pageSize.getHeight()),
-                pdf.internal.pageSize.getWidth(),
-                0
-              ); // Use internal.pageSize to get current page size and adjust y position for each page
+ // Define the print function
+const handlePrint = () => {
+  //RESTRICTIONS FOR USERS
+  if(saveBtnState===true   ){
+    setShowOption(false);
+    setTimeout(() => {
+     
+      // Capture HTML content of main component using html2canvas
+      html2canvas(mainPageRef.current, { scale: window.devicePixelRatio }) // Use window.devicePixelRatio to capture the correct size based on the device's pixel density
+        .then((canvas) => {
+          setShowOption(false);
+          // Convert captured content to image data URL
+          const imgData = canvas.toDataURL('image/png', 1.0); // Use quality option to set image quality to 100%
+  
+          // Create new jsPDF instance
+          const pdf = new jsPDF('p', 'mm', 'a5'); // Set page orientation to portrait, measurement unit to millimeters, and page size to A4
+  
+          const maxPages = 15; // Maximum number of pages allowed in PDF
+          const imgHeight = (canvas.height * pdf.internal.pageSize.getWidth()) / canvas.width; // Calculate image height based on aspect ratio
+  
+          let totalPages = Math.ceil(imgHeight / pdf.internal.pageSize.getHeight()); // Calculate total number of pages based on image height and page height
+  
+          // Limit total pages to maximum allowed pages and minimum of 1 page
+          totalPages = Math.max(Math.min(totalPages, maxPages), 1);
+  
+          // Loop through each page and add image to PDF
+          for (let i = 0; i < totalPages; i++) {
+            if (i > 0) {
+              pdf.addPage(); // Add new page for remaining content
             }
-            setShowOption(false);
-            // Save PDF with specified file name
-            pdf.save(`${name} ${matric} IUT BENIN`);
-            setTimeout(() => {
-              setShowOption(true);
-            }, 1000);
-          })
-          .catch((error) => {
-            console.error('Error generating PDF:', error);
+            pdf.addImage(
+              imgData,
+              'PNG',
+              0,
+              -(i * pdf.internal.pageSize.getHeight()),
+              pdf.internal.pageSize.getWidth(),
+              0
+            ); // Use internal.pageSize to get current page size and adjust y position for each page
+          }
+          setShowOption(false);
+          // Save PDF with specified file name
+          pdf.save(`${name} ${matric} IUT BENIN`);
+          setTimeout(() => {
             setShowOption(true);
-          });
-
-      }, 1000);
-
+          }, 1000);
+        })
+        .catch((error) => {
+          console.error('Error generating PDF:', error);
+          setShowOption(true);
+        });
+      
+    }, 1000);
+  
 
 
 
     }
-    else {
-      setShowModal(true)
-      // const result = window.confirm('You cant proceed !! save the previous table')
+  else{
+    setShowModal(true)
+    // const result = window.confirm('You cant proceed !! save the previous table')
+ 
+  }
+};
 
-    }
-  };
+const localTables=localStorage.getItem("localStorageDb")
+
+const ParsedLocalTables=JSON.parse(localTables)
+useEffect(()=>{
+  console.log(ParsedLocalTables[1]);
+  console.log(ParsedLocalTables.findIndex((num)=>num.matric=='ko'))
+  
+},[localTables])
 
 
 
-  return (
-    <div className=' p-[6em]  mt-3 mb-8 md:mx-[3em] ' ref={mainPageRef} id="main-page">
-      {showOption ? <button className='bg-gray-400 text-black font-bold px-4 py-3 rounded-md' onClick={handlePrint}>Print</button> : null}
+    return (
+     
 
-      {showOption ? <ToastContainer /> : null}
-
-      <div className='flex flex-col md:flex-row gap-6 items-center justify-between'>
+             <div className=' p-[6em]  mt-3 mb-8 md:mx-[3em] ' ref={mainPageRef} id="main-page">
+              <div>
+              {showOption ?
+                <button onClick={()=>{
+                  navigate("/")
+                  //   to refresh the page after deleting
+                  window.location.reload();
+                  }} className=' bg-[#3e3e3e] text-white p-3 absolute top-4 left-4 rounded-md'> ⇐ Back to Home Page</button>:null}
+              </div>
+          <LetterHead/>
+            {showOption ? (
+       <button
+       className={`fixed right-[4%] bottom-8 text-[#ffffff] font-bold px-4 py-3 rounded-md transition duration-500 ${bgColor} bg-gradient-to-bottom-right`}
+       onClick={handlePrint}
+     > Print</button>
+      ) : null}
+ 
+              {showOption? <ToastContainer  />:null}
+             
+            <div className='flex flex-col md:flex-row gap-6 items-center justify-between'>
 
         <div>
 
           <ul>
-
+          {showLocalTables===true?
             <>
-              <li><span className=' font-bold '>Name (Nom):</span>{name}</li>
+              <li><span className=' font-bold '>Name (Nom): </span>{name ? name: ParsedLocalTables[ParsedLocalTables.findIndex((num)=>num.matric==`${idMatric.id}`)].name }</li>
+              <li> <span className='font-bold'>Faculty: </span>{college ? college:ParsedLocalTables[ParsedLocalTables.findIndex((num)=>num.matric==`${idMatric.id}`)].department }</li>
+              <li><span className='font-bold'>Matric No (No Matricule): </span>{matric ? matric:
+              ParsedLocalTables[ParsedLocalTables.findIndex((num)=>num.matric==`${idMatric.id}`)].matric
+              }</li> 
+               </>
+               :
+               <>
+               {/* {alert(name)} */}
+               <li><span className=' font-bold '>Name (Nom):</span>{name}</li>
               <li> <span className='font-bold'>Faculty:</span>{college}</li>
               <li><span className='font-bold'>Matric No (No Matricule):</span>{matric}</li>
 
-            </>
+               </>
+           }
+
+           
 
           </ul>
 
@@ -400,7 +453,54 @@ const Transcript = () => {
           <p className=' font-[fantasy]'>(Transcript Des Note Acaddemiques)</p>
         </div>
 
-        {showOption ? <button className='bg-[#7323be] text-white  py-2 px-4 rounded-md' onClick={createNewTable}>Create New Table</button> : null}
+                    {!showLocalTables ? 
+
+                    <>
+                      {showOption  ? <button className='bg-[#7323be] text-white  py-2 px-4 rounded-md' onClick={createNewTable}>Create New Table</button> : null}
+
+                    </>
+                    :null
+
+                    }
+                           
+
+
+  
+    {/* 
+
+   HINT: THIS IS FOR THE ADMOIN PAGE 
+
+    ----------localTables --------
+     */}
+
+    {/* {ParsedLocalTables.map((ltable)=>( */}
+    {showLocalTables===true?
+      <>
+      { ParsedLocalTables.length > 0 ?
+
+<>
+   {ParsedLocalTables[ParsedLocalTables.findIndex((num)=>num.matric==`${idMatric.id}`)].results.map((result)=>(
+ 
+    <>
+
+     <TableSelect level={result.level} setLevel={setLevel} semester={result.semester} />
+     <LocalTable saveBtnState={saveBtnState} saveToLocalStorage={saveToLocalStorage} saveBtn={saveBtn} setSaveBtnState={setSaveBtnState} deleteTable={deleteTable} result={result}/> 
+    </>
+   ))}</>
+   :null
+}
+      </>
+      :null
+    }
+ 
+   
+    {/* ))} */}
+
+      
+
+
+
+
 
         {/* Table */}
 
@@ -413,41 +513,32 @@ const Transcript = () => {
               Delete table
             </button> : null}
 
-
-
             {showOption ? <SaveBtn saveBtnState={saveBtnState} setSaveBtnState={setSaveBtnState} saveBtnColor={table.saveBtnColor} tableNo={table.tableNo} saveBtn={saveBtn} saveToLocalStorage={saveToLocalStorage} matric={matric}/>
               : null}
-
-
-
-
-
-
-
 
           </div>
         ))}
 
-        {/* THIS DISPLAY THE SUMMARY OF THE DATA WHEN THERE IS A TABLE PRESENT FOR CALCULATION */}
-        {Tables.length > 0 && <><SummaryTable className="" />  <SummaryGrades />  </>}
-
-        <div className=''>
-          <button
-            className="bg-blue-500 hidden hover:bg-blue-600 text-white px-4 py-2 rounded"
-            onClick={() => setShowModal(true)}
-          >
-            Open Confirmation Modal
-          </button>
-          {showModal && (
-            <ConfirmationModal
-              message="Warning: You can't proceed without saving the previous table!."
-
-              onYes={handleYes}
-
-            />
-          )}
-        </div>
-
+                        {/* THIS DISPLAY THE SUMMARY OF THE DATA WHEN THERE IS A TABLE PRESENT FOR CALCULATION */}
+                                   {Tables.length >0 && <><SummaryTable className=""  />  <SummaryGrades/>  </>}
+                     
+                  <div className=''>
+                        <button
+                          className="bg-blue-500 hidden hover:bg-blue-600 text-white px-4 py-2 rounded"
+                          onClick={() => setShowModal(true)}
+                        >
+                          Open Confirmation Modal
+                        </button>
+                        {showModal && (
+                          <ConfirmationModal
+                          message="Warning: You can't proceed without saving the previous table!."
+         
+                            onYes={handleYes}
+                           
+                          />
+                        )}
+                   </div>
+                  
 
       </section>
 
