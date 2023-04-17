@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from './Header'
 import { FaEdit } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useContext } from 'react'
 import { AppContext, ContextProvider } from './ContextProvider/ContextProvider'
-const Admin = () => {
 
+const Admin = () => {
+const navigate=useNavigate()
     const data = [
         {
             matric: "2020/9257",
@@ -23,19 +24,63 @@ const Admin = () => {
         }
     ]
 
-    const {level,setLevel} =useContext(AppContext)
+    const {level,setLevel,showLocalTables,setShowLocalTables} =useContext(AppContext)
+    const {...idMatric}=useParams()
+
+    const localTables=localStorage.getItem("localStorageDb")
+
+    const ParsedLocalTables=JSON.parse(localTables)
+    useEffect(() => {
+        console.log(ParsedLocalTables[1]);
+        console.log(
+          ParsedLocalTables.map((e) => {
+            if (e.results.length > 0) {
+              return e.results[e.results.length - 1].level;
+            } else {
+              return "No Level";
+            }
+          })
+        );
+      }, [localTables]);
+
+      const handlePrint=(each)=>{
+       
+        if(showLocalTables===false){
+            setShowLocalTables(true)
+             navigate(`/transcript/${each.matric}`)
+        }
+        
+        
+      }
 
 
 
+
+
+  const deleteFunction= (each) =>{
+    const parsedLocalTables = JSON.parse(localTables);
+    const updatedData = parsedLocalTables.filter((item) => item.matric !== each.matric);
+
+    //   const currentStudentIndex = ParsedLocalTables.findIndex((student)=> student.matric ===idMatric.id)
+console.log(each.matric);
+const deletedData= ParsedLocalTables.filter((b) => (b.matric !== each.matric ))
+console.log(deletedData);
+localStorage.setItem("localStorageDb",JSON.stringify(deletedData))
+
+    //   to refresh the page after deleting
+    window.location.reload();
+
+  }
 
     return (
         <>
 
-
+   
             <div className='w-full mt-12'>
                 <div className='w-full text-center'>
+                  
                     <h1 className='font-bold text-4xl'>
-                        Transcripts
+                        Transcripts 
                     </h1>
                 </div>
 
@@ -121,6 +166,14 @@ const Admin = () => {
                                             </th>
                                             <th
                                                 className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                                Department
+                                            </th>
+                                            <th
+                                                className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                                Faculty
+                                            </th>
+                                            <th
+                                                className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                                 Status
                                             </th>
                                             <th
@@ -136,10 +189,10 @@ const Admin = () => {
                                         {/* This is a table row/ record */}
 
                                         {
-                                            data.map((each) => {
-                                                const { level, studentName, status, matric } = each
+                                            ParsedLocalTables.map((each) => {
+                                                // const { level, studentName, status, matric } = each
                                                 return (
-                                                    <tr key={matric}>
+                                                    <tr key={each.matric}>
                                                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                             <div className="flex items-center">
                                                                 <div className="flex-shrink-0 w-auto h-10">
@@ -149,34 +202,51 @@ const Admin = () => {
                                                                 </div>
                                                                 <div className="">
                                                                     <p className="text-gray-900 ">
-                                                                        {studentName}
+                                                                        {each.name}
                                                                     </p>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                            <p className="text-gray-900 whitespace-no-wrap">{matric}</p>
+                                                            <p className="text-gray-900 whitespace-no-wrap">{each.matric}</p>
+                                                              
                                                         </td>
                                                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                             <p className="text-gray-900 whitespace-no-wrap">
-                                                                {level}
+                                                            {each.results.length > 0 ? each.results[each.results.length - 1].level:"No Level" }
+                          
                                                             </p>
                                                         </td>
                                                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                             <span
                                                                 className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                                                                 <span aria-hidden
+                                                                    className="absolute inset-0  opacity-50 rounded-full"></span>
+                                                                <span className="relative">{each.department}</span>
+                                                            </span>
+                                                        </td>
+                                                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                            <span
+                                                                className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                                                                <span aria-hidden
+                                                                    className="absolute inset-0  opacity-50 rounded-full"></span>
+                                                                <span className="relative">{each.college}</span>
+                                                            </span>
+                                                        </td>
+                                                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                                            <span
+                                                                className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                                                                <span aria-hidden
                                                                     className="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                                                                <span className="relative">{status}</span>
+                                                                <span className="relative">status</span>
                                                             </span>
                                                         </td>
                                                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm  !w-[200px]">
 
                                                             <div className='flex w-full justify-between'>
                                                                 <div className=' text-blue-600'>
-                                                                    <button>
+                                                                    <button onClick={()=>handlePrint(each)}>
                                                                         Print
-
                                                                     </button>
                                                                 </div>
 
@@ -192,7 +262,7 @@ const Admin = () => {
                                                                 </div>
 
                                                                 <div>
-                                                                    <button className='flex items-center justify-between text-red-600'>
+                                                                    <button onClick={()=>deleteFunction(each)} className='flex items-center justify-between text-red-600'>
                                                                         Delete
 
                                                                     </button>

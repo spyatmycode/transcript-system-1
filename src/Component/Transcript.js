@@ -1,11 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { db } from '../firebase/firebaseConfig'
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore'
-import {  useParams } from 'react-router-dom'
-
+import { useNavigate, useParams } from 'react-router-dom'
 import Table from './Table/Table'
 import { useContext } from 'react'
-import { AppContext} from './ContextProvider/ContextProvider'
+import { AppContext } from './ContextProvider/ContextProvider'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SummaryTable from './Table/SummaryTable'
@@ -17,10 +16,13 @@ import html2canvas from 'html2canvas';
 import ConfirmationModal from "./ConfirmationModal";
 import SummaryGrades from './Table/SummaryGrades';
 import LetterHead from './LetterHead';
+import LocalTable from './LocalTable/LocalTable';
+import TableSelect from './Table/TableSelect';
 
 const Transcript = () => {
- 
-    const {department,setSummaryLevel,summaryLevel,summarySemester,setSummarySemester,gradePointArray,setDepartment,tableNo,setTableNo,setSummaryRow,CGPA,summaryRow,showOption,setShowOption}=useContext(AppContext)
+  const {...idMatric}=useParams()
+   const navigate=useNavigate()
+    const {department,showLocalTables,setSummaryLevel,summaryLevel,summarySemester,setSummarySemester,gradePointArray,setDepartment,tableNo,setTableNo,setSummaryRow,CGPA,summaryRow,showOption,localStorageDb,setLocalStorageDb,setShowOption}=useContext(AppContext)
     const [level,setLevel]=useState(100)
     const[semester,SetSemester]=useState('')
     const[saveBtnState,setSaveBtnState]=useState(true)
@@ -31,116 +33,121 @@ const Transcript = () => {
 
     
 
-    const mainPageRef = useRef(null);
+
+
+  const mainPageRef = useRef(null);
   const handleLevelChange = (e) => {
     setLevel(Number(e.target.value))
   }
 
   const handleSemesterChange = (e) => {
     SetSemester(e.target.value)
-   
+
   }
 
 
 
-//  HEADER INFORMATION
-    const [name, setName] = useState('')
-    const [matric, setMatric] = useState('')
-    const [college, setCollege] = useState('')
-    const [gender, setGender] = useState('')
-    const [session, setSession] = useState('')
-    const [data, setData] = useState([])
-    const [students, setStudents] = useState([])
-    const [save, setsave] = useState(false)
-    const [count, setCount] = useState(0);
+  //  HEADER INFORMATION
+  const [name, setName] = useState('')
+  const [matric, setMatric] = useState('')
+  const [college, setCollege] = useState('')
+  const [gender, setGender] = useState('')
+  const [session, setSession] = useState('')
+  const [data, setData] = useState([])
+  const [students, setStudents] = useState([])
+  const [save, setsave] = useState(false)
+  const [count, setCount] = useState(0);
 
-    const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
-    const handleYes = () => {
-      // Perform action when "Yes" is clicked
-      setShowModal(false);
-      // ...do something
-    };
+  const handleYes = () => {
+    // Perform action when "Yes" is clicked
+    setShowModal(false);
+    // ...do something
+  };
 
 
-   
 
-    const handleSave=(e)=>{
+
+  const handleSave = (e) => {
     e.preventDefault()
     setsave(true)
+  }
+
+
+  const { id } = useParams()
+  const transcriptHeaderCollectionRef = collection(db, "Transcript-header-info")
+  // console.log(transcriptHeaderCollectionRef);
+
+  useEffect(() => {
+    const HeaderTranscriptInfo = async () => {
+
+
+      const UserData = await getDocs(transcriptHeaderCollectionRef)
+
+      // console.log(UserData);
+
+      setStudents(UserData)
+
+
+       
+      getDocs(transcriptHeaderCollectionRef).then((res) => {
+        setData(res.docs)
+      })
+
+
+      const docRef = doc(db, "Transcript-header-info", id);
+      // console.log(docRef);
+
+      const docSnap = await getDoc(docRef);
+      console.log("Document data:", docSnap.data());
+      if (docSnap.exists()) {
+        //testing if document exist
+        console.log("Document data:", docSnap.data());
+        console.log(name);
+        setName(docSnap.data().name)
+        setMatric(docSnap.data().matric)
+        setCollege(docSnap.data().college)
+        setDepartment(docSnap.data().department)
+        setGender(docSnap.data().gender)
+        setSession(docSnap.data().session)
+        setLevel(docSnap.data().level)
+        setData(docSnap.data())
+        alert(docSnap.data().name)
+      } else {
+        // console.log("Document data:", docSnap.data());
+      }
     }
 
+    HeaderTranscriptInfo()
+  }, [id])
 
-    const { id } = useParams()
-    const transcriptHeaderCollectionRef = collection(db, "Transcript-header-info")
-    console.log(transcriptHeaderCollectionRef);
+  const calculateTableSummary = (gradePointArray) => {
+    let total = 0;
+    for (let i = 0; i < gradePointArray.length; i++) {
+      total += gradePointArray[i];
+    }
+    const average = total / gradePointArray.length
+    return average;
+  };
 
-    useEffect(() => {
-        const HeaderTranscriptInfo = async () => {
-
-
-            const UserData = await getDocs(transcriptHeaderCollectionRef)
-
-            console.log(UserData);
-
-            setStudents(UserData)
-
+  const [Tables, setTables] = useState([])
 
 
-            getDocs(transcriptHeaderCollectionRef).then((res) => {
-                setData(res.docs)
-            })
 
+  const createNewTable = () => {
+    const newTableNo = Tables.length > 0 ? tableNo + 1 : 1;
+    setTableNo(newTableNo);
 
-            const docRef = doc(db, "Transcript-header-info", id);
-            console.log(docRef);
+    //RESTRICTIONS FOR USERS
+    if (saveBtnState === false) {
+      setShowModal(true)
+      // const result = window.confirm('You cant proceed !! save the previous table')
+    }
+    else {
 
-            const docSnap = await getDoc(docRef);
-
-            if (docSnap.exists()) {
-                //testing if document exist
-                console.log("Document data:", docSnap.data().college);
-
-                setName(docSnap.data().name)
-                setMatric(docSnap.data().matric)
-                setCollege(docSnap.data().college)
-                setDepartment(docSnap.data().department)
-                setGender(docSnap.data().gender)
-                setSession(docSnap.data().session)
-                setLevel(docSnap.data().level)
-                setData(docSnap.data())
-            } else {
-                console.log("Document data:", docSnap.data());
-            }
-        }
-
-        HeaderTranscriptInfo()
-    }, [id])
-
-    const calculateTableSummary = (gradePointArray) => {
-        let total = 0;
-        for (let i = 0; i < gradePointArray.length; i++) {
-          total += gradePointArray[i];
-        }
-        const average=  total/ gradePointArray.length
-        return average;
-      };
-   
-    const [Tables,setTables]=useState([])
-  
-    const createNewTable = () => {
-      const newTableNo = Tables.length > 0 ? tableNo + 1 : 1;
-      setTableNo(newTableNo);
-
-      //RESTRICTIONS FOR USERS
-      if(saveBtnState===false){
-        setShowModal(true)
-        // const result = window.confirm('You cant proceed !! save the previous table')
-      }
-      else{
-
-         //changing the state
-        setSaveBtnState(true)
+      //changing the state
+      setSaveBtnState(true)
       toast.success("Table created successfully!");
       setButtonColorState(!buttonColorState);
       setCount(count + 1);
@@ -158,51 +165,90 @@ const Transcript = () => {
           ),
         },
       ]);
-      
-      }
-     
-      
-       
-     
+
+    }
+  };
+
+
+
   
-      
-     
-    
-      
-    };
-       
 
-    console.log(Tables);
+  
 
 
+    // console.log(Tables);
     const deleteTable = (tableNo) => {
 
-      setCount(count - 1);
-      
-        setTables((prevTables) =>
-          prevTables.filter((table) => table.tableNo !== tableNo)
-        );
-        setSummaryRow((summaryrow)=>summaryrow.filter((row)=>(
-          row.year!==tableNo)))
-       
-        if(saveBtnState===false){
-          setSummaryRow((summaryrow)=>summaryrow.filter((row)=>(
-         row.year!==tableNo)))
-         setSaveBtnState(true)
-        }
-        else{
-          setSaveBtnState(true)
-        }
-         
-        
-        toast.warning('Table deleted successfully!');
+    setCount(count - 1);
 
-      };
+    setTables((prevTables) =>
+      prevTables.filter((table) => table.tableNo !== tableNo)
+    );
+    setSummaryRow((summaryrow) => summaryrow.filter((row) => (
+      row.year !== tableNo)))
+
+      deleteFromLocalStorage(localStorageDb,matric, tableNo)
+
+    
+
+    if (saveBtnState === false) {
+      setSummaryRow((summaryrow) => summaryrow.filter((row) => (
+        row.year !== tableNo)))
+
+      setSaveBtnState(true)
+    }
+    else {
+      setSaveBtnState(true)
+    }
+
+
+    toast.warning('Table deleted successfully!');
+
+  };
+
+  // SAVE TO LOCAL STORAGE DATABASE
+
+  const saveToLocalStorage = (database, studentMatric, currentResult, tableNo, saveState) =>{
+    if(database){
+      const updatedDb = [...database]
+    const currentStudentIndex = database.findIndex((student)=> student.matric === idMatric.id)
+    if (saveState !== false){
+      // console.log("thisnis the current student index",currentStudentIndex);
+
+      updatedDb[currentStudentIndex].results = [...updatedDb[currentStudentIndex].results, {...currentResult, id: tableNo,saveState}]
+
+      setLocalStorageDb(updatedDb)
+    }
+    else{
+      updatedDb[currentStudentIndex].results = updatedDb[currentStudentIndex].results.filter((result) => (result.id !== tableNo))
+
+      setLocalStorageDb(updatedDb)
+    }
+    }
+  }
+
+
+  //DELETE FROM LOCAL STORAGE
+
+  const deleteFromLocalStorage = (database, studentMatric, tableNo) =>{
+    if(database){
+      const updatedDb = [...database]
+      const currentStudentIndex = database.findIndex((student)=> student.matric ===idMatric.id)
+
+      updatedDb[currentStudentIndex].results = updatedDb[currentStudentIndex].results.filter((result) => (result.id !== tableNo))
+
+      setLocalStorageDb(updatedDb)
+
+
+    }
+  }
+
+
   //  SAVE BTN 
       const saveBtn = (num) => {
         
          setSaveBtnState(false)
-
+         
        if(saveBtnState===false){
         setSummaryRow((prev) => [
           ...prev,
@@ -244,7 +290,10 @@ const Transcript = () => {
         
       };
 
-    
+
+
+
+
       useEffect(() => {
         const interval = setInterval(() => {
           if (bgColor === 'bg-gray-500') {
@@ -263,13 +312,12 @@ const Transcript = () => {
     
 
 
-
+    
 
  // Define the print function
 const handlePrint = () => {
   //RESTRICTIONS FOR USERS
- 
-
+  if(saveBtnState===true   ){
     setShowOption(false);
     setTimeout(() => {
      
@@ -322,14 +370,37 @@ const handlePrint = () => {
 
 
 
-   
+    }
+  else{
+    setShowModal(true)
+    // const result = window.confirm('You cant proceed !! save the previous table')
+ 
+  }
 };
+
+const localTables=localStorage.getItem("localStorageDb")
+
+const ParsedLocalTables=JSON.parse(localTables)
+useEffect(()=>{
+  console.log(ParsedLocalTables[1]);
+  console.log(ParsedLocalTables.findIndex((num)=>num.matric=='ko'))
+  
+},[localTables])
 
 
 
     return (
+     
 
-        <div className=' p-[6em]  mt-3 mb-8 md:mx-[3em] ' ref={mainPageRef} id="main-page">
+             <div className=' p-[6em]  mt-3 mb-8 md:mx-[3em] ' ref={mainPageRef} id="main-page">
+              <div>
+              {showOption ?
+                <button onClick={()=>{
+                  navigate("/")
+                  //   to refresh the page after deleting
+                  window.location.reload();
+                  }} className=' bg-[#3e3e3e] text-white p-3 absolute top-4 left-4 rounded-md'> ⇐ Back to Home Page</button>:null}
+              </div>
           <LetterHead/>
             {showOption ? (
        <button
@@ -338,69 +409,117 @@ const handlePrint = () => {
      > Print</button>
       ) : null}
  
-          
               {showOption? <ToastContainer  />:null}
              
             <div className='flex flex-col md:flex-row gap-6 items-center justify-between'>
 
-                <div>
+        <div>
 
-                    <ul>
+          <ul>
+          {showLocalTables===true?
+            <>
+              <li><span className=' font-bold '>Name (Nom): </span>{name ? name: ParsedLocalTables[ParsedLocalTables.findIndex((num)=>num.matric==`${idMatric.id}`)].name }</li>
+              <li> <span className='font-bold'>Faculty: </span>{college ? college:ParsedLocalTables[ParsedLocalTables.findIndex((num)=>num.matric==`${idMatric.id}`)].department }</li>
+              <li><span className='font-bold'>Matric No (No Matricule): </span>{matric ? matric:
+              ParsedLocalTables[ParsedLocalTables.findIndex((num)=>num.matric==`${idMatric.id}`)].matric
+              }</li> 
+               </>
+               :
+               <>
+               {/* {alert(name)} */}
+               <li><span className=' font-bold '>Name (Nom):</span>{name}</li>
+              <li> <span className='font-bold'>Faculty:</span>{college}</li>
+              <li><span className='font-bold'>Matric No (No Matricule):</span>{matric}</li>
 
-                        <>
-                            <li><span className=' font-bold '>Name (Nom):</span>{name}</li>
-                            <li> <span className='font-bold'>Faculty:</span>{college}</li>
-                            <li><span className='font-bold'>Matric No (No Matricule):</span>{matric}</li>
+               </>
+           }
 
-                        </>
+           
 
-                    </ul>
+          </ul>
 
-                </div>
-                <div>
+        </div>
+        <div>
 
-                </div>
+        </div>
 
-            </div>
+      </div>
 
 
-            <section className=' my-3'>
-                {/* TITLE  */}
-                <div className=' text-center my-11 '>
-                    <h1 className='font-bold underline'>OFFICIAL TRANSCRIPT OF ACADEMIC RECORDS</h1>
-                    <p className=' font-[fantasy]'>(Transcript Des Note Acaddemiques)</p>
-                </div>
-                  
-            {showOption?<button className='bg-[#7323be] text-white  py-2 px-4 rounded-md' onClick={createNewTable}>Create New Table</button> :null}
-                
-                        {/* Table */}
-                 
-                        {Tables.map((table) => (
-                        
-                                <div key={table.tableNo} className='my-[-2vh]'>
-                                {table.table}
-                                
-                               {showOption?<button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => deleteTable(table.tableNo)}>
-                                    Delete table
-                                  </button> : null} 
-                                  
+      <section className=' my-3'>
+        {/* TITLE  */}
+        <div className=' text-center my-11 '>
+          <h1 className='font-bold underline'>OFFICIAL TRANSCRIPT OF ACADEMIC RECORDS</h1>
+          <p className=' font-[fantasy]'>(Transcript Des Note Acaddemiques)</p>
+        </div>
 
+                    {!showLocalTables ? 
+
+                    <>
+                      {showOption  ? <button className='bg-[#7323be] text-white  py-2 px-4 rounded-md' onClick={createNewTable}>Create New Table</button> : null}
+
+                    </>
+                    :null
+
+                    }
                            
-                               {showOption ?  <SaveBtn saveBtnState={saveBtnState} setSaveBtnState={setSaveBtnState}  saveBtnColor={table.saveBtnColor} tableNo={table.tableNo} saveBtn={saveBtn}/>
-                                :null }
-                                
-
-                           
 
 
+  
+    {/* 
 
+   HINT: THIS IS FOR THE ADMOIN PAGE 
+
+    ----------localTables --------
+     */}
+
+    {/* {ParsedLocalTables.map((ltable)=>( */}
+    {showLocalTables===true?
+      <>
+      { ParsedLocalTables.length > 0 ?
+
+<>
+   {ParsedLocalTables[ParsedLocalTables.findIndex((num)=>num.matric==`${idMatric.id}`)].results.map((result)=>(
+ 
+    <>
+
+     <TableSelect level={result.level} setLevel={setLevel} semester={result.semester} />
+     <LocalTable saveBtnState={saveBtnState} saveToLocalStorage={saveToLocalStorage} saveBtn={saveBtn} setSaveBtnState={setSaveBtnState} deleteTable={deleteTable} result={result}/> 
+    </>
+   ))}</>
+   :null
+}
+      </>
+      :null
+    }
+ 
+   
+    {/* ))} */}
 
       
-                                </div>
-                        ))}
+
+
+
+
+
+        {/* Table */}
+
+        {Tables.map((table) => (
+
+          <div key={table.tableNo} className='my-[-2vh]'>
+            {table.table}
+
+            {showOption ? <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => deleteTable(table.tableNo)}>
+              Delete table
+            </button> : null}
+
+            {showOption ? <SaveBtn saveBtnState={saveBtnState} setSaveBtnState={setSaveBtnState} saveBtnColor={table.saveBtnColor} tableNo={table.tableNo} saveBtn={saveBtn} saveToLocalStorage={saveToLocalStorage} matric={matric}/>
+              : null}
+
+          </div>
+        ))}
 
                         {/* THIS DISPLAY THE SUMMARY OF THE DATA WHEN THERE IS A TABLE PRESENT FOR CALCULATION */}
-
                                    {Tables.length >0 && <><SummaryTable className=""  />  <SummaryGrades/>  </>}
                      
                   <div className=''>
@@ -421,13 +540,13 @@ const handlePrint = () => {
                    </div>
                   
 
-            </section>
+      </section>
 
 
 
 
-        </div>
-    )
+    </div>
+  )
 }
 
 export default Transcript

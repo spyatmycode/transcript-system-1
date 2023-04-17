@@ -34,7 +34,7 @@ const Header = () => {
       {
         isLogged && <div>  {/* Here the header is only rendered when log is true */}
           {/* HEADER  */}
-          <div className=' flex items-center flex-col text-center gap-6'>
+          <div className='  flex items-center flex-col text-center gap-6'>
             <div className='w-full flex items-center justify-end py-2 mr-4 text-red-600 cursor-pointer'>
               <button onClick={logOut}>Log out</button>
             </div>
@@ -43,7 +43,7 @@ const Header = () => {
             </div>
 
             <div className='text-xl md:leading-10 md:text-[3em] font-serif text-[#0d0d6c]'>
-              <h1>INSTITUT UNIVERSITAIRE TRIUMPHANT</h1>
+              <h1>INSTITUT UNIVERSITAIRE TRIUMPHANT </h1>
             </div>
 
           </div>
