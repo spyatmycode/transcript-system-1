@@ -29,11 +29,17 @@ const TableBody = ({
       department,
       level,
       semester,
+      cgpa: calculateCGPA(scores,scores)
+
       
 
 
     }
   },[scores,level,semester])
+
+  console.log();
+
+  console.log(currentResultObjectInit());
 
 
 
@@ -65,6 +71,8 @@ const TableBody = ({
     function calculateCGPA(scores, courses) {
       let totalGradePoints = 0;
       let totalUnits = 0;
+
+     
       
     
       for (let i = 0; i < courses.length; i++) {
@@ -105,7 +113,7 @@ const TableBody = ({
    
    
 
-    const bd = (gradePointArray) => {
+ /*    const bd = (gradePointArray) => {
       let total = 0;
       for (let i = 0; i < gradePointArray.length; i++) {
         total += gradePointArray[i];
@@ -113,7 +121,7 @@ const TableBody = ({
       const average=  total/ gradePointArray.length
       return average;
     };
-  
+   */
     // console.log(111111111111111)
     // console.log(gradePointArray)
     let item =localStorage.getItem("localStorageDb")

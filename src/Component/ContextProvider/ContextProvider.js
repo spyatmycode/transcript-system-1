@@ -36,6 +36,8 @@ const ContextProvider = (props) => {
       return newDb;
     }
   };
+
+  console.log("this is it",CGPA);
   
   const [localStorageDb, setLocalStorageDb] = useState(localstorageInit());
 
