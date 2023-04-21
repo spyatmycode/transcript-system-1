@@ -17,7 +17,7 @@ const TableBody = ({
   const {showOption,setShowOption}=useContext(AppContext)
   
   const {GPA,setGPA, setSummaryLevel,summaryLevel,
-    setSummarySemester,gradePointArray,SETCGPA,SETCGP,setTotalCGPA,currentTableResult, setCurrentTableResult}=useContext(AppContext)
+    setSummarySemester,gradePointArray,SETCGPA,SETCGP,setTotalCGPA,currentTableResult, setCurrentTableResult,CGPA, CGP}=useContext(AppContext)
   const [gradePoint,setGradePoint]=useState([])
 
 // console.log("table numbers",key);
@@ -29,15 +29,16 @@ const TableBody = ({
       department,
       level,
       semester,
-      cgpa: calculateCGPA(scores,scores)
+      CGP: CGP,
+      CGPA: CGPA
 
       
 
 
     }
-  },[scores,level,semester])
+  },[scores,level,semester,CGP,CGPA])
 
-  console.log();
+  console.log(CGPA,CGP);
 
   console.log(currentResultObjectInit());
 
