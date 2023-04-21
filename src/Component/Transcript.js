@@ -208,10 +208,19 @@ const Transcript = () => {
 
   // SAVE TO LOCAL STORAGE DATABASE
 
+
+
   const saveToLocalStorage = (database, studentMatric, currentResult, tableNo, saveState) =>{
     if(database){
       const updatedDb = [...database]
-    const currentStudentIndex = database.findIndex((student)=> student.matric === idMatric.id)
+      let studId=studentMatric
+      if(showLocalTables===true){
+          studId=idMatric.id
+      }
+      else{
+        studId=studentMatric
+      }
+    const currentStudentIndex = database.findIndex((student)=> student.matric ===  studId)
     if (saveState !== false){
       // console.log("thisnis the current student index",currentStudentIndex);
 

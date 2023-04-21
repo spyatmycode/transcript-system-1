@@ -224,8 +224,6 @@ const Admin = () => {
                                                             { each.results.length > 0 ? Math.max(...each.results.map(result => result.level)) : "No Level"}
                           
 
-                                                                {each.results.length > 0 ? each.results[each.results.length - 1].level : "No Level"}
-
 
                                                             </p>
                                                         </td>
@@ -273,9 +271,6 @@ const Admin = () => {
                                                                 <div>
                                                                     <button onClick={() => {setShowDeleteModal(true); setTarget(each)}} className='flex items-center justify-between text-red-600'>
                                                                         Delete
-
-                                                                       
-
                                                                     </button>
 
 
