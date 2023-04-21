@@ -17,7 +17,7 @@ const TableBody = ({
   const {showOption,setShowOption}=useContext(AppContext)
   
   const {GPA,setGPA, setSummaryLevel,summaryLevel,
-    setSummarySemester,gradePointArray,SETCGPA,SETCGP,setTotalCGPA,currentTableResult, setCurrentTableResult}=useContext(AppContext)
+    setSummarySemester,gradePointArray,SETCGPA,SETCGP,setTotalCGPA,currentTableResult, setCurrentTableResult,CGPA, CGP}=useContext(AppContext)
   const [gradePoint,setGradePoint]=useState([])
 
 // console.log("table numbers",key);
@@ -29,11 +29,18 @@ const TableBody = ({
       department,
       level,
       semester,
+      CGP: CGP,
+      CGPA: CGPA
+
       
 
 
     }
-  },[scores,level,semester])
+  },[scores,level,semester,CGP,CGPA])
+
+  console.log(CGPA,CGP);
+
+  console.log(currentResultObjectInit());
 
 
 
@@ -65,6 +72,8 @@ const TableBody = ({
     function calculateCGPA(scores, courses) {
       let totalGradePoints = 0;
       let totalUnits = 0;
+
+     
       
     
       for (let i = 0; i < courses.length; i++) {
@@ -105,7 +114,7 @@ const TableBody = ({
    
    
 
-    const bd = (gradePointArray) => {
+ /*    const bd = (gradePointArray) => {
       let total = 0;
       for (let i = 0; i < gradePointArray.length; i++) {
         total += gradePointArray[i];
@@ -113,7 +122,7 @@ const TableBody = ({
       const average=  total/ gradePointArray.length
       return average;
     };
-  
+   */
     // console.log(111111111111111)
     // console.log(gradePointArray)
     let item =localStorage.getItem("localStorageDb")

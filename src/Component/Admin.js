@@ -1,12 +1,13 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from './Header'
 import { FaEdit } from 'react-icons/fa'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useContext } from 'react'
 import { AppContext, ContextProvider } from './ContextProvider/ContextProvider'
+import DeleteModal from './Table/DeleteModal'
 
 const Admin = () => {
-const navigate=useNavigate()
+    const navigate = useNavigate()
     const data = [
         {
             matric: "2020/9257",
@@ -24,63 +25,73 @@ const navigate=useNavigate()
         }
     ]
 
-    const {level,setLevel,showLocalTables,setShowLocalTables} =useContext(AppContext)
-    const {...idMatric}=useParams()
+    const { level, setLevel, showLocalTables, setShowLocalTables } = useContext(AppContext)
+    const { ...idMatric } = useParams()
 
-    const localTables=localStorage.getItem("localStorageDb")
+    const [deleteTarget, setTarget] = useState({})
 
-    const ParsedLocalTables=JSON.parse(localTables)
+    const localTables = localStorage.getItem("localStorageDb")
+
+    const ParsedLocalTables = JSON.parse(localTables)
     useEffect(() => {
         console.log(ParsedLocalTables[1]);
         console.log(
-          ParsedLocalTables.map((e) => {
-            if (e.results.length > 0) {
-              return e.results[e.results.length - 1].level;
-            } else {
-              return "No Level";
-            }
-          })
+            ParsedLocalTables.map((e) => {
+                if (e.results.length > 0) {
+                    return e.results[e.results.length - 1].level;
+                } else {
+                    return "No Level";
+                }
+            })
         );
-      }, [localTables]);
+    }, [localTables]);
 
-      const handlePrint=(each)=>{
-       
-        if(showLocalTables===false){
+    const handlePrint = (each) => {
+
+        if (showLocalTables === false) {
             setShowLocalTables(true)
-             navigate(`/transcript/${each.matric}`)
+            navigate(`/transcript/${each.matric}`)
         }
+
+
+    }
+
+    const [showDeleteModal, setShowDeleteModal] = useState(false)
+
+
+
+
+
+    const deleteFunction = (each) => {
+
+      
+         const parsedLocalTables = JSON.parse(localTables);
+        const updatedData = parsedLocalTables.filter((item) => item.matric !== each.matric);
+
+        //   const currentStudentIndex = ParsedLocalTables.findIndex((student)=> student.matric ===idMatric.id)
+        console.log(each.matric);
+        const deletedData = ParsedLocalTables.filter((b) => (b.matric !== each.matric))
+        console.log(deletedData);
+        localStorage.setItem("localStorageDb", JSON.stringify(deletedData))
+
+        //   to refresh the page after deleting
+        window.location.reload(); 
+
         
-        
-      }
+    }
 
+    console.log(deleteTarget);
 
-
-
-
-  const deleteFunction= (each) =>{
-    const parsedLocalTables = JSON.parse(localTables);
-    const updatedData = parsedLocalTables.filter((item) => item.matric !== each.matric);
-
-    //   const currentStudentIndex = ParsedLocalTables.findIndex((student)=> student.matric ===idMatric.id)
-console.log(each.matric);
-const deletedData= ParsedLocalTables.filter((b) => (b.matric !== each.matric ))
-console.log(deletedData);
-localStorage.setItem("localStorageDb",JSON.stringify(deletedData))
-
-    //   to refresh the page after deleting
-    window.location.reload();
-
-  }
 
     return (
         <>
 
-   
+
             <div className='w-full mt-12'>
                 <div className='w-full text-center'>
-                  
+
                     <h1 className='font-bold text-4xl'>
-                        Transcripts 
+                        Transcripts
                     </h1>
                 </div>
 
@@ -209,12 +220,12 @@ localStorage.setItem("localStorageDb",JSON.stringify(deletedData))
                                                         </td>
                                                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                             <p className="text-gray-900 whitespace-no-wrap">{each.matric}</p>
-                                                              
+
                                                         </td>
                                                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                             <p className="text-gray-900 whitespace-no-wrap">
-                                                            {each.results.length > 0 ? each.results[each.results.length - 1].level:"No Level" }
-                          
+                                                                {each.results.length > 0 ? each.results[each.results.length - 1].level : "No Level"}
+
                                                             </p>
                                                         </td>
                                                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -245,7 +256,7 @@ localStorage.setItem("localStorageDb",JSON.stringify(deletedData))
 
                                                             <div className='flex w-full justify-between'>
                                                                 <div className=' text-blue-600'>
-                                                                    <button onClick={()=>handlePrint(each)}>
+                                                                    <button onClick={() => handlePrint(each)}>
                                                                         Print
                                                                     </button>
                                                                 </div>
@@ -261,11 +272,16 @@ localStorage.setItem("localStorageDb",JSON.stringify(deletedData))
 
                                                                 </div>
 
+                                                                { showDeleteModal&&<DeleteModal message={"Are you sure you want to delete this transcript?"}  onYes={deleteFunction} onCancel={setShowDeleteModal} target={deleteTarget}/>}
+
                                                                 <div>
-                                                                    <button onClick={()=>deleteFunction(each)} className='flex items-center justify-between text-red-600'>
+                                                                    <button onClick={() => {setShowDeleteModal(true); setTarget(each)}} className='flex items-center justify-between text-red-600'>
                                                                         Delete
 
+                                                                       
+
                                                                     </button>
+
 
 
                                                                 </div>
@@ -306,10 +322,10 @@ localStorage.setItem("localStorageDb",JSON.stringify(deletedData))
                     </div>
                 </div>
             </div>
-               {level}    
+            
         </>
     )
-   
+
 }
 
 export default Admin
