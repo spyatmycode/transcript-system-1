@@ -67,7 +67,7 @@ const SummaryTable = ({ level,semester,}) => {
 
     
   return (
-    <div className=' flex flex-col justify-center min-h-[170vh]    ' >
+    <div className=' flex flex-col justify-center min-h-[200vh]    ' >
       <h1 className='text-center my-9 text-[2em] font-serif'>SUMMARY OF DEGREE REULT <span className='block'>(REUME DES RESULTATS)</span></h1>
   
          {/* Table containig the cgpa  */}
@@ -76,7 +76,7 @@ const SummaryTable = ({ level,semester,}) => {
 <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 {/* <!-- ====== Table Section Start --> */}
-<section className=" mx-auto h-fit max-h-[100vh]  px-4 sm:px-8 py-4 overflow-x-auto">
+<section className=" mx-auto h-fit   px-4 sm:px-8 py-4 overflow-x-auto">
     
          
             <div className="inline-block w-fit   shadow rounded-lg">

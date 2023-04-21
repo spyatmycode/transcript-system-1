@@ -20,8 +20,8 @@ const Form = () => {
     department,
     setDepartment,
      localStorageDb, setLocalStorageDb,
-     setShowLocalTables,
-     showLocalTables
+     showLocalTables,
+     setShowLocalTables
     
   } = useContext(AppContext)
 
@@ -50,7 +50,9 @@ const Form = () => {
 
       console.log(transcriptHeaderCollectionRef.id);
       console.log(name);
-     
+      setShowLocalTables(false)
+      
+
       //  updateDoc()
       setName("")
       setMatric("")
@@ -59,14 +61,14 @@ const Form = () => {
       setGender("")
       setSession("")
       setLevel("")
-      setShowLocalTables(false)
+     
      
 
       setLocalStorageDb([...localStorageDb, {
         name,
         matric,
         college,
-        // idParam:docref.id,
+        idParam:docref.id,
         id,
         department: department === 0? "Health Information Management":
         department === 1?" Accounting":
@@ -81,14 +83,14 @@ const Form = () => {
         results: [ ]
       
         }])
-        // {showLocalTables ? }
-        setShowLocalTables(false)
-        showLocalTables? navigate(`/transcript/${docref.id}`):
-        navigate(`/transcript/${matric}`)
-        // navigate(`/transcript/${matric}`)
   
-
+     {showLocalTables===true ?
+  
+      navigate(`/transcript/${matric}`):
+      navigate(`/transcript/${docref.id}`)
+      }
     }
+   
 
   }
 
