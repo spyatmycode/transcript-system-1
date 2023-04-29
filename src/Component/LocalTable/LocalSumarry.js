@@ -1,10 +1,65 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { AppContext } from '../ContextProvider/ContextProvider'
+import LocalTableRow from './LocalTableRow'
 
-const LocalSumarry = () => {
-    const {showOption,setLocalStorageDb}=useContext(AppContext)
+const LocalSumarry = ({idMatric}) => {
+   
+const localTables=localStorage.getItem("localStorageDb")
+
+const ParsedLocalTables=JSON.parse(localTables)
+useEffect(()=>{
+  console.log(ParsedLocalTables[1]);
+  console.log(ParsedLocalTables.findIndex((num)=>num.matric=='ko'))
+  
+},[localTables])
+
+
+const calculateLetterGrade = (score) => {
+  if (score >= 4.50) {
+    return 'A';
+  } else if (score >= 3.5) {
+    return 'B';
+  } else if (score >= 2.4) {
+    return 'C';
+  } else if (score >= 1.5) {
+    return 'D';
+  } else if (score >= 1) {
+    return 'E';
+  } else {
+    return 'F';
+  }
+ 
+};
+const calculateDegree = (score) => {
+  if (score >= 4.50) {
+    return 'FIRST CLASS (Excellent)';
+  } else if (score >= 3.5) {
+    return 'SECOND CLASS  (Upper Division)   (Tres-Bien)';
+  } else if (score >= 2.4) {
+    return 'SECOND CLASS (Lower Division) (Bien)';
+  } else if (score >= 1.5) {
+    return 'THIRD CLASS  (Assez-bien)';
+  } else if (score >= 1) {
+    return 'PASS (Passable)';
+  } else {
+    return 'PASS (Passable)';
+  }
+ 
+};
+
+const summation=()=>{
+  let num=0
+   ParsedLocalTables[ParsedLocalTables.findIndex((num)=>num.matric==`${idMatric.id}`)].results.map((result)=>
+  num+=(result.CGP)
+
+  )
+  
+  return num.toPrecision(4)
+}
+
+
   return (
-    <div className=' flex flex-col justify-center min-h-[170vh]    ' >
+    <div className=' flex flex-col justify-center    ' >
     <h1 className='text-center my-9 text-[2em] font-serif'>SUMMARY OF DEGREE REULT <span className='block'>(REUME DES RESULTATS)</span></h1>
 
        {/* Table containig the cgpa  */}
@@ -42,20 +97,108 @@ const LocalSumarry = () => {
                 <tbody>
                 
                  <tr>
-      <td></td>
-      <td></td>
+      <td 
+        className="
+          text-center text-dark
+          font-medium
+          text-[1em]
+          
+          px-2 py-2
+          bg-[#F3F6FF]
+           border-[.1em] border-black 
+        "
+        rowspan='15' 
+      >
+
+{ ParsedLocalTables.length > 0 ?
+
+<>
+
+   {ParsedLocalTables[ParsedLocalTables.findIndex((num)=>num.matric==`${idMatric.id}`)].results.map((result,n)=>(
+    <td 
+    className="
+      text-center text-dark
+      font-medium
+      text-[1em]
+       flex flex-col
+      px-2 py-2
+      bg-[#F3F6FF]
+       border-[.1em] border-black 
+    "
+    rowspan='15' 
+  > {n +1}  </td>
+   ))}
+ </>
+ :null }
+
+      </td>
+      <td 
+        className="
+          text-center text-dark
+          font-medium
+          text-[1em]
+          
+          px-2 py-2
+          bg-[#ffffff]
+           border-[.1em] border-black 
+        "
+        rowspan='15' 
+      >
+ { ParsedLocalTables.length > 0 ?
+
+<>
+
+   {ParsedLocalTables[ParsedLocalTables.findIndex((num)=>num.matric==`${idMatric.id}`)].results.map((result)=>(
+    <td 
+    className="
+      text-center text-dark
+      font-medium
+      text-[1em]
+       flex flex-col
+      px-2 py-2
+      bg-[#ffffff]
+       border-[.1em] border-black 
+    "
+    rowspan='15' 
+  > {result.CGP.toPrecision(3)}   </td>
+   ))}
+ </>
+ :null }
+      </td>
+      
       <td
         className="
           text-center text-dark
           font-medium
           text-[1em]
           
-          px-2
+          px-2 py-2
           bg-[#F3F6FF]
-          border-b border-[#E8E8E8]
+           border-[.1em] border-black 
         "
         rowspan='15' 
       >
+        { ParsedLocalTables.length > 0 ?
+
+<>
+
+   {/* {ParsedLocalTables[ParsedLocalTables.findIndex((num)=>num.matric==`${idMatric.id}`)].results} */}
+    <td 
+    className="
+      text-center text-dark
+      font-medium
+      text-[1em]
+       flex flex-col
+      px-2 py-2
+      
+     
+       
+    "
+    rowspan='15' 
+  > ({summation()})  {ParsedLocalTables[ParsedLocalTables.findIndex((num)=>num.matric==`${idMatric.id}`)].results[ParsedLocalTables[ParsedLocalTables.findIndex((num)=>num.matric==`${idMatric.id}`)].results.length-1].CGPA.toPrecision(3)}  </td>
+
+ </>
+ :null }
       {/* ({totalCGPA.toPrecision(3)})  {CGPA.toPrecision(3)} */}
       </td>
       <td
@@ -63,13 +206,23 @@ const LocalSumarry = () => {
           text-center text-dark
           font-bold
           text-[1.3em]
-          py-5
-          px-2
+          
+          px-2 py-2
           bg-white
-          border-b border-[#E8E8E8]
+           border-[.1em] border-black 
         "
         rowspan='15' 
       >
+        
+      {calculateLetterGrade(ParsedLocalTables[ParsedLocalTables.findIndex((num)=>num.matric==`${idMatric.id}`)].results[ParsedLocalTables[ParsedLocalTables.findIndex((num)=>num.matric==`${idMatric.id}`)].results.length-1].CGPA.toPrecision(3))}
+       
+   
+
+
+
+
+
+
        {/* {calculateLetterGrade(CGPA.toPrecision(3))} */}
        {/* {result.scores.map((score, index) => (
         <>
@@ -96,53 +249,15 @@ const LocalSumarry = () => {
           text-center text-dark
           font-medium
           text-[1em]
-          py-5
-          px-2
+          
+          px-2 py-2
           bg-[#F3F6FF]
-          border-b border-[#E8E8E8]
+           border-[.1em] border-black 
          
         "
         rowspan='15' 
-      >
-        {/* {CGPA.toPrecision(3) >4.5? 
-      <>
-      <p>FIRST CLASS </p>
-      <p >(Excellent)</p>
-      </>   
-      :
-     CGPA.toPrecision(3) >3.5 ?
-      <>
-      <p>SECOND CLASS</p>
-      <p>(Upper Division)</p>
-      <p>(Tres-bien)</p>
-      </> :
-     CGPA.toPrecision(3) >2.4 ?
-      <>
-      <p>SECOND CLASS</p>
-      <p>(Lower Division)</p>
-      <p>(Bien)</p>
-      </> :
-      CGPA.toPrecision(3) >1.5 ?
-      <>
-      <p>THIRD CLASS</p>
-      <p>(Assez-bien)</p>
-     
-      </> :
-     CGPA.toPrecision(3) >1 ?
-      <>
-      <p>PASS</p>
-      <p>(Passable)</p>
-     
-      </> :
-      <>
-      
-      <p>FAIL</p>
-      <p>(Ajourne)</p>
-      </>
-      
-      
-      }
-        */}
+      >{calculateDegree(ParsedLocalTables[ParsedLocalTables.findIndex((num)=>num.matric==`${idMatric.id}`)].results[ParsedLocalTables[ParsedLocalTables.findIndex((num)=>num.matric==`${idMatric.id}`)].results.length-1].CGPA.toPrecision(3))}
+       
       </td>
     </tr>
 

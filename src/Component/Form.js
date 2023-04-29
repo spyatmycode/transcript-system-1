@@ -170,7 +170,7 @@ const Form = () => {
               <ul className='flex flex-col'>
 
                 <label className="form-label"  >Faculty:</label>
-                <select onChange={(e) => setCollege(e.target.value)} value={college} className=' border border-[#7e7d7d] rounded-sm p-4' name="" id="">
+                <select onChange={(e) => setCollege(e.target.value)} value={college? college:'Science and Technology' } className=' border border-[#7e7d7d] rounded-sm p-4' name="" id="">
 
                   <option value={"Science and Technology"}>Science and Technology</option>
 
@@ -188,7 +188,7 @@ const Form = () => {
               <ul className='flex flex-col'>
 
                 <label className="form-label"  >Department:</label>
-                <select onChange={(e) => setDepartment(Number(e.target.value))} value={Number(department)} className=' border border-[#7e7d7d] rounded-sm p-4' name="" id="">
+                <select onChange={(e) => setDepartment(Number(e.target.value))} value={Number(department ? department: 0)} className=' border border-[#7e7d7d] rounded-sm p-4' name="" id="">
 
                   <option value={0}>Health Information Management</option>
                   <option value={1}>Accounting</option>

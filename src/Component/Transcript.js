@@ -18,6 +18,9 @@ import SummaryGrades from './Table/SummaryGrades';
 import LetterHead from './LetterHead';
 import LocalTable from './LocalTable/LocalTable';
 import TableSelect from './Table/TableSelect';
+import LocalSumarry from './LocalTable/LocalSumarry';
+import LocalSumarryGrade from './LocalTable/LocalSummaryGrade';
+
 
 const Transcript = () => {
   const {...idMatric}=useParams()
@@ -352,11 +355,14 @@ const handlePrint = () => {
             pdf.internal.pageSize.getHeight()
           );
 
-          setShowOption(false);
+       
           // Save PDF with specified file name
           pdf.save(`${name} ${matric} IUT BENIN`);
           setTimeout(() => {
             setShowOption(true);
+            
+            //to still reserve the state of the save btn
+            setSaveBtnState(false)
           }, 1000);
         })
         .catch((error) => {
@@ -407,7 +413,7 @@ useEffect(()=>{
 
         <div>
 
-          <ul>
+          <ul>  
           {showLocalTables===true?
             <>
               <li><span className=' font-bold '>Name (Nom): </span>{name ? name: ParsedLocalTables[ParsedLocalTables.findIndex((num)=>num.matric==`${idMatric.id}`)].name }</li>
@@ -476,9 +482,14 @@ useEffect(()=>{
 
      <TableSelect level={result.level} setLevel={setLevel} semester={result.semester} />
      <LocalTable saveBtnState={saveBtnState} saveToLocalStorage={saveToLocalStorage} saveBtn={saveBtn} setSaveBtnState={setSaveBtnState} deleteTable={deleteTable} result={result}/> 
+
     </>
-   ))}</>
-   :null
+   ))}
+        <LocalSumarry idMatric={idMatric}/>
+        <LocalSumarryGrade idMatric={idMatric}/>
+
+   </>
+   : null
 }
       </>
       :null
@@ -504,8 +515,11 @@ useEffect(()=>{
               Delete table
             </button> : null}
 
-            {showOption ? <SaveBtn saveBtnState={saveBtnState} setSaveBtnState={setSaveBtnState} saveBtnColor={table.saveBtnColor} tableNo={table.tableNo} saveBtn={saveBtn} saveToLocalStorage={saveToLocalStorage} matric={matric}/>
-              : null}
+            {showOption ===!false? <SaveBtn saveBtnState={saveBtnState} setSaveBtnState={setSaveBtnState} saveBtnColor={table.saveBtnColor} tableNo={table.tableNo} saveBtn={saveBtn} saveToLocalStorage={saveToLocalStorage} matric={matric}/>
+              : 
+              
+            null
+              }k
 
           </div>
         ))}

@@ -4,7 +4,7 @@ import LocalTableBody from './LocalTableBody'
 import TableSelect from '../Table/TableSelect'
 import { AppContext } from '../ContextProvider/ContextProvider'
 import { useParams } from 'react-router-dom'
-
+import LocalSumarry from './LocalSumarry'
 const LocalTable = ({result,deleteTable,saveBtn,saveToLocalStorage,saveBtnState,setSaveBtnState}) => {
     const[saveState,setSaveState]=useState(true)
     const {showOption,setLocalStorageDb}=useContext(AppContext)
@@ -29,7 +29,7 @@ useEffect(()=>{
     
   return (
     <div>
-      <div  className="mx-4 my-9  max-h-[200vh] min-h-[100vh]  sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+      <div  className="mx-4 my-9  max-h-[200vh]   sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
               
          
               <div className="inline-block min-w-full rounded-lg ">
@@ -42,7 +42,8 @@ useEffect(()=>{
      <LocalTableHead/>
   
      <LocalTableBody   result={result} />
-
+    
+     
      {/* {showOption ? <button className="bg-red-500 hover:bg-red-700 text-white font-bold  py-2 px-4 rounded" onClick={()=>deleteTable(result.id)}>
               Delete table
             </button> : null}
@@ -64,9 +65,10 @@ useEffect(()=>{
             >
             {saveState===false ? "UnSave" : "Save"}
             </button> */}
+               
 
    </table>
-
+   
    </div>
    </div>
     </div>

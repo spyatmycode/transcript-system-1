@@ -67,7 +67,7 @@ const SummaryTable = ({ level,semester,}) => {
 
     
   return (
-    <div className=' flex flex-col justify-center min-h-[200vh]    ' >
+    <div className=' flex flex-col justify-center    ' >
       <h1 className='text-center my-9 text-[2em] font-serif'>SUMMARY OF DEGREE REULT <span className='block'>(REUME DES RESULTATS)</span></h1>
   
          {/* Table containig the cgpa  */}

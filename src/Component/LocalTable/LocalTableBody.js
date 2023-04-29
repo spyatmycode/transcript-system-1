@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import data from '../Data/Data'
 import { AppContext } from '../ContextProvider/ContextProvider'
-
+import LocalSummary from './LocalSumarry'
 const LocalTableBody = ({result,handleChange}) => {
     const {showOption}=useContext(AppContext)
 const localTables=localStorage.getItem("localStorageDb")
@@ -173,6 +173,13 @@ useEffect(()=>{
 
             ))}
 
+<div className=' absolute b-0 py-7'> Grade Point: {result.CGP.toPrecision(3)}
+     <div>
+     Cumulative Grade Point Average: {result.CGPA.toPrecision(3)}
+</div>
+</div>  
+   
+           
         </>
 
 
@@ -183,15 +190,9 @@ useEffect(()=>{
       
 
        {/* localTables */}
-       {/* {ParsedLocalTables.map((ltable)=>(
-          <li>{ltable.results.map((result)=>(
-            <li>{result.scores.map((score)=>(
-              <li>{score.score1}</li>
-            ))}</li>
-          ))}</li>
-        ))} */}
+       
 
-
+      
 
 
 

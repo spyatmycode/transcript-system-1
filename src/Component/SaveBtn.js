@@ -18,6 +18,7 @@ const SaveBtn = ({saveBtn,tableNo,saveBtnColor,saveBtnState,setSaveBtnState,save
               } 
             >
             {saveState===false ? "UnSave" : "Save"}
+            
             </button>
                                 
 
