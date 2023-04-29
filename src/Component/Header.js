@@ -1,17 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from "../Assets/logo.jpg"
-import { Outlet, useNavigate, redirect, useLocation } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 import { auth } from '../firebase/firebaseConfig';
 import { signOut } from "firebase/auth";
 import AuthContext from './Auth/AuthContext'
 import { useContext } from 'react';
-
+import { AppContext } from './ContextProvider/ContextProvider';
 
 const Header = () => {
 
 
+  const {showOption,}=useContext(AppContext)
 
   const isLogged = useContext(AuthContext)
+
+  const [showHeader,setShowHeader]=useState(false)
+  
+
+
 
   
 
@@ -31,12 +37,15 @@ const Header = () => {
   }
   return (
     <>
+    {showOption ?
+    <>
       {
         isLogged && <div>  {/* Here the header is only rendered when log is true */}
           {/* HEADER  */}
-          <div className='  flex items-center flex-col text-center gap-6'>
-            <div className='w-full flex items-center justify-end py-2 mr-4 text-red-600 cursor-pointer'>
+          <div className='  flex items-center flex-col my-8  gap-6'>
+            <div className='absolute flex right-0 top-4  p-1 font-serif  items-end justify-end  mr-4 text-[white] border-b-[.2em] rounded-sm  border-r-[.2em] border-[#f99f81] cursor-pointer bg-red-700'>
               <button onClick={logOut}>Log out</button>
+
             </div>
             <div >
               <img src={logo} width="140" alt="" />
@@ -50,6 +59,10 @@ const Header = () => {
 
         </div>
       }
+    </>
+      :
+      null
+     }
 
       <Outlet />
     </>

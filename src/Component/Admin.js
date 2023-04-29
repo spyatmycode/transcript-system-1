@@ -155,40 +155,36 @@ const Admin = () => {
                         </div>
                         <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto flex justify-center">
                             <div className="inline-block  shadow rounded-lg overflow-hidden">
-                                <table className=" leading-normal sm:">
+                                <table className="  leading-normal sm:">
 
                                     {/* This is where the table starts */}
 
 
                                     {/* This is the table head */}
-                                    <thead>
-                                        <tr>
+                                    <thead >
+                                        <tr >
                                             <th
-                                                className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                                className="px-5 py-3  text-center border-b-2 border-gray-200 bg-gray-100 text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                                 Student name
                                             </th>
                                             <th
-                                                className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                                className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                                 Matric number
                                             </th>
                                             <th
-                                                className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                                className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                                 Level
                                             </th>
                                             <th
-                                                className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                                Department
-                                            </th>
-                                            <th
-                                                className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                                className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                                 Faculty
                                             </th>
                                             <th
-                                                className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                                className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                                 Status
                                             </th>
                                             <th
-                                                className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                                className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                                 Actions
                                             </th>
                                         </tr>
@@ -203,7 +199,7 @@ const Admin = () => {
                                             ParsedLocalTables.map((each) => {
                                                 // const { level, studentName, status, matric } = each
                                                 return (
-                                                    <tr key={each.matric}>
+                                                    <tr key={each.matric} className='text-center'>
                                                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                             <div className="flex items-center">
                                                                 <div className="flex-shrink-0 w-auto h-10">
@@ -224,37 +220,35 @@ const Admin = () => {
                                                         </td>
                                                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                             <p className="text-gray-900 whitespace-no-wrap">
-                                                                {each.results.length > 0 ? each.results[each.results.length - 1].level : "No Level"}
+
+                                                            { each.results.length > 0 ? Math.max(...each.results.map(result => result.level)) : "No Level"}
+                          
+
 
                                                             </p>
                                                         </td>
                                                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                             <span
-                                                                className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                                                                className="relative inline-block px-3 py-1  text-[back] leading-tight">
                                                                 <span aria-hidden
-                                                                    className="absolute inset-0  opacity-50 rounded-full"></span>
+                                                                    className="absolute inset-0 opacity-50 rounded-full"></span>
                                                                 <span className="relative">{each.department}</span>
                                                             </span>
                                                         </td>
                                                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                                             <span
-                                                                className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                                                                className="relative inline-block px-3 py-1 font-semibold text-[black] leading-tight">
                                                                 <span aria-hidden
-                                                                    className="absolute inset-0  opacity-50 rounded-full"></span>
-                                                                <span className="relative">{each.college}</span>
+                                                                    className={`absolute inset-0 {
+                                                                        ${Math.max(...each.results.map(result => result.level)) ===400? " bg-green-200":"bg-red-200"}
+                                                                        opacity-50 rounded-full`}></span>
+                                                                <span className="relative">{
+                                                                 Math.max(...each.results.map(result => result.level)) ===400? "Complete":"Incomplete"
+                                                                }</span>
                                                             </span>
                                                         </td>
-                                                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                                            <span
-                                                                className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                                                <span aria-hidden
-                                                                    className="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                                                                <span className="relative">status</span>
-                                                            </span>
-                                                        </td>
-                                                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm  !w-[200px]">
-
-                                                            <div className='flex w-full justify-between'>
+                                                        <td className="px-5 py-5 border-b  border-gray-200 bg-white text-sm">
+                                                            <div className='flex gap-3 '>
                                                                 <div className=' text-blue-600'>
                                                                     <button onClick={() => handlePrint(each)}>
                                                                         Print
@@ -262,7 +256,7 @@ const Admin = () => {
                                                                 </div>
 
 
-                                                                <div>
+                                                                {/* <div>
                                                                     <button className='flex items-center justify-between gap-1'>
                                                                         Edit
                                                                         <FaEdit />
@@ -270,16 +264,13 @@ const Admin = () => {
                                                                     </button>
 
 
-                                                                </div>
+                                                                </div> */}
 
                                                                 { showDeleteModal&&<DeleteModal message={"Are you sure you want to delete this transcript?"}  onYes={deleteFunction} onCancel={setShowDeleteModal} target={deleteTarget}/>}
 
                                                                 <div>
                                                                     <button onClick={() => {setShowDeleteModal(true); setTarget(each)}} className='flex items-center justify-between text-red-600'>
                                                                         Delete
-
-                                                                       
-
                                                                     </button>
 
 

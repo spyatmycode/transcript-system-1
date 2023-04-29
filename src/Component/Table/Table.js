@@ -124,7 +124,7 @@ function Table({key,department,setDepartment}) {
     
   return (
     <>
-    <div  className="mx-4 my-9  max-h-[200vh] min-h-[100vh]  sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+    <div  className="mx-4 my-9   sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
               
          
                <div className="inline-block min-w-full rounded-lg ">

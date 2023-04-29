@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import data from '../Data/Data'
 import { AppContext } from '../ContextProvider/ContextProvider'
-
+import LocalSummary from './LocalSumarry'
 const LocalTableBody = ({result,handleChange}) => {
     const {showOption}=useContext(AppContext)
 const localTables=localStorage.getItem("localStorageDb")
@@ -79,7 +79,7 @@ useEffect(()=>{
           key={index} // Add key prop with unique value
           type="number"
           value={result.scores[index]?result.scores[index][`score${i + 1}`]:0} 
-          className={`w-full px-1 text-base font-semibold py-1 text-gray-700 ${showOption?' bg-gray-100 ':null} rounded`}
+          className={`w-full px-1 text-center font-semibold py-1 text-gray-700 ${showOption?' bg-gray-100 ':null} rounded`}
           min={4}
           max={100}
           step={1}
@@ -173,6 +173,13 @@ useEffect(()=>{
 
             ))}
 
+<div className=' absolute b-0 py-7'> Grade Point: {result.CGP.toPrecision(3)}
+     <div>
+     Cumulative Grade Point Average: {result.CGPA.toPrecision(3)}
+</div>
+</div>  
+   
+           
         </>
 
 
@@ -183,15 +190,9 @@ useEffect(()=>{
       
 
        {/* localTables */}
-       {/* {ParsedLocalTables.map((ltable)=>(
-          <li>{ltable.results.map((result)=>(
-            <li>{result.scores.map((score)=>(
-              <li>{score.score1}</li>
-            ))}</li>
-          ))}</li>
-        ))} */}
+       
 
-
+      
 
 
 

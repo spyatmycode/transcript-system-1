@@ -23,6 +23,7 @@ const Form = () => {
     setShowLocalTables,
     showLocalTables
 
+
   } = useContext(AppContext)
 
   const navigate = useNavigate()
@@ -51,6 +52,8 @@ const Form = () => {
       console.log(transcriptHeaderCollectionRef.id);
       console.log(name);
 
+
+
       //  updateDoc()
       setName("")
       setMatric("")
@@ -62,11 +65,12 @@ const Form = () => {
       setShowLocalTables(false)
 
 
+
       setLocalStorageDb([...localStorageDb, {
         name,
         matric,
         college,
-        // idParam:docref.id,
+        idParam:docref.id,
         id,
         department: department === 0 ? "Health Information Management" :
           department === 1 ? " Accounting" :
@@ -78,17 +82,19 @@ const Form = () => {
                       department === 7 ? "Economics" :
                         department === 8 ? "Mass Communication" : null
         ,
-        results: []
 
-      }])
-      // {showLocalTables ? }
-      setShowLocalTables(false)
-      showLocalTables ? navigate(`/transcript/${docref.id}`) :
-        navigate(`/transcript/${matric}`)
-      // navigate(`/transcript/${matric}`)
-
+        results: [ ]
+      
+        }])
+  
+     {showLocalTables===true ?
+  
+      navigate(`/transcript/${matric}`):
+      navigate(`/transcript/${docref.id}`)
+      }
 
     }
+   
 
   }
 
@@ -164,7 +170,7 @@ const Form = () => {
               <ul className='flex flex-col'>
 
                 <label className="form-label"  >Faculty:</label>
-                <select onChange={(e) => setCollege(e.target.value)} value={college} className=' border border-[#7e7d7d] rounded-sm p-4' name="" id="">
+                <select onChange={(e) => setCollege(e.target.value)} value={college? college:'Science and Technology' } className=' border border-[#7e7d7d] rounded-sm p-4' name="" id="">
 
                   <option value={"Science and Technology"}>Science and Technology</option>
 
@@ -182,7 +188,7 @@ const Form = () => {
               <ul className='flex flex-col'>
 
                 <label className="form-label"  >Department:</label>
-                <select onChange={(e) => setDepartment(Number(e.target.value))} value={Number(department)} className=' border border-[#7e7d7d] rounded-sm p-4' name="" id="">
+                <select onChange={(e) => setDepartment(Number(e.target.value))} value={Number(department ? department: 0)} className=' border border-[#7e7d7d] rounded-sm p-4' name="" id="">
 
                   <option value={0}>Health Information Management</option>
                   <option value={1}>Accounting</option>

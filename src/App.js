@@ -49,11 +49,12 @@ function App() {
               <Route element={<Protected><Admin /></Protected>} path='/' index />
               {/* <Route element={<Protected><LocalTable /></Protected>} path='/:id' index /> */}
 
-              <Route element={<Protected><Transcript /></Protected>} path='/transcript/:id' />
-
+             
               <Route path='*' element={<div className='font-bold text-6xl text-red-600 text-center mt-[50vh]'>404 Error: Page not found</div>} />
 
             </Route>
+            <Route element={<Protected><Transcript /></Protected>} path='/transcript/:id' />
+
 
           </Routes>
         </BrowserRouter>
