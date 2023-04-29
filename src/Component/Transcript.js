@@ -259,9 +259,9 @@ const Transcript = () => {
   //  SAVE BTN 
       const saveBtn = (num) => {
         
-         setSaveBtnState(false)
+        
          
-       if(saveBtnState===false){
+       if(saveBtnState===false ){
         setSummaryRow((prev) => [
           ...prev,
           {
@@ -362,7 +362,7 @@ const handlePrint = () => {
             setShowOption(true);
             
             //to still reserve the state of the save btn
-            setSaveBtnState(false)
+            setSaveBtnState(true)
           }, 1000);
         })
         .catch((error) => {
@@ -515,11 +515,8 @@ useEffect(()=>{
               Delete table
             </button> : null}
 
-            {showOption ===!false? <SaveBtn saveBtnState={saveBtnState} setSaveBtnState={setSaveBtnState} saveBtnColor={table.saveBtnColor} tableNo={table.tableNo} saveBtn={saveBtn} saveToLocalStorage={saveToLocalStorage} matric={matric}/>
-              : 
+           <SaveBtn showOption={showOption} saveBtnState={saveBtnState} setSaveBtnState={setSaveBtnState} saveBtnColor={table.saveBtnColor} tableNo={table.tableNo} saveBtn={saveBtn} saveToLocalStorage={saveToLocalStorage} matric={matric}/>
               
-            null
-              }k
 
           </div>
         ))}
