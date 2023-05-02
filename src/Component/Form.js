@@ -10,9 +10,9 @@ import { AppContext } from './ContextProvider/ContextProvider'
 const Form = () => {
   const [name, setName] = useState('')
   const [matric, setMatric] = useState('')
-  const [college, setCollege] = useState('')
+  const [college, setCollege] = useState('Science and Technology')
 
-  const [gender, setGender] = useState('')
+  const [gender, setGender] = useState('male')
   const [session, setSession] = useState('')
   const [level, setLevel] = useState('')
 

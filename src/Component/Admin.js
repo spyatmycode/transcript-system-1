@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import Header from './Header'
 import { FaEdit } from 'react-icons/fa'
 import { Link, useNavigate, useParams } from 'react-router-dom'
@@ -25,10 +25,21 @@ const Admin = () => {
         }
     ]
 
+    const colleges = [
+        "Science and Technology",
+        "Management Science",
+        "Political and Social Science",
+        "Arts and Communication"
+    ]
+
     const { level, setLevel, showLocalTables, setShowLocalTables } = useContext(AppContext)
     const { ...idMatric } = useParams()
 
     const [deleteTarget, setTarget] = useState({})
+
+    const [query, setQuery] = useState('')
+    const [collegeOption, setCollegeOption] = useState('All')
+    console.log(collegeOption);
 
     const localTables = localStorage.getItem("localStorageDb")
 
@@ -46,6 +57,36 @@ const Admin = () => {
         );
     }, [localTables]);
 
+
+   const filtered = ()=>{
+
+        if(collegeOption !== "All" && query !== ""){
+            ParsedLocalTables.filter((items)=>(
+                items.name.toLowerCase().includes(query.toLowerCase()) || items.matric.toLowerCase().includes(query.toLowerCase()) && items.college === collegeOption
+            ))
+        }
+
+        if(collegeOption !== "All" && query === ""){
+            return ParsedLocalTables.filter((items)=>{
+
+                console.log("this is it !!!",collegeOption);
+               return items.college === collegeOption
+
+
+        })}
+    
+        if(query ===""){
+            return ParsedLocalTables
+        }
+        return ParsedLocalTables.filter((items)=>{
+            return items.name.toLowerCase().includes(query.toLowerCase()) || items.matric.toLowerCase().includes(query.toLowerCase())
+        })
+
+   }
+
+   const renderedAdminList = useMemo(filtered,[query,collegeOption])
+
+   console.log("this is the query", filtered());
     const handlePrint = (each) => {
 
         if (showLocalTables === false) {
@@ -102,7 +143,7 @@ const Admin = () => {
                         </div>
                         <div className="my-2 flex sm:flex-row flex-col justify-center sm:w-auto">
                             <div className="flex flex-row mb-1 sm:mb-0">
-                                <div className="relative">
+                                {/* <div className="relative">
                                     <select
                                         className=" h-full rounded-l border block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                                         <option>5</option>
@@ -115,13 +156,28 @@ const Admin = () => {
                                             <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
                                         </svg>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="relative">
                                     <select
-                                        className=" h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
-                                        <option>All</option>
+                                        className="h-full rounded-l border block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                        onChange={(e)=>{setCollegeOption(e.target.value)}}
+                                        >
+                                       {/*  <option>All</option>
                                         <option>Active</option>
-                                        <option>Inactive</option>
+                                        <option>Inactive</option> */}
+
+                                        <option value="All">
+                                            All 
+                                        </option>
+
+                                        {
+                                            colleges.map((college)=>(
+                                                <option value={college}>
+                                                    {college}
+                                                </option>
+                                            ))
+                                        }
+
                                     </select>
                                     <div
                                         className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -140,7 +196,9 @@ const Admin = () => {
                                     </svg>
                                 </span>
                                 <input placeholder="Search"
-                                    className="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full h-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none" />
+                                    className="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full h-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
+                                    onChange={(e)=>setQuery(e.target.value)} 
+                                    />
 
 
                             </div>
@@ -196,7 +254,7 @@ const Admin = () => {
                                         {/* This is a table row/ record */}
 
                                         {
-                                            ParsedLocalTables.map((each) => {
+                                            renderedAdminList.map((each) => {
                                                 // const { level, studentName, status, matric } = each
                                                 return (
                                                     <tr key={each.matric} className='text-center'>
