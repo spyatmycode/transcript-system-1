@@ -5,9 +5,15 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useContext } from 'react'
 import { AppContext, ContextProvider } from './ContextProvider/ContextProvider'
 import DeleteModal from './Table/DeleteModal'
+import ReactPaginate from 'react-paginate';
 
 const Admin = () => {
     const navigate = useNavigate()
+
+ 
+
+
+
     const data = [
         {
             matric: "2020/9257",
@@ -45,16 +51,16 @@ const Admin = () => {
 
     const ParsedLocalTables = JSON.parse(localTables)
     useEffect(() => {
-        console.log(ParsedLocalTables[1]);
-        console.log(
-            ParsedLocalTables.map((e) => {
-                if (e.results.length > 0) {
-                    return e.results[e.results.length - 1].level;
-                } else {
-                    return "No Level";
-                }
-            })
-        );
+        // console.log(ParsedLocalTables[1]);
+        // console.log(
+        //     ParsedLocalTables.map((e) => {
+        //         if (e.results.length > 0) {
+        //             return e.results[e.results.length - 1].level;
+        //         } else {
+        //             return "No Level";
+        //         }
+        //     })
+        // );
     }, [localTables]);
 
 
@@ -69,7 +75,7 @@ const Admin = () => {
         if(collegeOption !== "All" && query === ""){
             return ParsedLocalTables.filter((items)=>{
 
-                console.log("this is it !!!",collegeOption);
+                // console.log("this is it !!!",collegeOption);
                return items.college === collegeOption
 
 
@@ -110,9 +116,9 @@ const Admin = () => {
         const updatedData = parsedLocalTables.filter((item) => item.matric !== each.matric);
 
         //   const currentStudentIndex = ParsedLocalTables.findIndex((student)=> student.matric ===idMatric.id)
-        console.log(each.matric);
+        // console.log(each.matric);
         const deletedData = ParsedLocalTables.filter((b) => (b.matric !== each.matric))
-        console.log(deletedData);
+        // console.log(deletedData);
         localStorage.setItem("localStorageDb", JSON.stringify(deletedData))
 
         //   to refresh the page after deleting
@@ -123,7 +129,27 @@ const Admin = () => {
 
     console.log(deleteTarget);
 
+    
 
+// ** BEGIN PAGINATE **
+const [currentItems, setCurrentItems] = useState([]);
+const [pageCount, setPageCount] = useState(0);
+const [itemOffset, setItemOffset] = useState(0);
+const itemsPerPage = 5;
+
+useEffect(() => {
+    const endOffset = itemOffset + itemsPerPage;
+    setCurrentItems(renderedAdminList.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(renderedAdminList.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage,renderedAdminList]);
+
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % renderedAdminList.length;
+    setItemOffset(newOffset);
+  };
+  // ** END PAGINATE **
+
+console.log(currentItems);
     return (
         <>
 
@@ -254,7 +280,7 @@ const Admin = () => {
                                         {/* This is a table row/ record */}
 
                                         {
-                                            renderedAdminList.map((each) => {
+                                            currentItems.map((each) => {
                                                 // const { level, studentName, status, matric } = each
                                                 return (
                                                     <tr key={each.matric} className='text-center'>
@@ -352,18 +378,25 @@ const Admin = () => {
 
                                 <div
                                     className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
-                                    <span className="text-xs xs:text-sm text-gray-900">
-                                        Showing 1 to 4 of 50 Entries
+                                    <span className="text-xs xs:text-sm text-gray-900   ">
+                                    Total of {renderedAdminList.length} students are being displayed in {pageCount} entries
+                              
                                     </span>
                                     <div className="inline-flex mt-2 xs:mt-0">
-                                        <button
-                                            className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l">
-                                            Prev
-                                        </button>
-                                        <button
-                                            className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-r">
-                                            Next
-                                        </button>
+                                    <ReactPaginate
+                                    breakLabel="..."
+                                    nextLabel="Next"
+                                    onPageChange={handlePageClick}
+                                    pageRangeDisplayed={5}
+                                    pageCount={pageCount}
+                                    previousLabel="Prev"
+                                    renderOnZeroPageCount={null}
+                                    containerClassName="  flex gap-9  p-3 "
+                                    pageLinkClassName=" "
+                                    previousLinkClassName=" bg-[#6d6d6d] hover:bg-[#2a2a2a] text-white p-3 rounded-md"
+                                    nextLinkClassName="  bg-[#6d6d6d] hover:bg-[#2a2a2a] text-white p-3 rounded-md"
+                                    activeLinkClassName=" text-black text-[1.5em]"
+                                    />
                                     </div>
                                 </div>
                             </div>
