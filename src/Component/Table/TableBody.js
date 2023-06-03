@@ -74,10 +74,12 @@ const TableBody = ({
       let totalUnits = 0;
 
      
-      
+      console.log(scores);
     
+           console.log(courses);
       for (let i = 0; i < courses.length; i++) {
         const course = courses[i];
+ 
         const score = scores[`score${i + 1}`];
     
         if (score) {
@@ -145,16 +147,16 @@ const TableBody = ({
 <td className=" w-[.3em]    border-[1px] border-[black] bg-white    text-left text-xs font-semibold  uppercase ">
   <div className=" flex items-center">
 
-  <div className=" w-fit text-center">
+  <div className=" w-full text-center">
       {/* SERIAL NUMBER */}
      
-      <p className=' px-4 py-3    '>  {i +1}
+      <p className='    '>  {i +1}
       </p>
   
       </div>
   </div>
 </td>
-<td className="    border-[1px] border-[black] bg-white  px-4 py-3    text-left text-xs font-semibold  uppercase tracking-wider">
+<td className="    border-[1px] border-[black] bg-white     text-left text-xs font-semibold  uppercase tracking-wider">
   <div className="w-full flex items-center">
 
       <div className="w-full text-center">
@@ -164,27 +166,27 @@ const TableBody = ({
       </div>
   </div>
 </td>
-<td className="    border-[1px] border-[black] bg-white  px-4 py-3    text-left text-xs font-semibold  uppercase tracking-wider">
+<td className="    border-[1px] border-[black] bg-white      text-left text-xs font-semibold  uppercase tracking-wider">
   <div className="w-full flex items-center">
 
-      <div className="w-full text-center">
+      <div className="w-full px-2 text-center">
         {/* COURSE TITLE */}
       {course.COURSETITLE}
       </div>
   </div>
 </td>
-<td className="   w border-[1px] border-[black] bg-white  px-4 py-3    text-left text-xs font-semibold  uppercase tracking-wider">
+<td className="   w border-[1px] border-[black] bg-white     text-left text-xs font-semibold  uppercase tracking-wider">
   <div className="w-full flex items-center">
 
       <div className="w-full text-center">
-       <p className=' px-4 py-3   w-[100%] '> 
+       <p className='   w-[100%] '> 
        {/* COURSE UNIT */}
         {course.UNIT}</p>
     
       </div>
   </div>
 </td>
-<td className="   border-[1px] border-[black] bg-white  px-4 py-3    text-left text-xs font-semibold  uppercase tracking-wider">
+<td className="   border-[1px] border-[black] bg-white     text-left text-xs font-semibold  uppercase tracking-wider">
   <div className="w-full  flex items-center">
 
       <div className="w-full  text-center">
@@ -200,7 +202,7 @@ const TableBody = ({
               name={`score${i + 1}`}
               value={scores[`.score${i + 1}`]}
               onChange={handleChange}
-              className={`w-full px-1 text-base font-semibold py-1 text-gray-700 ${showOption && "bg-gray-100"} rounded`}
+              className={`w-full px-1 text-center text-base font-semibold py-1 text-gray-700 ${showOption && "bg-gray-100"} rounded`}
               min={4}
               max={100}
               step={1}
@@ -209,13 +211,13 @@ const TableBody = ({
      </div>
   </div>
 </td>
-<td className="   border-[1px] border-[black] bg-white  px-4 py-3    text-left text-xs font-semibold  uppercase tracking-wider">
+<td className="   border-[1px] border-[black] bg-white     text-left text-xs font-semibold  uppercase tracking-wider">
   <div className="w-full  flex items-center">
 
       <div className="w-full  text-center">
 
          {/* ====================== LETTER GRADE===============================  */}
-      <p className={` px-4 py-3   w-[100%] ${showOption && 'text-red-600'}  `}>  
+      <p className={`   w-[100%] ${showOption && 'text-red-600'}  `}>  
          {scores[`score${i + 1}`] ?
          calculateLetterGrade(scores[`score${i + 1}`]) :" "   }
          </p>
@@ -224,27 +226,27 @@ const TableBody = ({
       </div>
   </div>
 </td>
-<td className="     border-[1px] border-[black] bg-white  px-4 py-3    text-left text-xs font-semibold  uppercase tracking-wider">
+<td className="     border-[1px] border-[black] bg-white     text-left text-xs font-semibold  uppercase tracking-wider">
   <div className="w-full flex items-center">
 
-      <div className=" w-fit text-center">
+      <div className=" w-full text-center">
 
           {/* ====================== GRADE POINT (GP)===============================  */}
-      <p className=' px-4 py-3   w-[100%] '>  {scores[`score${i + 1}`] ?
+      <p className='   w-[100%] '>  {scores[`score${i + 1}`] ?
          calculateGP(scores[`score${i + 1}`]) :" "   }
       </p>
          {/* ======================END OF GRADE POINT (GP)===============================  */}
       </div>
   </div>
 </td>
-<td className="  border-[1px] border-[black] bg-white  px-4 py-3    text-left text-xs font-semibold  uppercase tracking-wider">
+<td className="  border-[1px] border-[black] bg-white     text-left text-xs font-semibold  uppercase tracking-wider">
   <div className="w-full flex items-center">
    
       <div className="w-full text-center">
 
 
         {/* ======================TOTAL GRADE POINT===============================  */}
-      <p className=' px-4 py-3   w-[100%] '>  {scores[`score${i + 1}`] ?
+      <p className='   w-[100%] '>  {scores[`score${i + 1}`] ?
        <> 
       {course.UNIT * calculateGP(scores[`score${i + 1}`]) }
       </>:" "   }  
@@ -264,16 +266,20 @@ const TableBody = ({
        ))}
 
       {/* ======================CUMILATIVE GRADE POINT (CGP)===============================  */}
-    <div className=' absolute b-0 py-7'> Grade Point:   { Number(calculateCGPA(scores, row[0].LEVELS[0][level===undefined || level==="" ? 100: level][0].SEMESTER[0][semester===undefined || semester===""? 1:
+    <div className=' absolute b-0 '> Grade Point:   { Number(calculateCGPA(scores, row[department].LEVELS[0][level===undefined || level==="" ? 100: level][0].SEMESTER[0][semester===undefined || semester===""? 1:
         semester==='1 st Semester'?1:
         semester==='1 st Semester'?2:
         1][0].COURSES).cgpa).toPrecision(3) } 
      <div>
-     Cumulative Grade Point Average: { Number(calculateCGPA(scores, row[0].LEVELS[0][level===undefined || level==="" ? 100: level][0].SEMESTER[0][semester===undefined || semester===""? 1:
+     Cumulative Grade Point Average: { Number(calculateCGPA(scores, row[department
+     ].LEVELS[0][level===undefined || level==="" ? 100: level][0].SEMESTER[0][semester===undefined || semester===""? 1:
         semester==='1 st Semester'?1:
         semester==='1 st Semester'?2:
         1][0].COURSES).average).toPrecision(3) } 
-</div>
+{   console.log( row[department].LEVELS[0][level===undefined || level==="" ? 100: level][0].SEMESTER[0][semester===undefined || semester===""? 1:
+        semester==='1 st Semester'?1:
+        semester==='1 st Semester'?2:
+        1][0].COURSES)}</div>
    
      </div>
       {/* ======================END OF CUMILATIVE GRADE POINT (CGP)===============================  */}

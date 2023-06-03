@@ -14,7 +14,7 @@ const SummaryGrades = () => {
                <tr className=' bg-[#0e0e42]    text-white '>
                   <th className='  border-[.2em]     border-[#4f4f4fe5]   relative    '>
                      <tr className=' text-center inline-block p-1  '>
-                       <th > TUMST GRADING SYSTEM (System De Note D’TUMST)</th>
+                       <th > IUT GRADING SYSTEM (System De Note D’IUT)</th>
                        </tr>
                      <tr className='text-center   inline-block p-1 ' >
                      <th className=' border-[.2em] p-3    border-[#4f4f4fe5] '>GRADE /100</th>

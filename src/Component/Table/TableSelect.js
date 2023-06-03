@@ -20,11 +20,11 @@ const TableSelect = ({
 
 
   return (
-    <div  className=' flex gap-8  items-center'>
+    <div  className=' flex gap-1 items-center'>
       <label htmlFor="level" className="py-5 font-semibold">{showOption && "Select" } Level:  {showOption ? null:level}</label>
       {showOption ?  <select
         id="level"
-        className={`m-5  p-[7.9px] ${showOption?'  border-red-900  border-[1.9px]':null}`}
+        className={`m-5  p-1 ${showOption?'  border-red-900  border-[1.9px]':null}`}
         value={level}
         onChange={(e) =>{ 
           setLevel(Number(e.target.value))
@@ -45,7 +45,7 @@ const TableSelect = ({
       <label htmlFor="semester" className="py-5 font-semibold">{showOption && "Select" } Semester: {showOption? null:semester}</label>
       {showOption ?  <select
         id="semester"
-        className={`m-5  p-[7.9px] ${showOption?'border-[1.9px]  border-red-900 ':null}`}
+        className={`m-5  p-1 ${showOption?'border-[1.9px]  border-red-900 ':null}`}
         value={semester}
         onChange={(e) =>{
           setSummarySemester(semester)
