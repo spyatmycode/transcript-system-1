@@ -5,10 +5,32 @@ import TableSelect from '../Table/TableSelect'
 import { AppContext } from '../ContextProvider/ContextProvider'
 import { useParams } from 'react-router-dom'
 import LocalSumarry from './LocalSumarry'
+import { db } from '../../firebase/firebaseConfig'
+import { collection, doc, getDoc, getDocs, setDoc } from 'firebase/firestore'
 const LocalTable = ({result,deleteTable,saveBtn,saveToLocalStorage,saveBtnState,setSaveBtnState}) => {
     const[saveState,setSaveState]=useState(true)
     const {showOption,setLocalStorageDb}=useContext(AppContext)
 
+    const [isOnline, setIsOnline] = useState(navigator.onLine);
+    const [dbData, setDbData] = useState(null);
+
+ const transcriptTableCollectionRef = doc(collection(db, 'Transcript-tables'), 'Tables');
+  // console.log(transcriptHeaderCollectionRef);
+
+    useEffect(() => {
+      const handleOnlineStatusChange = () => {
+        setIsOnline(navigator.onLine);
+      };
+  
+      window.addEventListener('online', handleOnlineStatusChange);
+      window.addEventListener('offline', handleOnlineStatusChange);
+  
+      return () => {
+        window.removeEventListener('online', handleOnlineStatusChange);
+        window.removeEventListener('offline', handleOnlineStatusChange);
+      };
+    }, []);
+  
 
     const localTables=localStorage.getItem("localStorageDb")
 
@@ -23,13 +45,33 @@ useEffect(()=>{
 
 
 
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+        
+        
+          const documentSnapshot = await getDoc(transcriptTableCollectionRef);
+  
+          if (documentSnapshot.exists()) {
+            setDbData(documentSnapshot.data());
+            console.log(documentSnapshot.data().updatedDb);
+          }
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      };
+  
+      fetchData();
+    }, []);
+    
+
 
    
 
     
   return (
-    <div>
-      <div  className="mx-4 my-9  max-h-[200vh]   sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+    <div className=' '>
+      <div  className="mx-4     sm:-mx-8 px-4 sm:px-8 overflow-x-auto">
               
          
               <div className="inline-block min-w-full rounded-lg ">
@@ -37,7 +79,7 @@ useEffect(()=>{
               {/* <TableSelect level={level} setLevel={setLevel} semester={semester} department={department} setDepartment={setDepartment} setSemester={setSemester} /> */}
               {/* <TableSelect  /> */}
 
-   <table className="min-w-full my-4 leading-normal ">
+   <table className="min-w-full  leading-normal ">
 
      <LocalTableHead/>
   

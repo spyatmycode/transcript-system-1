@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { db } from '../firebase/firebaseConfig'
-import { collection, doc, getDoc, getDocs } from 'firebase/firestore'
+import { collection, doc, getDoc, getDocs, setDoc, updateDoc } from 'firebase/firestore'
 import { useNavigate, useParams } from 'react-router-dom'
 import Table from './Table/Table'
 import { useContext } from 'react'
@@ -20,10 +20,46 @@ import LocalTable from './LocalTable/LocalTable';
 import TableSelect from './Table/TableSelect';
 import LocalSumarry from './LocalTable/LocalSumarry';
 import LocalSumarryGrade from './LocalTable/LocalSummaryGrade';
-
+import 'jspdf-autotable';
 
 const Transcript = () => {
   const {...idMatric}=useParams()
+  if(idMatric){
+    idMatric.id.replace('-','--')
+  }
+
+
+
+
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+  useEffect(()=>{
+ if(isOnline){
+  toast.success("Online Mode!");
+ 
+ }if(isOnline==false){
+  toast.warning("offline Mode!");
+  
+ }
+
+  },[])
+
+  useEffect(() => {
+    const handleOnlineStatusChange = () => {
+      setIsOnline(navigator.onLine);
+    };
+
+    window.addEventListener('online', handleOnlineStatusChange);
+    window.addEventListener('offline', handleOnlineStatusChange);
+
+    return () => {
+      window.removeEventListener('online', handleOnlineStatusChange);
+      window.removeEventListener('offline', handleOnlineStatusChange);
+    };
+  }, []);
+
+
+
+  
    const navigate=useNavigate()
     const {department,showLocalTables,setSummaryLevel,summaryLevel,summarySemester,setSummarySemester,gradePointArray,setDepartment,tableNo,setTableNo,setSummaryRow,CGPA,summaryRow,showOption,localStorageDb,setLocalStorageDb,setShowOption}=useContext(AppContext)
     const [level,setLevel]=useState(100)
@@ -31,10 +67,7 @@ const Transcript = () => {
     const[saveBtnState,setSaveBtnState]=useState(true)
     const [buttonColorState, setButtonColorState] = useState(true)
     const [bgColor, setBgColor] = useState('bg-gray-500');
-
-
-
-    
+    const [dbData, setDbData] = useState(null);
 
 
 
@@ -80,6 +113,7 @@ const Transcript = () => {
 
   const { id } = useParams()
   const transcriptHeaderCollectionRef = collection(db, "Transcript-header-info")
+  const transcriptTableCollectionRef = doc(collection(db, 'Transcript-tables'), 'Tables');
   // console.log(transcriptHeaderCollectionRef);
 
   useEffect(() => {
@@ -98,9 +132,14 @@ const Transcript = () => {
         setData(res.docs)
       })
 
-
+      
       const docRef = doc(db, "Transcript-header-info", id);
       // console.log(docRef);
+
+
+
+    
+
 
       const docSnap = await getDoc(docRef);
       console.log("Document data:", docSnap.data());
@@ -123,6 +162,9 @@ const Transcript = () => {
     }
 
     HeaderTranscriptInfo()
+
+
+
   }, [id])
 
   const calculateTableSummary = (gradePointArray) => {
@@ -139,37 +181,74 @@ const Transcript = () => {
 
 
   const createNewTable = () => {
-    const newTableNo = Tables.length > 0 ? tableNo + 1 : 1;
-    setTableNo(newTableNo);
-
+  
+//  alert(saveBtnState +" " + tableNo)
     //RESTRICTIONS FOR USERS
-    if (saveBtnState === false) {
+    if (saveBtnState === false  && tableNo > 1) {
       setShowModal(true)
       // const result = window.confirm('You cant proceed !! save the previous table')
     }
-    else {
 
-      //changing the state
-      setSaveBtnState(true)
-      toast.success("Table created successfully!");
-      setButtonColorState(!buttonColorState);
-      setCount(count + 1);
-      setSaveBtnState(false)
-
-      //adding to the table
-      setTables((prevTables) => [
-        ...prevTables,
-        {
-          tableNo: newTableNo,
-          table: (
-            <>
-              <Table tableNo={newTableNo} />
-            </>
-          ),
-        },
-      ]);
-
-    }
+    // if (saveBtnState === true   ) {
+      // setShowModal(true)
+      const newTableNo = Tables.length > 0 ? tableNo + 1 : 1;
+      setTableNo(newTableNo);
+      alert()
+         alert(tableNo)
+      setShowModal(false)
+        //changing the state
+        setSaveBtnState(true)
+        toast.success("Table created successfully!");
+        setButtonColorState(!buttonColorState);
+        setCount(count + 1);
+        setSaveBtnState(false)
+  
+        //adding to the table
+        setTables((prevTables) => [
+          ...prevTables,
+          {
+            tableNo: newTableNo,
+            table: (
+              <>
+                <Table tableNo={newTableNo} />
+              </>
+            ),
+          },
+        ]);
+  
+      // const result = window.confirm('You cant proceed !! save the previous table')
+    // }
+    
+    // if (saveBtnState === false || tableNo===0  ) {
+    //   // setShowModal(true)
+    //   const newTableNo = Tables.length > 0 ? tableNo + 1 : 1;
+    //   setTableNo(newTableNo);
+    //   alert()
+    //      alert(tableNo)
+    //   setShowModal(false)
+    //     //changing the state
+    //     setSaveBtnState(true)
+    //     toast.success("Table created successfully!");
+    //     setButtonColorState(!buttonColorState);
+    //     setCount(count + 1);
+    //     setSaveBtnState(false)
+  
+    //     //adding to the table
+    //     setTables((prevTables) => [
+    //       ...prevTables,
+    //       {
+    //         tableNo: newTableNo,
+    //         table: (
+    //           <>
+    //             <Table tableNo={newTableNo} />
+    //           </>
+    //         ),
+    //       },
+    //     ]);
+  
+    //   // const result = window.confirm('You cant proceed !! save the previous table')
+    // }
+    
   };
 
 
@@ -181,9 +260,13 @@ const Transcript = () => {
 
     // console.log(Tables);
     const deleteTable = (tableNo) => {
-
+ //RESTRICTIONS FOR USERS
+      if(tableNo ===1){
+       alert("oiooo")
+       setShowModal(false)
+      }
     setCount(count - 1);
-
+    
     setTables((prevTables) =>
       prevTables.filter((table) => table.tableNo !== tableNo)
     );
@@ -213,7 +296,7 @@ const Transcript = () => {
 
 
 
-  const saveToLocalStorage = (database, studentMatric, currentResult, tableNo, saveState) =>{
+  const saveToLocalStorage = async(database, studentMatric, currentResult, tableNo, saveState) =>{
     if(database){
       const updatedDb = [...database]
       let studId=studentMatric
@@ -223,6 +306,8 @@ const Transcript = () => {
       else{
         studId=studentMatric
       }
+
+      
     const currentStudentIndex = database.findIndex((student)=> student.matric ===  studId)
     if (saveState !== false){
       // console.log("thisnis the current student index",currentStudentIndex);
@@ -236,8 +321,23 @@ const Transcript = () => {
 
       setLocalStorageDb(updatedDb)
     }
-    }
+    const currentFirebaseStudentIndex = database.findIndex((student)=> student.matric ===  studId)
+    updatedDb[currentStudentIndex].results = [...updatedDb[currentStudentIndex].results, {...currentResult, id: tableNo,saveState}]
+    const newData=[...dbData]
+    await updateDoc(transcriptTableCollectionRef,{updatedDb})
+  .then(() => {
+    console.log('Data added successfully!');
+    console.log(newData);
+    console.log(localStorageDb);
+  })
+  .catch((error) => {
+    console.error('Error adding data: ', error);
+  });
   }
+    }
+
+
+
 
 
   //DELETE FROM LOCAL STORAGE
@@ -257,11 +357,12 @@ const Transcript = () => {
 
 
   //  SAVE BTN 
-      const saveBtn = (num) => {
+      const saveBtn =async (num) => {
         
         
          
        if(saveBtnState===false ){
+
         setSummaryRow((prev) => [
           ...prev,
           {
@@ -287,6 +388,11 @@ const Transcript = () => {
           
           },
         ]);
+
+        // const collectionRef = db.collection('Transcript-tables');
+// const documentRef = transcriptTableCollectionRef.doc('Tables');
+
+
         toast.info('Saved successfully!');
         //reset
         setSaveBtnState(true)
@@ -301,6 +407,25 @@ const Transcript = () => {
       
         
       };
+
+      useEffect(() => {
+        const fetchData = async () => {
+          try {
+          
+          
+            const documentSnapshot = await getDoc(transcriptTableCollectionRef);
+    
+            if (documentSnapshot.exists()) {
+              setDbData(documentSnapshot.data().updatedDb);
+              console.log(dbData);
+            }
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          }
+        };
+    
+        fetchData();
+      }, []);
 
 
 
@@ -322,59 +447,71 @@ const Transcript = () => {
         }
       }, [bgColor]);
     
-
-
-    
-// Define the print function
-const handlePrint = () => {
-  // RESTRICTIONS FOR USERS
-  if (saveBtnState === true) {
-    setShowOption(false);
-    setTimeout(() => {
-      // Capture HTML content of main component using html2canvas
-      html2canvas(document.body, { scale: window.devicePixelRatio }) // Capture the whole body of the webpage
-        .then((canvas) => {
+      const handlePrint = () => {
+        // RESTRICTIONS FOR USERS
+        if (saveBtnState === true) {
           setShowOption(false);
-          // Convert captured content to image data URL
-          const imgData = canvas.toDataURL('image/png', 1.0); // Use quality option to set image quality to 100%
-
-          // Create new jsPDF instance
-          const pdf = new jsPDF('l', 'mm', 'a4'); // Set page orientation to portrait, measurement unit to millimeters, and page size to A4
-
-          // Set the page height of the PDF to match the height of the captured image
-          const imgHeight = (canvas.height * pdf.internal.pageSize.getWidth()) / canvas.width;
-          pdf.internal.pageSize.setHeight(imgHeight);
-
-          // Add the captured image to the PDF as a single page
-          pdf.addImage(
-            imgData,
-            'PNG',
-            0,
-            0,
-            pdf.internal.pageSize.getWidth(),
-            pdf.internal.pageSize.getHeight()
-          );
-
-       
-          // Save PDF with specified file name
-          pdf.save(`${name} ${matric} IUT BENIN`);
           setTimeout(() => {
-            setShowOption(true);
-            
-            //to still reserve the state of the save btn
-            setSaveBtnState(true)
+            // Capture HTML content of main component using html2canvas
+            html2canvas(mainPageRef.current, { scale: window.devicePixelRatio }) // Use window.devicePixelRatio to capture the correct size based on the device's pixel density
+              .then((canvas) => {
+                setShowOption(false);
+                // Convert captured content to image data URL
+                const imgData = canvas.toDataURL('image/png', 1.0); // Use quality option to set image quality to 100%
+      
+                // Create new jsPDF instance
+                const pdf = new jsPDF('p', 'mm', 'a4'); // Set page orientation to portrait, measurement unit to millimeters, and page size to A4
+      
+                const maxPages = 15; // Maximum number of pages allowed in PDF
+                const imgHeight = (canvas.height * pdf.internal.pageSize.getWidth()) / canvas.width; // Calculate image height based on aspect ratio
+      
+                let totalPages = Math.ceil(imgHeight / pdf.internal.pageSize.getHeight()); // Calculate total number of pages based on image height and page height
+      
+                // Limit total pages to maximum allowed pages and minimum of 1 page
+                totalPages = Math.max(Math.min(totalPages, maxPages), 1);
+      
+                // Loop through each page and add image to PDF
+                for (let i = 0; i < totalPages; i++) {
+                  if (i > 0) {
+                    pdf.addPage(); // Add new page for remaining content
+                  }
+                  pdf.addImage(
+                    imgData,
+                    'PNG',
+                    0,
+                    -(i * pdf.internal.pageSize.getHeight()) + 42 * pdf.internal.pageSize.getWidth() / 172, // Add margin of 20em at every page break
+                    pdf.internal.pageSize.getWidth(),
+                    0
+                  ); // Use internal.pageSize to get current page size and adjust y position for each page
+                }
+                setShowOption(false);
+                // Save PDF with specified file name
+                pdf.save(
+                  `${
+                    name
+                      ? name
+                      : ParsedLocalTables[ParsedLocalTables.findIndex((num) => num.matric == `${idMatric.id}`)].name
+                  } ${
+                    matric
+                      ? matric
+                      : ParsedLocalTables[ParsedLocalTables.findIndex((num) => num.matric == `${idMatric.id}`)].matric
+                  } IUT BENIN`
+                );
+                setTimeout(() => {
+                  setShowOption(true);
+                }, 1000);
+              })
+              .catch((error) => {
+                console.error('Error generating PDF:', error);
+                setShowOption(true);
+              });
           }, 1000);
-        })
-        .catch((error) => {
-          console.error('Error generating PDF:', error);
-          setShowOption(true);
-        });
-    }, 1000);
-  } else {
-    setShowModal(true);
-  }
-};
-
+        } else {
+          setShowModal(true);
+          // const result = window.confirm('You cant proceed !! save the previous table')
+        }
+      };
+      
 
 const localTables=localStorage.getItem("localStorageDb")
 
@@ -416,7 +553,19 @@ useEffect(()=>{
           <ul>  
           {showLocalTables===true?
             <>
-              <li><span className=' font-bold '>Name (Nom): </span>{name ? name: ParsedLocalTables[ParsedLocalTables.findIndex((num)=>num.matric==`${idMatric.id}`)].name }</li>
+              <li><span className={` font-bold `}>Name (Nom): </span>
+              {
+                isOnline ?
+                name ? name: ParsedLocalTables[ParsedLocalTables.findIndex((num)=>num.matric==`${idMatric.id}`)].name 
+             
+                 : 
+                 
+                 name ? name: ParsedLocalTables[ParsedLocalTables.findIndex((num)=>num.matric==`${idMatric.id}`)].name 
+             
+              }
+              {name ? name: ParsedLocalTables[ParsedLocalTables.findIndex((num)=>num.matric==`${idMatric.id}`)].name }
+              
+              </li>
               <li> <span className='font-bold'>Faculty: </span>{college ? college:ParsedLocalTables[ParsedLocalTables.findIndex((num)=>num.matric==`${idMatric.id}`)].department }</li>
               <li><span className='font-bold'>Matric No (No Matricule): </span>{matric ? matric:
               ParsedLocalTables[ParsedLocalTables.findIndex((num)=>num.matric==`${idMatric.id}`)].matric
@@ -446,7 +595,7 @@ useEffect(()=>{
       <section className=' my-3'>
         {/* TITLE  */}
         <div className=' text-center my-11 '>
-          <h1 className='font-bold underline'>OFFICIAL TRANSCRIPT OF ACADEMIC RECORDS</h1>
+          <h1 className='font-bold  border-b-[.1em]  p-2 border-[black] font-sans '> <span className='  mx-1'> OFFICIAL</span> <span className='  mx-1'> TRANSCRIPT </span> <span className='  mx-3'> OF</span> <span className='  mx-1'>ACADEMIC</span> <span className='  mx-1'>RECORDS</span>  </h1>
           <p className=' font-[fantasy]'>(Transcript Des Note Acaddemiques)</p>
         </div>
 
@@ -471,18 +620,22 @@ useEffect(()=>{
      */}
 
     {/* {ParsedLocalTables.map((ltable)=>( */}
+
+{/* {console.log(dbData.map(e=>e))} */}
     {showLocalTables===true?
       <>
       { ParsedLocalTables.length > 0 ?
 
 <>
    {ParsedLocalTables[ParsedLocalTables.findIndex((num)=>num.matric==`${idMatric.id}`)].results.map((result)=>(
- 
-    <>
+    <> 
+
+<div className=' flex mb-[4em] mt-[2em] flex-col'>
+{/* {console.log(result)} */}
 
      <TableSelect level={result.level} setLevel={setLevel} semester={result.semester} />
      <LocalTable saveBtnState={saveBtnState} saveToLocalStorage={saveToLocalStorage} saveBtn={saveBtn} setSaveBtnState={setSaveBtnState} deleteTable={deleteTable} result={result}/> 
-
+</div>
     </>
    ))}
         <LocalSumarry idMatric={idMatric}/>
@@ -494,32 +647,30 @@ useEffect(()=>{
       </>
       :null
     }
- 
+
+
    
-    {/* ))} */}
-
-      
-
-
-
 
 
         {/* Table */}
 
         {Tables.map((table) => (
 
-          <div key={table.tableNo} className='my-[-2vh]'>
+          <div key={table.tableNo} className=''>
             {table.table}
-
-            {showOption ? <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => deleteTable(table.tableNo)}>
+       <div className=' ml-[4em] mt-[2em] '>
+        {showOption ? <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => deleteTable(table.tableNo)}>
               Delete table
             </button> : null}
 
            <SaveBtn showOption={showOption} saveBtnState={saveBtnState} setSaveBtnState={setSaveBtnState} saveBtnColor={table.saveBtnColor} tableNo={table.tableNo} saveBtn={saveBtn} saveToLocalStorage={saveToLocalStorage} matric={matric}/>
               
+       </div>
+            
 
           </div>
         ))}
+        
 
                         {/* THIS DISPLAY THE SUMMARY OF THE DATA WHEN THERE IS A TABLE PRESENT FOR CALCULATION */}
                                    {Tables.length >0 && <><SummaryTable className=""  />  <SummaryGrades/>  </>}
@@ -540,10 +691,9 @@ useEffect(()=>{
                           />
                         )}
                    </div>
-                  
+           
 
       </section>
-
 
 
 

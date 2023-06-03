@@ -6,14 +6,15 @@ import { useContext } from 'react'
 import { AppContext, ContextProvider } from './ContextProvider/ContextProvider'
 import DeleteModal from './Table/DeleteModal'
 import ReactPaginate from 'react-paginate';
-
+import { db } from '../firebase/firebaseConfig'
+import { collection, doc, getDoc, getDocs, setDoc, updateDoc } from 'firebase/firestore'
 const Admin = () => {
     const navigate = useNavigate()
 
  
 
 
-
+    const transcriptTableCollectionRef = doc(collection(db, 'Transcript-tables'), 'Tables');
     const data = [
         {
             matric: "2020/9257",
@@ -50,19 +51,106 @@ const Admin = () => {
     const localTables = localStorage.getItem("localStorageDb")
 
     const ParsedLocalTables = JSON.parse(localTables)
-    useEffect(() => {
-        // console.log(ParsedLocalTables[1]);
-        // console.log(
-        //     ParsedLocalTables.map((e) => {
-        //         if (e.results.length > 0) {
-        //             return e.results[e.results.length - 1].level;
-        //         } else {
-        //             return "No Level";
-        //         }
-        //     })
-        // );
-    }, [localTables]);
+    const[dbData,setDbData]=useState([])
+    // useEffect(() => {
+    //     const ReadingTheDb = async () => {
+    //       try {
+    //         const documentRef = doc(collection(db, 'Transcript-tables'), 'Tables');
+    //         const documentSnapshot = await getDoc(documentRef);
+            
+    //         if (documentSnapshot.exists()) {
+    //           const data=({ id: documentSnapshot.id, data: documentSnapshot.data() });
+    //           console.log(11111);
+    //           setDbData({...documentSnapshot.data()}?.updatedD);
+    //           console.log(dbData?.updatedDb.map((e)=>e.matric));
+             
+    //           setDbData({...documentSnapshot.data()}.updatedDb);
+              
+    //         } else {
+    //           console.log('Document not found');
+    //         }
+    //       } catch (error) {
+    //         console.error('Error fetching data:', error);
+    //       }
+    //     };
+      
+    //     ReadingTheDb();
+    //   }, []);
 
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+        
+          try {
+            const documentSnapshot = await getDoc(transcriptTableCollectionRef);
+            if (documentSnapshot.exists()) {
+              setDbData(documentSnapshot.data());
+               console.log(dbData?.updatedDb?.map((e)=>e));
+            //   setDbData(dbData?.updatedDb?.filter((e)=>e.matric!==2020-6748))
+             
+              console.log(dbData);
+         
+            } else {
+              console.log('Document not found!');
+            }
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          }
+        };
+    
+        fetchData();
+      }, []);
+      
+
+      
+      useEffect(()=>{
+       deleteSubfieldByMatric()
+      },[])
+      const deleteSubfieldByMatric =  async(matric) => {
+        const updatedDb=dbData?.updatedDb?.filter((e)=>e.matric!==matric)
+         console.log('the deleted:'+ updatedDb.map(e=>e.name));
+         console.log({updatedDb});
+         localStorage.setItem("localStorageDb", JSON.stringify(updatedDb));
+     
+         
+        //  const currentStudentIndex = database.findIndex((student)=> student.matric ===ma)
+
+    //   updatedDb[currentStudentIndex].results = updatedDb[currentStudentIndex].results.filter((result) => (result.id !== tableNo))
+
+    //   setLocalStorageDb(updatedDb)
+    console.log({updatedDb});
+              await updateDoc(transcriptTableCollectionRef,{updatedDb})
+     
+            .then(() => {
+              console.log('Data Deleted successfully!');
+              window.location.reload()
+            })
+            .catch((error) => {
+              console.error('Error adding data: ', error);
+            })}
+   
+        // const fhg={...documentSnapshot.data()}.updatedDb;
+        // fhg.map(e=>console.log(e.name))
+        //     await updateDoc(transcriptTableCollectionRef,{deletedData})
+        //     .then(() => {
+        //       console.log('Data added successfully!');
+        //        //   to refresh the page after deleting
+        // window.location.reload(); 
+        //     })
+        //     .catch((error) => {
+        //       console.error('Error adding data: ', error);
+        //     })}
+            
+            // const handleDelete = async (id) => {
+   
+            //     await deleteDoc(doc(db, "users", id));
+            //     setUsers(users.filter((user) => user.id !== id));
+            //   //   console.log(users);
+             
+            
+        
+        
 
    const filtered = ()=>{
 
@@ -93,10 +181,13 @@ const Admin = () => {
    const renderedAdminList = useMemo(filtered,[query,collegeOption])
 
    console.log("this is the query", filtered());
-    const handlePrint = (each) => {
-
+    const handlePrint = (e,each) => {
+    e.preventDefault()
+    console.log(2);
+    console.log(`/transcript/${each.matric}`);  
         if (showLocalTables === false) {
-            setShowLocalTables(true)
+            // setShowLocalTables(true)
+          console.log(`/transcript/${each.matric}`);  
             navigate(`/transcript/${each.matric}`)
         }
 
@@ -142,7 +233,7 @@ useEffect(() => {
     setCurrentItems(renderedAdminList.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(renderedAdminList.length / itemsPerPage));
   }, [itemOffset, itemsPerPage,renderedAdminList]);
-
+  
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % renderedAdminList.length;
     setItemOffset(newOffset);
@@ -150,6 +241,8 @@ useEffect(() => {
   // ** END PAGINATE **
 
 console.log(currentItems);
+localStorage.setItem('localStorageDb',JSON.stringify(currentItems))
+console.log(dbData?.updatedDb);
     return (
         <>
 
@@ -161,7 +254,10 @@ console.log(currentItems);
                         Transcripts
                     </h1>
                 </div>
-
+             
+             {console.log({...dbData}?.updateDoc)}
+             {/* {dbData?.updatedDb?.map(obj =>
+                <li>{obj.name}</li>)} */}
                 <div className="container mx-auto px-4 sm:px-8">
                     <div className="py-8">
                         <div>
@@ -279,8 +375,8 @@ console.log(currentItems);
 
                                         {/* This is a table row/ record */}
 
-                                        {
-                                            currentItems.map((each) => {
+                                        { 
+                                            dbData?.updatedDb?.map((each) => {
                                                 // const { level, studentName, status, matric } = each
                                                 return (
                                                     <tr key={each.matric} className='text-center'>
@@ -334,7 +430,15 @@ console.log(currentItems);
                                                         <td className="px-5 py-5 border-b  border-gray-200 bg-white text-sm">
                                                             <div className='flex gap-3 '>
                                                                 <div className=' text-blue-600'>
-                                                                    <button onClick={() => handlePrint(each)}>
+                                                                    {/* <button onClick={
+                                                                    //   e.preventDefault()
+                                                                    //  console.log(`/transcript/${each.matric}`);
+                                                                        handlePrint(each)
+                                                                      
+                                                                        }>
+                                                                        Print
+                                                                    </button> */}
+                                                                    <button onClick={(e)=>handlePrint(e,each)}>
                                                                         Print
                                                                     </button>
                                                                 </div>
@@ -353,7 +457,10 @@ console.log(currentItems);
                                                                 { showDeleteModal&&<DeleteModal message={"Are you sure you want to delete this transcript?"}  onYes={deleteFunction} onCancel={setShowDeleteModal} target={deleteTarget}/>}
 
                                                                 <div>
-                                                                    <button onClick={() => {setShowDeleteModal(true); setTarget(each)}} className='flex items-center justify-between text-red-600'>
+                                                                    {/* <button onClick={() => {setShowDeleteModal(true); setTarget(each)}} className='flex items-center justify-between text-red-600'>
+                                                                        Delete
+                                                                    </button> */}
+                                                                    <button onClick={() => deleteSubfieldByMatric(each.matric)} className='flex items-center justify-between text-red-600'>
                                                                         Delete
                                                                     </button>
 

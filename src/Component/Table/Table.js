@@ -27,6 +27,7 @@ function Table({key,department,setDepartment}) {
         score7: 0,
         score8: 0,
         score9: 0,
+        score10: 0,
       });
       
    
@@ -124,14 +125,14 @@ function Table({key,department,setDepartment}) {
     
   return (
     <>
-    <div  className="mx-4 my-9   sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+    <div  className="  sm:mx-8 px-4 sm:px-8  overflow-x-auto">
               
          
-               <div className="inline-block min-w-full rounded-lg ">
+               <div className="inline-block min-w-full  rounded-lg ">
                 {/* TABLE SELECTION TO CHOOSE YOUR LEVEL AND SEMESTER  PERTAINING TO YOUR DEPARTMENT OF YOUR CHOICE   */}
                <TableSelect level={level} setLevel={setLevel} semester={semester} department={department} setDepartment={setDepartment} setSemester={setSemester} />
 
-    <table className="min-w-full my-4 leading-normal ">
+    <table className="min-w-full   leading-normal ">
  
       <TableHead/>
       <TableBody 

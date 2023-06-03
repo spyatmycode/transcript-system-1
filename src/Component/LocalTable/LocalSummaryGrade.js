@@ -25,14 +25,14 @@ const summation=()=>{
 
   return (
     <>
-    <div className='h-[100vh] flex justify-center items-center mx-auto'>
+    <div className=' flex justify-center items-center mx-auto'>
 
-        <table className='my-[9em] mx-auto w-[50vw]  text-[.8em]  '>
+        <table className=' mx-auto w-[50vw]  text-[.8em]  '>
            
                <tr className=' bg-[#0e0e42]    text-white '>
                   <th className='  border-[.2em]     border-[#4f4f4fe5]   relative    '>
                      <tr className=' text-center inline-block p-1  '>
-                       <th > TUMST GRADING SYSTEM (System De Note D’TUMST)</th>
+                       <th > IUT GRADING SYSTEM (System De Note D’IUT)</th>
                        </tr>
                      <tr className='text-center   inline-block p-1 ' >
                      <th className=' border-[.2em] p-3    border-[#4f4f4fe5] '>GRADE /100</th>

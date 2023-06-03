@@ -39,8 +39,7 @@ const SummaryRow = ({year,level,semester,cgp,count}) => {
             text-center text-dark
             font-medium
             text-[1em]
-            py-5
-            px-2
+            p-1
             bg-[#F3F6FF]
             border-b border-l border-[#E8E8E8]
           "
@@ -53,8 +52,7 @@ const SummaryRow = ({year,level,semester,cgp,count}) => {
             text-center text-dark
             font-medium
             text-[1em]
-            py-5
-            px-2
+            p-1
             bg-white
             border-b border-[#E8E8E8]
           "
