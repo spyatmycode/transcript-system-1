@@ -327,54 +327,67 @@ const Transcript = () => {
     
 // Define the print function
 const handlePrint = () => {
-  // RESTRICTIONS FOR USERS
-  if (saveBtnState === true) {
+  //RESTRICTIONS FOR USERS
+  if(saveBtnState===true   ){
     setShowOption(false);
     setTimeout(() => {
+     
       // Capture HTML content of main component using html2canvas
-      html2canvas(document.body, { scale: window.devicePixelRatio }) // Capture the whole body of the webpage
+      html2canvas(mainPageRef.current, { scale: window.devicePixelRatio }) // Use window.devicePixelRatio to capture the correct size based on the device's pixel density
         .then((canvas) => {
           setShowOption(false);
           // Convert captured content to image data URL
           const imgData = canvas.toDataURL('image/png', 1.0); // Use quality option to set image quality to 100%
-
+  
           // Create new jsPDF instance
-          const pdf = new jsPDF('l', 'mm', 'a4'); // Set page orientation to portrait, measurement unit to millimeters, and page size to A4
-
-          // Set the page height of the PDF to match the height of the captured image
-          const imgHeight = (canvas.height * pdf.internal.pageSize.getWidth()) / canvas.width;
-          pdf.internal.pageSize.setHeight(imgHeight);
-
-          // Add the captured image to the PDF as a single page
-          pdf.addImage(
-            imgData,
-            'PNG',
-            0,
-            0,
-            pdf.internal.pageSize.getWidth(),
-            pdf.internal.pageSize.getHeight()
-          );
-
-       
+          const pdf = new jsPDF('p', 'mm', 'a5'); // Set page orientation to portrait, measurement unit to millimeters, and page size to A4
+  
+          const maxPages = 15; // Maximum number of pages allowed in PDF
+          const imgHeight = (canvas.height * pdf.internal.pageSize.getWidth()) / canvas.width; // Calculate image height based on aspect ratio
+  
+          let totalPages = Math.ceil(imgHeight / pdf.internal.pageSize.getHeight()); // Calculate total number of pages based on image height and page height
+  
+          // Limit total pages to maximum allowed pages and minimum of 1 page
+          totalPages = Math.max(Math.min(totalPages, maxPages), 1);
+  
+          // Loop through each page and add image to PDF
+          for (let i = 0; i < totalPages; i++) {
+            if (i > 0) {
+              pdf.addPage(); // Add new page for remaining content
+            }
+            pdf.addImage(
+              imgData,
+              'PNG',
+              0,
+              -(i * pdf.internal.pageSize.getHeight()),
+              pdf.internal.pageSize.getWidth(),
+              0
+            ); // Use internal.pageSize to get current page size and adjust y position for each page
+          }
+          setShowOption(false);
           // Save PDF with specified file name
           pdf.save(`${name} ${matric} IUT BENIN`);
           setTimeout(() => {
             setShowOption(true);
-            
-            //to still reserve the state of the save btn
-            setSaveBtnState(true)
           }, 1000);
         })
         .catch((error) => {
           console.error('Error generating PDF:', error);
           setShowOption(true);
         });
+      
     }, 1000);
-  } else {
-    setShowModal(true);
+  
+
+
+
+    }
+  else{
+    setShowModal(true)
+    // const result = window.confirm('You cant proceed !! save the previous table')
+ 
   }
 };
-
 
 const localTables=localStorage.getItem("localStorageDb")
 
