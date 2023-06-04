@@ -2233,6 +2233,11 @@ const data = [
                   COURSETITLE: 'Benin People and Culture',
                   UNIT: 2,
                 },
+                {
+                  CODE: 'GNS 102',
+                  COURSETITLE: 'Benin People and Culture',
+                  UNIT: 2,
+                },
               ],
             
               }

@@ -1,13 +1,19 @@
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { addDoc, collection } from "firebase/firestore"
+import { addDoc, collection, doc, getDoc, setDoc, updateDoc } from "firebase/firestore"
 import { db } from '../firebase/firebaseConfig'
 import { uid } from 'uid'
 import { useContext } from 'react'
 import { AppContext } from './ContextProvider/ContextProvider'
 
 const Form = () => {
+
+
+    
+    
+
+
   const [name, setName] = useState('')
   const [matric, setMatric] = useState('')
   const [college, setCollege] = useState('Science and Technology')
@@ -15,6 +21,8 @@ const Form = () => {
   const [gender, setGender] = useState('male')
   const [session, setSession] = useState('')
   const [level, setLevel] = useState('')
+   const transcriptTableCollectionRef = doc(collection(db, 'Transcript-tables'), 'Tables');
+  // console.log(transcriptHeaderCollectionRef);
 
   const {
     department,
@@ -32,11 +40,34 @@ const Form = () => {
 
   const usedId = uid()
   const transcriptHeaderCollectionRef = collection(db, "Transcript-header-info")
+ 
+
+  console.log(matric);
+  useEffect(()=>{
+ 
+    const replaceSlashWithHyphen = (text) => {
+      return  text.replace(/\//g, '-');
+    };
+    const newText = replaceSlashWithHyphen(matric);
+    setMatric(newText)
+  },[matric])
+
+  
+   
+  
+ 
   const handleSubmit = async (e) => {
-
+   
     e.preventDefault()
-
+   
+//  console.log(matric);
+     
+//  console.log(matric);
     if (window.confirm("Are you sure of this User Information")) {
+      
+      
+
+   
       const docref = await addDoc(transcriptHeaderCollectionRef, {
         name,
         matric,
@@ -86,6 +117,43 @@ const Form = () => {
         results: [ ]
       
         }])
+
+
+        const updateDb= [{
+          name,
+          matric,
+          college,
+          idParam:docref.id,
+          id,
+          department: department === 0 ? "Health Information Management" :
+            department === 1 ? " Accounting" :
+              department === 2 ? "CONFLICT RESOLUTION AND HOSPITALITY MANAGEMENT" :
+                department === 3 ? " Business" :
+                  department === 4 ? "Political Science" :
+                    department === 5 ? "Computer Science" :
+                      department === 6 ? "Human Resources Management" :
+                        department === 7 ? "Economics" :
+                          department === 8 ? "Mass Communication" : "Health Information Management"
+          , 
+  
+          results: [ ]
+        
+    }]
+   let existing= await getDoc(transcriptTableCollectionRef).data().updateDb || []
+
+   let updateExisting=[...existing,{updateDb}]
+
+        await setDoc(transcriptTableCollectionRef,updateExisting)
+  .then(() => {
+    console.log('Data added successfully!');
+  })
+  .catch((error) => {
+    console.error('Error adding data: ', error);
+  });
+
+  await updateDoc(transcriptTableCollectionRef, {
+    updateDb: updateDb
+  });
   
      {showLocalTables===true ?
   
@@ -126,7 +194,10 @@ const Form = () => {
             </div>
             <div className='flex flex-col'>
               <label className="form-label">Matric No (No Matricule): </label>
-              <input type="text" value={matric} onChange={(e) => setMatric(e.target.value)} className=' border border-[#7e7d7d] rounded-sm p-4' required placeholder="e.g TUMST-18-00015-ECN-COLSMAS" />
+              <input type="text" value={matric} onChange={(e) => {
+        
+                 setMatric(e.target.value)
+    }} className=' border border-[#7e7d7d] rounded-sm p-4' required placeholder="e.g IUT-18-00015-ECN-COLSMAS" />
             </div>
 
 

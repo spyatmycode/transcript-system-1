@@ -79,9 +79,9 @@ const SummaryTable = ({ level,semester,}) => {
 <section className=" mx-auto h-fit   px-4 sm:px-8 py-4 overflow-x-auto">
     
          
-            <div className="inline-block w-fit   shadow rounded-lg">
+            <div className="inline-block w-fit   rounded-lg">
             
-            <table className='my-[3em] mx-auto w-[60vw] text-[1em]  '>
+            <table className='mb-4 mt-1 mx-auto w-[60vw] text-[1em]  '>
                 <thead className=''>
                 <tr className=' bg-[#0e0e42]    text-white '>
                 <th className='  border-[.2em]     border-[#4f4f4fe5]  p-4  relative    '>
@@ -126,8 +126,7 @@ const SummaryTable = ({ level,semester,}) => {
             text-center text-dark
             font-bold
             text-[1.3em]
-            py-5
-            px-2
+            p-1
             bg-white
             border-b border-[#E8E8E8]
           "
@@ -140,8 +139,7 @@ const SummaryTable = ({ level,semester,}) => {
             text-center text-dark
             font-medium
             text-[1em]
-            py-5
-            px-2
+            p-1
             bg-[#F3F6FF]
             border-b border-[#E8E8E8]
            

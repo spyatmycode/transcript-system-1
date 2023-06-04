@@ -1,10 +1,26 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../ContextProvider/ContextProvider'
 import LocalTableRow from './LocalTableRow'
 
 const LocalSumarry = ({idMatric}) => {
    
 const localTables=localStorage.getItem("localStorageDb")
+//online status
+const [isOnline, setIsOnline] = useState(navigator.onLine);
+
+useEffect(() => {
+  const handleOnlineStatusChange = () => {
+    setIsOnline(navigator.onLine);
+  };
+
+  window.addEventListener('online', handleOnlineStatusChange);
+  window.addEventListener('offline', handleOnlineStatusChange);
+
+  return () => {
+    window.removeEventListener('online', handleOnlineStatusChange);
+    window.removeEventListener('offline', handleOnlineStatusChange);
+  };
+}, []);
 
 const ParsedLocalTables=JSON.parse(localTables)
 useEffect(()=>{
@@ -60,7 +76,7 @@ const summation=()=>{
 
   return (
     <div className=' flex flex-col justify-center    ' >
-    <h1 className='text-center my-9 text-[2em] font-serif'>SUMMARY OF DEGREE REULT <span className='block'>(REUME DES RESULTATS)</span></h1>
+    <h1 className='text-center text-[2em] mt-[4.7em] font-serif'>SUMMARY OF DEGREE REULT <span className='block'>(REUME DES RESULTATS)</span></h1>
 
        {/* Table containig the cgpa  */}
        <script src="https://cdn.tailwindcss.com"></script>
@@ -68,12 +84,12 @@ const summation=()=>{
 <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 {/* <!-- ====== Table Section Start --> */}
-<section className=" mx-auto h-fit max-h-[100vh]  px-4 sm:px-8 py-4 overflow-x-auto">
+<section className=" mx-auto h-fit max-h-[100vh]  px-4 sm:px-8  overflow-x-auto">
   
        
-          <div className="inline-block w-fit   shadow rounded-lg">
+          <div className="inline-block w-fit   rounded-lg">
           
-          <table className='my-[3em] mx-auto w-[60vw] text-[1em]  '>
+          <table className='mb-[3em] mt-1 mx-auto w-[60vw] text-[1em]  '>
               <thead className=''>
               <tr className=' bg-[#0e0e42]    text-white '>
               <th className='  border-[.2em]     border-[#4f4f4fe5]  p-4  relative    '>
@@ -103,7 +119,7 @@ const summation=()=>{
           font-medium
           text-[1em]
           
-          px-2 py-2
+          px-2 py-1
           bg-[#F3F6FF]
            border-[.1em] border-black 
         "
@@ -121,7 +137,7 @@ const summation=()=>{
       font-medium
       text-[1em]
        flex flex-col
-      px-2 py-2
+      px-2 py-1
       bg-[#F3F6FF]
        border-[.1em] border-black 
     "
@@ -138,7 +154,7 @@ const summation=()=>{
           font-medium
           text-[1em]
           
-          px-2 py-2
+          px-2 py-1
           bg-[#ffffff]
            border-[.1em] border-black 
         "
@@ -155,7 +171,7 @@ const summation=()=>{
       font-medium
       text-[1em]
        flex flex-col
-      px-2 py-2
+      px-2 py-1
       bg-[#ffffff]
        border-[.1em] border-black 
     "
@@ -172,7 +188,7 @@ const summation=()=>{
           font-medium
           text-[1em]
           
-          px-2 py-2
+          px-2 py-1
           bg-[#F3F6FF]
            border-[.1em] border-black 
         "
@@ -189,7 +205,7 @@ const summation=()=>{
       font-medium
       text-[1em]
        flex flex-col
-      px-2 py-2
+      px-2 py-1
       
      
        
@@ -207,7 +223,7 @@ const summation=()=>{
           font-bold
           text-[1.3em]
           
-          px-2 py-2
+          px-2 py-1
           bg-white
            border-[.1em] border-black 
         "
@@ -250,7 +266,7 @@ const summation=()=>{
           font-medium
           text-[1em]
           
-          px-2 py-2
+          px-2 py-1
           bg-[#F3F6FF]
            border-[.1em] border-black 
          
